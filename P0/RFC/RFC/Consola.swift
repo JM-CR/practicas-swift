@@ -13,27 +13,25 @@ protocol Consola {
 }
 
 extension Consola {
-    func imprimeAConsola(_ mensaje: String) {
-        print(mensaje)
-    }
-    
+    /**
+     Muestra el propósito del programa.
+    */
     func imprimeUso() {
-        _ = (CommandLine.arguments[0] as NSString).lastPathComponent
-        imprimeAConsola("Descripción")
-        imprimeAConsola("\tCalcula el RFC de una persona física o moral.")
-        imprimeAConsola("Opciones")
-        imprimeAConsola("\t-h Imprime ayuda")
+        
     }
     
-    func entradaDeTeclado() -> String {
+    /**
+     Imprime un mensaje para guiar al usuario y lee lo que introduce.
+     
+     - Parameter mensaje: Texto a imprimir.
+     - Returns: Texto que introdujo el usuario.
+     */
+    func entradaDeTeclado(mensaje: String) -> String {
+        print(mensaje)
+        
         let teclado = FileHandle.standardInput
         let datosTecleados = teclado.availableData
         let dataEnStr = String(data: datosTecleados, encoding: String.Encoding.utf8)!
         return dataEnStr.trimmingCharacters(in: CharacterSet.newlines)
-    }
-    
-    func run() {
-        let (argc, argumentos) = (CommandLine.argc, CommandLine.arguments)
-        print("Se recibieron los siguientes \(argc) argumentos: \(argumentos)")
     }
 }

@@ -8,3 +8,6 @@
 
 import Foundation
 
+var rfcPersonaFisica = RFCPersonaFisica()
+
+rfcPersonaFisica.seleccionaMes()
