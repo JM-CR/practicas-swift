@@ -10,8 +10,11 @@ import Foundation
 
 protocol PersonaMoral: Persona {
     var nombre: String { get set }
+    var tablaCinco: Array<String> { get }
 }
 
 extension PersonaMoral {
-    
+    func validaNombre() -> Bool {
+        return true
+    }
 }

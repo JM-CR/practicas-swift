@@ -15,6 +15,7 @@ protocol Persona {
     var dia: String { get set }
     var mes: String { get set }
     var año: String { get set }
+    var tablas: Tablas { get }
     var tablaUno: Dictionary<String, String> { get }
     var tablaDos: Dictionary<String, String> { get }
     var tablaTres: Dictionary<Int, String> { get }
