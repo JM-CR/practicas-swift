@@ -8,6 +8,6 @@
 
 import Foundation
 
-//struct RFC: PersonaMoral, PersonaFisica {
+//struct RFC: PersonaMoral, PersonaFisica, Consola {
 //
 //}

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PersonaFisica: Entidad {
+protocol PersonaFisica: Persona {
     var nombre: String { get set }
 }
 

@@ -8,5 +8,3 @@
 
 import Foundation
 
-let saludo = Saludos()
-saludo.saluda()
