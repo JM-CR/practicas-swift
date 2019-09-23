@@ -10,6 +10,11 @@
 		CAD682272339261600CE3B74 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD682262339261600CE3B74 /* main.swift */; };
 		CAD6823223392CEA00CE3B74 /* EntradaYSalida.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823123392CEA00CE3B74 /* EntradaYSalida.swift */; };
 		CAD6823423392CF500CE3B74 /* Saludos.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823323392CF500CE3B74 /* Saludos.swift */; };
+		CAD6823623392FCD00CE3B74 /* Entidad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823523392FCD00CE3B74 /* Entidad.swift */; };
+		CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */; };
+		CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */; };
+		CAD6823C2339301800CE3B74 /* RFC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823B2339301800CE3B74 /* RFC.swift */; };
+		CAD6823E2339379000CE3B74 /* Tablas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823D2339379000CE3B74 /* Tablas.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +34,11 @@
 		CAD682262339261600CE3B74 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CAD6823123392CEA00CE3B74 /* EntradaYSalida.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntradaYSalida.swift; sourceTree = "<group>"; };
 		CAD6823323392CF500CE3B74 /* Saludos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saludos.swift; sourceTree = "<group>"; };
+		CAD6823523392FCD00CE3B74 /* Entidad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entidad.swift; sourceTree = "<group>"; };
+		CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaMoral.swift; sourceTree = "<group>"; };
+		CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaFisica.swift; sourceTree = "<group>"; };
+		CAD6823B2339301800CE3B74 /* RFC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFC.swift; sourceTree = "<group>"; };
+		CAD6823D2339379000CE3B74 /* Tablas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tablas.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,11 @@
 				CAD682262339261600CE3B74 /* main.swift */,
 				CAD6823123392CEA00CE3B74 /* EntradaYSalida.swift */,
 				CAD6823323392CF500CE3B74 /* Saludos.swift */,
+				CAD6823523392FCD00CE3B74 /* Entidad.swift */,
+				CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */,
+				CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */,
+				CAD6823B2339301800CE3B74 /* RFC.swift */,
+				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 			);
 			path = RFC;
 			sourceTree = "<group>";
@@ -125,9 +140,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */,
 				CAD6823423392CF500CE3B74 /* Saludos.swift in Sources */,
+				CAD6823623392FCD00CE3B74 /* Entidad.swift in Sources */,
 				CAD682272339261600CE3B74 /* main.swift in Sources */,
 				CAD6823223392CEA00CE3B74 /* EntradaYSalida.swift in Sources */,
+				CAD6823C2339301800CE3B74 /* RFC.swift in Sources */,
+				CAD6823E2339379000CE3B74 /* Tablas.swift in Sources */,
+				CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
