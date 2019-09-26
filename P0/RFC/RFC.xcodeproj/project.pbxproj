@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA4A9847233D438E00741BD3 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A9846233D438E00741BD3 /* InputError.swift */; };
 		CAD682272339261600CE3B74 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD682262339261600CE3B74 /* main.swift */; };
 		CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */; };
 		CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CA4A9846233D438E00741BD3 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		CAD682232339261600CE3B74 /* RFC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RFC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD682262339261600CE3B74 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaMoral.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		CAD682252339261600CE3B74 /* RFC */ = {
 			isa = PBXGroup;
 			children = (
+				CA4A9846233D438E00741BD3 /* InputError.swift */,
 				CAD68243233943F500CE3B74 /* Consola.swift */,
 				CAD682412339437D00CE3B74 /* Persona.swift */,
 				CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */,
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAD682422339437D00CE3B74 /* Persona.swift in Sources */,
+				CA4A9847233D438E00741BD3 /* InputError.swift in Sources */,
 				CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */,
 				CAD682272339261600CE3B74 /* main.swift in Sources */,
 				CAD6824623395A9500CE3B74 /* RFCPersonaFisica.swift in Sources */,

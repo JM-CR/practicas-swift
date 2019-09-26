@@ -10,4 +10,6 @@ import Foundation
 
 var rfcPersonaFisica = RFCPersonaFisica()
 
-rfcPersonaFisica.seleccionaMes()
+while (let opcion = rfcPersonaFisica.seleccionaTipoRFC()) {
+    print(opcion)
+}
