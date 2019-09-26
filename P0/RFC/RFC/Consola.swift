@@ -15,7 +15,7 @@ protocol Consola {
 extension Consola {
     /**
      Muestra el propósito del programa.
-    */
+     */
     func imprimeUso() {
         
     }

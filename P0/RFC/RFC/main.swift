@@ -8,8 +8,10 @@
 
 import Foundation
 
+var opcionDelMenu: Int? = nil
 var rfcPersonaFisica = RFCPersonaFisica()
 
-while (let opcion = rfcPersonaFisica.seleccionaTipoRFC()) {
-    print(opcion)
+// Menú inicial
+while (opcionDelMenu == nil) {
+    opcionDelMenu = rfcPersonaFisica.seleccionaTipoRFC()
 }

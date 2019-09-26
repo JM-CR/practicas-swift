@@ -33,7 +33,7 @@ extension Persona {
     /**
      Muestra un menú que permite elegir entre persona física y moral.
      
-     - Returns: Opcion elegida del menú. 1 = Física | 2 = Moral.
+     - Returns: Opción elegida; 1 = Física | 2 = Moral.
      */
     func seleccionaTipoRFC() -> Int? {
         var opcion: Int? = nil
@@ -43,12 +43,11 @@ extension Persona {
             1. Persona física
             2. Persona moral
         """
-        print(texto)
+        print("\n\(texto)")
         
         do {
-            let entrada = self.entradaDeTeclado(mensaje: "Opción: ")
-            try validaTipoRFC(opcion: entrada)
-            opcion = Int(entrada)
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nOpción: ")
+            opcion = try validaTipoRFC(opcion: entradaDelUsuario)
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
         } catch InputError.InvalidNumberInRange(let descripcion) {
@@ -61,12 +60,14 @@ extension Persona {
     }
     
     /**
-     Valida si el valor dado en el menú seleccionaTipoRFC() es válido.
+     Valida si la opción del menú seleccionaTipoRFC() es válida.
      
+     - Parameter opcion: Entrada de usuario.
      - Throws: InputError.InvalidCharacter, InputError.NumberTooHigh, InputError.NumberTooLow
+     - Returns: Opción escogida.
      */
-    private func validaTipoRFC(opcion: String) throws {
-        let buscaRegEx = opcion.range(of: #"[0-9]"#, options: .regularExpression)
+    private func validaTipoRFC(opcion: String) throws -> Int {
+        let buscaRegEx = opcion.range(of: #"^\d$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
             throw InputError.InvalidCharacter(descripcion: "Solo debes introducir un número.")
         }
@@ -75,6 +76,8 @@ extension Persona {
         guard numero > 0 && numero < 3 else {
             throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
         }
+        
+        return numero
     }
     
     mutating func seleccionaDia() {
@@ -101,8 +104,8 @@ extension Persona {
             11. Noviembre
             12. Diciembre
         """
-        print(texto)
-        self.mes = self.entradaDeTeclado(mensaje: "Opción: ")
+        print("\n\(texto)")
+        self.mes = self.entradaDeTeclado(mensaje: "\nOpción: ")
     }
     
     mutating func seleccionaAño() {
