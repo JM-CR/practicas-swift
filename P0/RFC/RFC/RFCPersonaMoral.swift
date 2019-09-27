@@ -14,7 +14,7 @@ struct RFCPersonaMoral: PersonaMoral {
     var digito = ""
     var homoclave = ""
     
-    var fecha: Date? = Date()
+    var fecha = ""
     var dia = 1
     var mes = 1
     var año = 1900

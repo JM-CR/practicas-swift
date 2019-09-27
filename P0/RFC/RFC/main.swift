@@ -30,3 +30,14 @@ if opcionDelMenu == 1 {
     while !rfcPersonaMoral.seleccionaMes() { }
     while !rfcPersonaMoral.seleccionaDia() { }
 }
+
+// Introducir nombre
+print("\n-------------")
+if opcionDelMenu == 1 {
+    print("\nIntroduce los siguientes datos personales")
+    while !rfcPersonaFisica.introduceNombre() { }
+    while !rfcPersonaFisica.introduceApellidoPaterno() { }
+    while !rfcPersonaFisica.introduceApellidoMaterno() { }
+} else {
+    
+}

@@ -9,9 +9,9 @@
 import Foundation
 
 protocol PersonaGeneral: Consola {
-    var fecha: Date? { get set }
     var digito: String { get set }
     var homoclave: String { get set }
+    var fecha: String { get set }
     var dia: Int { get set }
     var mes: Int { get set }
     var año: Int { get set }
@@ -36,12 +36,12 @@ extension PersonaGeneral {
      - Returns: Regresa true si el usuario introduce un día válido.
      */
     mutating func seleccionaDia() -> Bool {
-        var opcionValida = false
+        var diaValido = false
         
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el día: ")
-            self.dia = try validaDia(opcion: entradaDelUsuario)
-            opcionValida.toggle()
+            self.dia = try validaDia(valor: entradaDelUsuario)
+            diaValido.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
         } catch InputError.InvalidDayInMonth(let descripcion) {
@@ -50,24 +50,24 @@ extension PersonaGeneral {
             print("Error, intenta de nuevo.")
         }
         
-        return opcionValida
+        return diaValido
     }
     
     /**
-     Valida si el día dado en seleccionaDia() es válido.
+     Valida el día dado en seleccionaDia().
      
-     - Parameter opcion: Entrada de usuario.
-     - Throws: InputError.InvalidCharacter, InputError.InvalidNumberInRange
+     - Parameter valor: Entrada de usuario.
+     - Throws: InputError.InvalidCharacter, InputError.InvalidDayInMonth
      - Returns: Día validado.
      */
-    private func validaDia(opcion: String) throws -> Int {
-        let buscaRegEx = opcion.range(of: #"^\d*$"#, options: .regularExpression)
+    private func validaDia(valor: String) throws -> Int {
+        let buscaRegEx = valor.range(of: #"^\d*$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
             throw InputError.InvalidCharacter(descripcion: "Introduce un día válido.")
         }
         
-        let dia: Int = Int(opcion)!
-        guard dia > 1 && dia < 32 else {
+        let dia: Int = Int(valor)!
+        guard dia > 0 && dia < 32 else {
             throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
         }
         
@@ -117,7 +117,7 @@ extension PersonaGeneral {
     }
     
     /**
-     Valida si la opción del menú seleccionaMes() es válida.
+     Valida la opción del menú seleccionaMes().
      
      - Parameter opcion: Entrada de usuario.
      - Throws: InputError.InvalidCharacter, InputError.InvalidNumberInRange
@@ -143,12 +143,12 @@ extension PersonaGeneral {
      - Returns: Regresa true si el usuario introduce un día válido.
      */
     mutating func seleccionaAño() -> Bool {
-        var opcionValida = false
+        var añoValido = false
         
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el año: ")
-            self.año = try validaAño(opcion: entradaDelUsuario)
-            opcionValida.toggle()
+            self.año = try validaAño(valor: entradaDelUsuario)
+            añoValido.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
         } catch InputError.InvalidYear(let descripcion) {
@@ -157,23 +157,23 @@ extension PersonaGeneral {
             print("Error, intenta de nuevo.")
         }
         
-        return opcionValida
+        return añoValido
     }
     
     /**
-     Valida si el año dado en seleccionaAño() es válido.
+     Valida el año dado en seleccionaAño().
      
-     - Parameter opcion: Entrada de usuario.
+     - Parameter valor: Entrada de usuario.
      - Throws: InputError.InvalidCharacter, InputError.InvalidYear
      - Returns: Año validado.
      */
-    private func validaAño(opcion: String) throws -> Int {
-        let buscaRegEx = opcion.range(of: #"^\d{4}$"#, options: .regularExpression)
+    private func validaAño(valor: String) throws -> Int {
+        let buscaRegEx = valor.range(of: #"^\d{4}$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
             throw InputError.InvalidCharacter(descripcion: "Introduce un año válido.")
         }
         
-        let año: Int = Int(opcion)!
+        let año: Int = Int(valor)!
         guard año > 1899 else {
             throw InputError.InvalidYear(descripcion: "Año fuera de rango.")
         }
