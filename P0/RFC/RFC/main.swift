@@ -10,8 +10,9 @@ import Foundation
 
 var opcionDelMenu: Int? = nil
 var rfcPersonaFisica = RFCPersonaFisica()
+var rfcPersonaMoral = RFCPersonaMoral()
 
 // Menú inicial
-while (!rfcPersonaFisica.seleccionaAño()) { }
+
 
 // Calcular RFC

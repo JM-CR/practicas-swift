@@ -67,12 +67,12 @@ extension PersonaGeneral {
         }
         
         let dia: Int = Int(opcion)!
-        guard dia > 1 else {
+        guard dia > 1 && dia < 32 else {
             throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
         }
         
         guard self.mes != 2 && dia < 30 else {
-            throw InputError.InvalidDayInMonth(descripcion: "Día inválido para febrero.")
+            throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
         }
         
         // TODO: Validar días para otros meses
@@ -165,7 +165,7 @@ extension PersonaGeneral {
     }
     
     /**
-     Valida si el día dado en seleccionaAño() es válido.
+     Valida si el año dado en seleccionaAño() es válido.
      
      - Parameter opcion: Entrada de usuario.
      - Throws: InputError.InvalidCharacter, InputError.InvalidYear

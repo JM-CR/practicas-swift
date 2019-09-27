@@ -84,4 +84,11 @@ extension Consola {
         
         return numero
     }
+    
+    /**
+     Limpia la consola de texto
+     */
+    func limpiaConsola() {
+        print("\u{001B}[2J")
+    }
 }

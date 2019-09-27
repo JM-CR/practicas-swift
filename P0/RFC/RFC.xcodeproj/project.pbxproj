@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		CA4A9847233D438E00741BD3 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A9846233D438E00741BD3 /* InputError.swift */; };
 		CA4A984C233E565400741BD3 /* PersonaGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A984B233E565400741BD3 /* PersonaGeneral.swift */; };
+		CA4A984E233E63F300741BD3 /* RFCPersonaMoral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A984D233E63F300741BD3 /* RFCPersonaMoral.swift */; };
 		CAD682272339261600CE3B74 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD682262339261600CE3B74 /* main.swift */; };
 		CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */; };
 		CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		CA4A9846233D438E00741BD3 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		CA4A984B233E565400741BD3 /* PersonaGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaGeneral.swift; sourceTree = "<group>"; };
+		CA4A984D233E63F300741BD3 /* RFCPersonaMoral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFCPersonaMoral.swift; sourceTree = "<group>"; };
 		CAD682232339261600CE3B74 /* RFC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RFC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD682262339261600CE3B74 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaMoral.swift; sourceTree = "<group>"; };
@@ -71,13 +73,14 @@
 		CAD682252339261600CE3B74 /* RFC */ = {
 			isa = PBXGroup;
 			children = (
-				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 				CA4A9846233D438E00741BD3 /* InputError.swift */,
 				CAD68243233943F500CE3B74 /* Consola.swift */,
 				CA4A984B233E565400741BD3 /* PersonaGeneral.swift */,
 				CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */,
 				CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */,
 				CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */,
+				CA4A984D233E63F300741BD3 /* RFCPersonaMoral.swift */,
+				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 				CAD682262339261600CE3B74 /* main.swift */,
 			);
 			path = RFC;
@@ -147,6 +150,7 @@
 				CAD6823E2339379000CE3B74 /* Tablas.swift in Sources */,
 				CA4A984C233E565400741BD3 /* PersonaGeneral.swift in Sources */,
 				CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */,
+				CA4A984E233E63F300741BD3 /* RFCPersonaMoral.swift in Sources */,
 				CAD68244233943F500CE3B74 /* Consola.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
