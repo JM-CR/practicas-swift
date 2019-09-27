@@ -71,12 +71,12 @@
 		CAD682252339261600CE3B74 /* RFC */ = {
 			isa = PBXGroup;
 			children = (
+				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 				CA4A9846233D438E00741BD3 /* InputError.swift */,
 				CAD68243233943F500CE3B74 /* Consola.swift */,
 				CAD682412339437D00CE3B74 /* Persona.swift */,
 				CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */,
 				CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */,
-				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 				CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */,
 				CAD682262339261600CE3B74 /* main.swift */,
 			);

@@ -12,6 +12,6 @@ var opcionDelMenu: Int? = nil
 var rfcPersonaFisica = RFCPersonaFisica()
 
 // Menú inicial
-while (opcionDelMenu == nil) {
-    opcionDelMenu = rfcPersonaFisica.seleccionaTipoRFC()
-}
+while (!rfcPersonaFisica.seleccionaMes()) { }
+
+// Calcular RFC

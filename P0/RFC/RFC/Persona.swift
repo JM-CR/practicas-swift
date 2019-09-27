@@ -63,13 +63,13 @@ extension Persona {
      Valida si la opción del menú seleccionaTipoRFC() es válida.
      
      - Parameter opcion: Entrada de usuario.
-     - Throws: InputError.InvalidCharacter, InputError.NumberTooHigh, InputError.NumberTooLow
+     - Throws: InputError.InvalidCharacter, InputError.InvalidNumberInRange
      - Returns: Opción escogida.
      */
     private func validaTipoRFC(opcion: String) throws -> Int {
         let buscaRegEx = opcion.range(of: #"^\d$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
-            throw InputError.InvalidCharacter(descripcion: "Solo debes introducir un número.")
+            throw InputError.InvalidCharacter(descripcion: "Solo debes introducir una opción del menú.")
         }
         
         let numero: Int = Int(opcion)!
@@ -85,12 +85,15 @@ extension Persona {
     }
     
     /**
-     Muestra un menú al usuario para seleccionar el mes y guarda su opción.
+     Muestra un menú al usuario para seleccionar el mes y guarda su elección en la propiedad mes.
+     
+     - Returns: Regresa true si el usuario escoge una opción válida.
      */
-    mutating func seleccionaMes() {
+    mutating func seleccionaMes() -> Bool {
+        var opcionValida = false
         let texto =
         """
-        Selecciona el mes correspondiente:
+        Selecciona el mes correspondiente
             1. Enero
             2. Febrero
             3. Marzo
@@ -105,7 +108,41 @@ extension Persona {
             12. Diciembre
         """
         print("\n\(texto)")
-        self.mes = self.entradaDeTeclado(mensaje: "\nOpción: ")
+        
+        do {
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nOpción: ")
+            self.mes = try validaMes(opcion: entradaDelUsuario)
+            opcionValida.toggle()
+        } catch InputError.InvalidCharacter(let descripcion) {
+            print(descripcion)
+        } catch InputError.InvalidNumberInRange(let descripcion) {
+            print(descripcion)
+        } catch {
+            print("Error, intenta de nuevo.")
+        }
+        
+        return opcionValida
+    }
+    
+    /**
+     Valida si la opción del menú seleccionaMes() es válida.
+     
+     - Parameter opcion: Entrada de usuario.
+     - Throws: InputError.InvalidCharacter, InputError.InvalidNumberInRange
+     - Returns: Opción escogida.
+     */
+    private func validaMes(opcion: String) throws -> String {
+        let buscaRegEx = opcion.range(of: #"^\d*$"#, options: .regularExpression)
+        guard buscaRegEx != nil else {
+            throw InputError.InvalidCharacter(descripcion: "Solo debes introducir una opción del menú.")
+        }
+        
+        let numero: Int = Int(opcion)!
+        guard numero >= 1 && numero <= 12 else {
+            throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
+        }
+        
+        return opcion
     }
     
     mutating func seleccionaAño() {
