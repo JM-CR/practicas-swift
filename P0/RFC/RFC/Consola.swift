@@ -29,10 +29,12 @@ extension Consola {
     func entradaDeTeclado(mensaje: String) -> String {
         print(mensaje)
         
-        let teclado = FileHandle.standardInput
-        let datosTecleados = teclado.availableData
-        let dataEnStr = String(data: datosTecleados, encoding: String.Encoding.utf8)!
-        return dataEnStr.trimmingCharacters(in: CharacterSet.newlines)
+        var dataEnStr = ""
+        if let texto = readLine() {
+            dataEnStr = texto
+        }
+        
+        return dataEnStr.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
     /**

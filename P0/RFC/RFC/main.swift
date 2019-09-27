@@ -41,3 +41,9 @@ if opcionDelMenu == 1 {
 } else {
     
 }
+
+// CalcularRFC
+print("\n-------------")
+if opcionDelMenu == 1 {
+    rfcPersonaFisica.reglaOcho()
+}

@@ -14,13 +14,11 @@ protocol PersonaFisica: PersonaGeneral {
     var apellidoMaterno: String { get set }
     var tablaCuatro: Dictionary<String, String> { get }
     var tablaSeis: Array<String> { get }
+ 
+    mutating func reglaOcho()
 }
 
 extension PersonaFisica {
-    func validaNombreCompleto() -> Bool {
-        return true
-    }
-    
     func esMenorDeEdad() -> Bool {
         return false
     }
@@ -96,10 +94,17 @@ extension PersonaFisica {
      - Returns: Texto validado.
      */
     private func validaPersona(texto: String) throws -> String {
-        let buscaRegEx = texto.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨]"#, options: .regularExpression)
+        var buscaRegEx = texto.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
+        
+        buscaRegEx = texto.range(of: #"[áéíóúÁÉÍÓÚ]"#, options: .regularExpression)
+        guard buscaRegEx == nil else {
+            throw InputError.InvalidCharacter(descripcion: "No introduzcas acentos.")
+        }
+        
+        // TODO: Ver casos para entrada vacía.
         
         return texto
     }

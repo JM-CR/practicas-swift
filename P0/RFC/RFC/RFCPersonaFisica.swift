@@ -36,4 +36,45 @@ struct RFCPersonaFisica: PersonaFisica {
         self.tablaCuatro = tablas.tablaCuatro
         self.tablaSeis = tablas.tablaSeis
     }
+    
+    /**
+     Elimina artículos, preposiciones, conjunciones o contracciones en el nombre o apellido(s).
+     */
+    mutating func reglaOcho() {
+        let palabrasAFiltrar = [
+            "Y", "E", "NI", "O", "DE", "DEL", "LOS", "LA", "LAS",
+            "U", "SR.", "SRA.", "SR", "SRA", "A.", "M.", "A", "M",
+            ""
+        ]
+        
+        let vocalesConAcento = ["Á", "É", "Í", "Ó", "Ú"]
+        let vocalesSinAcento = ["A", "E", "I", "O", "U"]
+        
+        // Pasar todo a mayúsculas
+        self.nombre = self.nombre.uppercased()
+        self.apellidoPaterno = self.apellidoPaterno.uppercased()
+        self.apellidoMaterno = self.apellidoMaterno.uppercased()
+        
+        // Remover inconsistencias
+        self.nombre = self.nombre.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
+        self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
+        self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
+        
+        // Quitar acentos
+        for i in 0..<5 {
+            let acento = vocalesConAcento[i]
+            let sinAcento = vocalesSinAcento[i]
+            
+            self.nombre = self.nombre.replacingOccurrences(of: acento, with: sinAcento)
+            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: acento, with: sinAcento)
+            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: acento, with: sinAcento)
+        }
+        
+        // Filtrar palabras
+        for palabra in palabrasAFiltrar {
+            self.nombre = self.nombre.replacingOccurrences(of: " \(palabra) ", with: " ")
+            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: " \(palabra) ", with: " ")
+            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: " \(palabra) ", with: " ")
+        }
+    }
 }
