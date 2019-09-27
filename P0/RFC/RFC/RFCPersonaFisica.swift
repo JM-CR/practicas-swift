@@ -38,6 +38,17 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
+     Toma el dia, mes y año de nacimiento y genera la clave YYMMDD.
+     */
+    mutating func reglaDos() {
+        let dia = self.dia < 9 ? "0\(self.dia)" : "\(self.dia)"
+        let mes = self.mes < 9 ? "0\(self.mes)" : "\(self.mes)"
+        let año = "\(self.año)".suffix(2)
+        
+        self.fecha = "\(año)\(mes)\(dia)"
+    }
+    
+    /**
      Elimina artículos, preposiciones, conjunciones o contracciones en el nombre o apellido(s).
      Reemplaza las letras "Ch" -> "C" y "Ll" -> "L".
      */

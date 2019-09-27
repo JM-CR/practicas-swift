@@ -46,6 +46,7 @@ if opcionDelMenu == 1 {
 print("\n-------------")
 if opcionDelMenu == 1 {
     rfcPersonaFisica.reglaTresYOcho()
+    rfcPersonaFisica.reglaDos()
 } else {
     
 }
