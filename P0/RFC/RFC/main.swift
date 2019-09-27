@@ -45,5 +45,7 @@ if opcionDelMenu == 1 {
 // CalcularRFC
 print("\n-------------")
 if opcionDelMenu == 1 {
-    rfcPersonaFisica.reglaOcho()
+    rfcPersonaFisica.reglaTresYOcho()
+} else {
+    
 }

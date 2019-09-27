@@ -15,7 +15,7 @@ protocol PersonaFisica: PersonaGeneral {
     var tablaCuatro: Dictionary<String, String> { get }
     var tablaSeis: Array<String> { get }
  
-    mutating func reglaOcho()
+    mutating func reglaTresYOcho()
 }
 
 extension PersonaFisica {

@@ -39,16 +39,16 @@ struct RFCPersonaFisica: PersonaFisica {
     
     /**
      Elimina artículos, preposiciones, conjunciones o contracciones en el nombre o apellido(s).
+     Reemplaza las letras "Ch" -> "C" y "Ll" -> "L".
      */
-    mutating func reglaOcho() {
+    mutating func reglaTresYOcho() {
         let palabrasAFiltrar = [
-            "Y", "E", "NI", "O", "DE", "DEL", "LOS", "LA", "LAS",
-            "U", "SR.", "SRA.", "SR", "SRA", "A.", "M.", "A", "M",
-            ""
+            " Y ", " E ", " NI ", " O ", " DE ", " DEL ", " LOS ", " LA ", " LAS ",
+            " U ", "SR. ", "SRA. ", "SR ", "SRA ", "A. ", "M. ", "A ", "M ",
         ]
         
-        let vocalesConAcento = ["Á", "É", "Í", "Ó", "Ú"]
-        let vocalesSinAcento = ["A", "E", "I", "O", "U"]
+        let porReemplazar = ["Á", "É", "Í", "Ó", "Ú", "CH", "LL"]
+        let reemplazo = ["A", "E", "I", "O", "U", "C", "L"]
         
         // Pasar todo a mayúsculas
         self.nombre = self.nombre.uppercased()
@@ -62,19 +62,19 @@ struct RFCPersonaFisica: PersonaFisica {
         
         // Quitar acentos
         for i in 0..<5 {
-            let acento = vocalesConAcento[i]
-            let sinAcento = vocalesSinAcento[i]
+            let porCambiar = porReemplazar[i]
+            let cambio = reemplazo[i]
             
-            self.nombre = self.nombre.replacingOccurrences(of: acento, with: sinAcento)
-            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: acento, with: sinAcento)
-            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: acento, with: sinAcento)
+            self.nombre = self.nombre.replacingOccurrences(of: porCambiar, with: cambio)
+            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: porCambiar, with: cambio)
+            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: porCambiar, with: cambio)
         }
         
         // Filtrar palabras
         for palabra in palabrasAFiltrar {
-            self.nombre = self.nombre.replacingOccurrences(of: " \(palabra) ", with: " ")
-            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: " \(palabra) ", with: " ")
-            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: " \(palabra) ", with: " ")
+            self.nombre = self.nombre.replacingOccurrences(of: palabra, with: " ")
+            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: palabra, with: " ")
+            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: palabra, with: " ")
         }
     }
 }
