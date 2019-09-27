@@ -13,6 +13,20 @@ var rfcPersonaFisica = RFCPersonaFisica()
 var rfcPersonaMoral = RFCPersonaMoral()
 
 // Menú inicial
+while opcionDelMenu == nil {
+    opcionDelMenu = rfcPersonaFisica.seleccionaTipoRFC()
+}
 
-
-// Calcular RFC
+// Introducir fecha
+print("\n-------------")
+if opcionDelMenu == 1 {
+    print("\nIntroduce la fecha de nacimiento")
+    while !rfcPersonaFisica.seleccionaAño() { }
+    while !rfcPersonaFisica.seleccionaMes() { }
+    while !rfcPersonaFisica.seleccionaDia() { }
+} else {
+    print("\nIntroduce la fecha de creación")
+    while !rfcPersonaMoral.seleccionaAño() { }
+    while !rfcPersonaMoral.seleccionaMes() { }
+    while !rfcPersonaMoral.seleccionaDia() { }
+}

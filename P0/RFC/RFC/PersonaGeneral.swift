@@ -71,11 +71,7 @@ extension PersonaGeneral {
             throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
         }
         
-        guard self.mes != 2 && dia < 30 else {
-            throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
-        }
-        
-        // TODO: Validar días para otros meses
+        // TODO: Validar cantidad de días del mes
         
         return dia
     }
