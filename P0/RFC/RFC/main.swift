@@ -45,8 +45,9 @@ if opcionDelMenu == 1 {
 // CalcularRFC
 print("\n-------------")
 if opcionDelMenu == 1 {
-    rfcPersonaFisica.reglaTresYOcho()
-    rfcPersonaFisica.reglaDos()
+    rfcPersonaFisica.filtraNombre()
+    rfcPersonaFisica.creaFechaContribuyente()
+    rfcPersonaFisica.creaSiglas()
 } else {
     
 }

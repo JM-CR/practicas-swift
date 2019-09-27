@@ -9,14 +9,16 @@
 import Foundation
 
 protocol PersonaFisica: PersonaGeneral {
+    var siglas: String { get set }
     var nombre: String { get set }
     var apellidoPaterno: String { get set }
     var apellidoMaterno: String { get set }
     var tablaCuatro: Dictionary<String, String> { get }
     var tablaSeis: Array<String> { get }
  
-    mutating func reglaDos()
-    mutating func reglaTresYOcho()
+    mutating func creaSiglas()
+    mutating func creaFechaContribuyente()
+    mutating func filtraNombre()
 }
 
 extension PersonaFisica {

@@ -9,6 +9,7 @@
 import Foundation
 
 struct RFCPersonaFisica: PersonaFisica {
+    var siglas = ""
     var nombre = ""
     var apellidoPaterno = ""
     var apellidoMaterno = ""
@@ -38,9 +39,75 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
+     Crea las siglas del contribuyente.
+     */
+    mutating func creaSiglas() {
+        let casoNombre = self.nombre.contains(" ") ? self.nombre.components(separatedBy: " ") : [self.nombre]
+        let casoPaterno = self.apellidoPaterno.contains(" ") ? self.apellidoPaterno.components(separatedBy: " ") : [self.apellidoPaterno]
+        let casoMaterno = self.apellidoMaterno.contains(" ") ? self.apellidoMaterno.components(separatedBy: " ") : [self.apellidoMaterno]
+        
+        if casoNombre.count == 1 && casoPaterno.count == 1 && casoMaterno.count == 1 {
+            if casoPaterno[0].count > 2 && casoMaterno[0].count > 2 {
+                reglaUno()
+            }
+        }
+    }
+    
+    /**
+     Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
+     y si estos tienen más de dos letras. El formato es PPMN.
+     */
+    mutating private func reglaUno() {
+        let vocales = ["A", "E", "I", "O", "U"]
+        var primerVocal = ""
+        
+        // Buscar primer vocal en el apellido paterno
+        for letra in self.apellidoPaterno {
+            if vocales.contains(String(letra)) {
+                primerVocal = String(letra)
+                break
+            }
+        }
+        
+        let primerLetraPaterno = self.apellidoPaterno.first!
+        let primerLetraMaterno = self.apellidoMaterno.first!
+        let primerLetraNombre = self.nombre.first!
+        
+        self.siglas = "\(primerLetraPaterno)\(primerVocal)\(primerLetraMaterno)\(primerLetraNombre)"
+    }
+    
+    /**
+     
+     */
+    private func reglaCuatro() {
+        
+    }
+    
+    /**
+     
+     */
+    private func reglaCinco() {
+        
+    }
+    
+    /**
+     
+     */
+    private func reglaSeis() {
+        
+    }
+    
+    /**
+     
+     */
+    private func reglaSiete() {
+        
+    }
+    
+    /**
      Toma el dia, mes y año de nacimiento y genera la clave YYMMDD.
      */
-    mutating func reglaDos() {
+    mutating func creaFechaContribuyente() {
         let dia = self.dia < 9 ? "0\(self.dia)" : "\(self.dia)"
         let mes = self.mes < 9 ? "0\(self.mes)" : "\(self.mes)"
         let año = "\(self.año)".suffix(2)
@@ -52,7 +119,7 @@ struct RFCPersonaFisica: PersonaFisica {
      Elimina artículos, preposiciones, conjunciones o contracciones en el nombre o apellido(s).
      Reemplaza las letras "Ch" -> "C" y "Ll" -> "L".
      */
-    mutating func reglaTresYOcho() {
+    mutating func filtraNombre() {
         let palabrasAFiltrar = [
             " Y ", " E ", " NI ", " O ", " DE ", " DEL ", " LOS ", " LA ", " LAS ",
             " U ", "SR. ", "SRA. ", "SR ", "SRA ", "A. ", "M. ", "A ", "M ",
