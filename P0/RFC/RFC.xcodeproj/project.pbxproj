@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		CA4A9847233D438E00741BD3 /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A9846233D438E00741BD3 /* InputError.swift */; };
+		CA4A984C233E565400741BD3 /* PersonaGeneral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4A984B233E565400741BD3 /* PersonaGeneral.swift */; };
 		CAD682272339261600CE3B74 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD682262339261600CE3B74 /* main.swift */; };
 		CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */; };
 		CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */; };
 		CAD6823E2339379000CE3B74 /* Tablas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6823D2339379000CE3B74 /* Tablas.swift */; };
-		CAD682422339437D00CE3B74 /* Persona.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD682412339437D00CE3B74 /* Persona.swift */; };
 		CAD68244233943F500CE3B74 /* Consola.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD68243233943F500CE3B74 /* Consola.swift */; };
 		CAD6824623395A9500CE3B74 /* RFCPersonaFisica.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */; };
 /* End PBXBuildFile section */
@@ -31,12 +31,12 @@
 
 /* Begin PBXFileReference section */
 		CA4A9846233D438E00741BD3 /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
+		CA4A984B233E565400741BD3 /* PersonaGeneral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaGeneral.swift; sourceTree = "<group>"; };
 		CAD682232339261600CE3B74 /* RFC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RFC; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAD682262339261600CE3B74 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaMoral.swift; sourceTree = "<group>"; };
 		CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonaFisica.swift; sourceTree = "<group>"; };
 		CAD6823D2339379000CE3B74 /* Tablas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tablas.swift; sourceTree = "<group>"; };
-		CAD682412339437D00CE3B74 /* Persona.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persona.swift; sourceTree = "<group>"; };
 		CAD68243233943F500CE3B74 /* Consola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consola.swift; sourceTree = "<group>"; };
 		CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFCPersonaFisica.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,7 +74,7 @@
 				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 				CA4A9846233D438E00741BD3 /* InputError.swift */,
 				CAD68243233943F500CE3B74 /* Consola.swift */,
-				CAD682412339437D00CE3B74 /* Persona.swift */,
+				CA4A984B233E565400741BD3 /* PersonaGeneral.swift */,
 				CAD6823723392FEB00CE3B74 /* PersonaMoral.swift */,
 				CAD6823923392FFD00CE3B74 /* PersonaFisica.swift */,
 				CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */,
@@ -140,12 +140,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CAD682422339437D00CE3B74 /* Persona.swift in Sources */,
 				CA4A9847233D438E00741BD3 /* InputError.swift in Sources */,
 				CAD6823823392FEB00CE3B74 /* PersonaMoral.swift in Sources */,
 				CAD682272339261600CE3B74 /* main.swift in Sources */,
 				CAD6824623395A9500CE3B74 /* RFCPersonaFisica.swift in Sources */,
 				CAD6823E2339379000CE3B74 /* Tablas.swift in Sources */,
+				CA4A984C233E565400741BD3 /* PersonaGeneral.swift in Sources */,
 				CAD6823A23392FFD00CE3B74 /* PersonaFisica.swift in Sources */,
 				CAD68244233943F500CE3B74 /* Consola.swift in Sources */,
 			);

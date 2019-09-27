@@ -17,9 +17,9 @@ struct RFCPersonaFisica: PersonaFisica {
     var homoclave = ""
     
     var fecha: Date? = Date()
-    var dia = ""
-    var mes = ""
-    var año = ""
+    var dia = 1
+    var mes = 1
+    var año = 1900
     
     var tablas: Tablas
     var tablaUno: Dictionary<String, String>

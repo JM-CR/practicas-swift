@@ -34,4 +34,54 @@ extension Consola {
         let dataEnStr = String(data: datosTecleados, encoding: String.Encoding.utf8)!
         return dataEnStr.trimmingCharacters(in: CharacterSet.newlines)
     }
+    
+    /**
+     Muestra un menú que permite elegir entre persona física y moral.
+     
+     - Returns: Opción elegida; 1 = Física | 2 = Moral.
+     */
+    func seleccionaTipoRFC() -> Int? {
+        var opcion: Int? = nil
+        let texto =
+        """
+        Selecciona el tipo de RFC a calcular
+            1. Persona física
+            2. Persona moral
+        """
+        print("\n\(texto)")
+        
+        do {
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nOpción: ")
+            opcion = try validaTipoRFC(opcion: entradaDelUsuario)
+        } catch InputError.InvalidCharacter(let descripcion) {
+            print(descripcion)
+        } catch InputError.InvalidNumberInRange(let descripcion) {
+            print(descripcion)
+        } catch {
+            print("Error, intenta de nuevo.")
+        }
+        
+        return opcion
+    }
+    
+    /**
+     Valida si la opción del menú seleccionaTipoRFC() es válida.
+     
+     - Parameter opcion: Entrada de usuario.
+     - Throws: InputError.InvalidCharacter, InputError.InvalidNumberInRange
+     - Returns: Opción escogida.
+     */
+    private func validaTipoRFC(opcion: String) throws -> Int {
+        let buscaRegEx = opcion.range(of: #"^\d$"#, options: .regularExpression)
+        guard buscaRegEx != nil else {
+            throw InputError.InvalidCharacter(descripcion: "Solo debes introducir una opción del menú.")
+        }
+        
+        let numero: Int = Int(opcion)!
+        guard numero > 0 && numero < 3 else {
+            throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
+        }
+        
+        return numero
+    }
 }

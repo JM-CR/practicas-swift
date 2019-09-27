@@ -11,4 +11,6 @@ import Foundation
 enum InputError: Error {
     case InvalidNumberInRange(descripcion: String)
     case InvalidCharacter(descripcion: String)
+    case InvalidDayInMonth(descripcion: String)
+    case InvalidYear(descripcion: String)
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PersonaFisica: Persona {
+protocol PersonaFisica: PersonaGeneral {
     var nombre: String { get set }
     var apellidoPaterno: String { get set }
     var apellidoMaterno: String { get set }
