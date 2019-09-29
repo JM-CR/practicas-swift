@@ -57,6 +57,9 @@ struct RFCPersonaFisica: PersonaFisica {
         } else {
             self.apellidoUnico()
         }
+        
+        // Comparar sigla contra palabras inconvenientes
+        self.verificaSigla()
     }
     
     /**
@@ -70,6 +73,23 @@ struct RFCPersonaFisica: PersonaFisica {
         let cuartaLetra = self.nombre.first!
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
+    }
+    
+    /**
+     Obtiene la primer vocal de una palabra.
+     
+     - Parameter palabra: Texto en el que se desea buscar.
+     - Returns: Vocal encontrada.
+     */
+    private mutating func primerVocal(palabra: String) -> String {
+        let vocales = ["A", "E", "I", "O", "U"]
+        var primerVocal = ""
+        for letra in palabra where vocales.contains(String(letra)) {
+            primerVocal = String(letra)
+            break
+        }
+        
+        return primerVocal
     }
     
     /**
@@ -103,20 +123,13 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Obtiene la primer vocal de una palabra.
-     
-     - Parameter palabra: Texto en el que se desea buscar.
-     - Returns: Vocal encontrada.
+     Compara la sigla contra la tabla 4 en busca de palabras inconvenientes.
      */
-    private mutating func primerVocal(palabra: String) -> String {
-        let vocales = ["A", "E", "I", "O", "U"]
-        var primerVocal = ""
-        for letra in palabra where vocales.contains(String(letra)) {
-            primerVocal = String(letra)
-            break
+    private mutating func verificaSigla() {
+        let necesitaCambio = self.tablaCuatro.keys.contains(self.siglas)
+        if necesitaCambio {
+            self.siglas = self.tablaCuatro[self.siglas]!
         }
-        
-        return primerVocal
     }
     
     /**
