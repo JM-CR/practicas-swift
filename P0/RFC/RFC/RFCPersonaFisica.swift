@@ -29,6 +29,10 @@ struct RFCPersonaFisica: PersonaFisica {
     var tablaCuatro: Dictionary<String, String>
     var tablaSeis: Array<String>
     
+    private var componentesDelNombre: [String] = []
+    private var componentesDelPaterno: [String] = []
+    private var componentesDelMaterno: [String] = []
+    
     init() {
         self.tablas = Tablas()
         self.tablaUno = tablas.tablaUno
@@ -42,45 +46,54 @@ struct RFCPersonaFisica: PersonaFisica {
      Crea las siglas del contribuyente.
      */
     mutating func creaSiglas() {
-        let casoNombre = self.nombre.contains(" ") ? self.nombre.components(separatedBy: " ") : [self.nombre]
-        let casoPaterno = self.apellidoPaterno.contains(" ") ? self.apellidoPaterno.components(separatedBy: " ") : [self.apellidoPaterno]
-        let casoMaterno = self.apellidoMaterno.contains(" ") ? self.apellidoMaterno.components(separatedBy: " ") : [self.apellidoMaterno]
+        self.separaNombreYApellidos()
         
-        if casoNombre.count == 1 && casoPaterno.count == 1 && casoMaterno.count == 1 {
-            if casoPaterno[0].count > 2 && casoMaterno[0] != "" {
-                self.reglaUno()
-            } else if casoPaterno[0].count <= 2 && casoMaterno[0] != "" {
-                self.reglaCuatro()
-            }
+        // Match con reglas
+        if self.componentesDelPaterno.count > 1 || self.componentesDelMaterno.count > 1 {
+            self.reglaCinco()
+        } else if self.componentesDelNombre.count > 1 {
+            self.reglaSeis()
+        } else if self.componentesDelPaterno[0].count > 2 && self.componentesDelMaterno[0] != "" {
+            self.reglaUno()
+        } else if self.componentesDelPaterno[0].count <= 2 && self.componentesDelMaterno[0] != "" {
+            self.reglaCuatro()
+        } else {
+            self.reglaSiete()
         }
     }
     
     /**
-     Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
-     y si estos tienen más de dos letras. El formato es PPMN.
+     Separa componentes del nombre y apellido por espacios.
      */
-    mutating private func reglaUno() {
-        let vocales = ["A", "E", "I", "O", "U"]
+    private mutating func separaNombreYApellidos() {
+        self.componentesDelNombre = self.nombre.contains(" ") ?
+            self.nombre.components(separatedBy: " ") : [self.nombre]
         
-        // Buscar primer vocal en el apellido paterno
-        var primerVocal = ""
-        for letra in self.apellidoPaterno where vocales.contains(String(letra)) {
-            primerVocal = String(letra)
-            break
-        }
-        
+        self.componentesDelPaterno = self.apellidoPaterno.contains(" ") ?
+            self.apellidoPaterno.components(separatedBy: " ") : [self.apellidoPaterno]
+            
+        self.componentesDelMaterno = self.apellidoMaterno.contains(" ") ?
+            self.apellidoMaterno.components(separatedBy: " ") : [self.apellidoMaterno]
+    }
+    
+    /**
+     Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
+     y si el paterno tiene más de dos letras. El formato es PPMN.
+     */
+    private mutating func reglaUno() {
+        let vocalPaterno = self.primerVocal(palabra: self.apellidoPaterno)
         let letraPaterno = self.apellidoPaterno.first!
         let letraMaterno = self.apellidoMaterno.first!
         let letraNombre = self.nombre.first!
         
-        self.siglas = "\(letraPaterno)\(primerVocal)\(letraMaterno)\(letraNombre)"
+        self.siglas = "\(letraPaterno)\(vocalPaterno)\(letraMaterno)\(letraNombre)"
     }
     
     /**
      Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
-     y si el paterno tiene menos de dos letras. El formato es PMNN.
+     y si el paterno tiene menos de tres letras. El formato es PMNN.
      */
-    mutating private func reglaCuatro() {
+    private mutating func reglaCuatro() {
         let letraPaterno = self.apellidoPaterno.first!
         let letraMaterno = self.apellidoMaterno.first!
         let primerLetraNombre = self.nombre.first!
@@ -92,24 +105,41 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     
+     Calcula las siglas del contribuyente cuando el nombre es compuesto. El formato es PPMN.
      */
-    private func reglaCinco() {
+    private mutating func reglaCinco() {
         
     }
     
     /**
      
      */
-    private func reglaSeis() {
+    private mutating func reglaSeis() {
         
     }
     
     /**
      
      */
-    private func reglaSiete() {
+    private mutating func reglaSiete() {
         
+    }
+    
+    /**
+     Obtiene la primer vocal de una palabra.
+     
+     - Parameter palabra: Texto en el que se desea buscar.
+     - Returns: Vocal encontrada.
+     */
+    private mutating func primerVocal(palabra: String) -> String {
+        let vocales = ["A", "E", "I", "O", "U"]
+        var primerVocal = ""
+        for letra in palabra where vocales.contains(String(letra)) {
+            primerVocal = String(letra)
+            break
+        }
+        
+        return primerVocal
     }
     
     /**
@@ -124,8 +154,8 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Elimina artículos, preposiciones, conjunciones o contracciones en el nombre o apellido(s).
-     Reemplaza las letras "Ch" -> "C" y "Ll" -> "L".
+     Elimina artículos, preposiciones, conjunciones, contracciones y palabras
+     innecesarias del nombre(s) o apellido(s).
      */
     mutating func filtraNombre() {
         let palabrasAFiltrar = [
@@ -133,13 +163,28 @@ struct RFCPersonaFisica: PersonaFisica {
             #"\bU\b"#, #"\bSR\b"#, #"\bSRA\b"#, #"\bA\b"#, #"\bM\b"#, #"\bDEL\b"#
         ]
         
-        let porReemplazar = ["CH", "LL"]
-        let reemplazo = ["C", "L"]
-        
         // Pasar todo a mayúsculas
         self.nombre = self.nombre.uppercased()
         self.apellidoPaterno = self.apellidoPaterno.uppercased()
         self.apellidoMaterno = self.apellidoMaterno.uppercased()
+        
+        // Filtrar palabras
+        for palabra in palabrasAFiltrar {
+            self.nombre = self.nombre.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
+            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
+            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
+        }
+        
+        self.buscaYReemplaza()
+        self.limpiaNombrePersona()
+    }
+    
+    /**
+     Reemplaza las letras "Ch" por "C" y "Ll" por "L".
+     */
+    private mutating func buscaYReemplaza() {
+        let porReemplazar = ["CH", "LL"]
+        let reemplazo = ["C", "L"]
         
         // Find & Replace
         for i in 0..<2 {
@@ -150,18 +195,18 @@ struct RFCPersonaFisica: PersonaFisica {
             self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: porCambiar, with: cambio)
             self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: porCambiar, with: cambio)
         }
+    }
+    
+    /**
+     Elimina caracteres innecesarios después del filtrado.
+     */
+    private mutating func limpiaNombrePersona() {
+        // Remover basura
+        self.nombre = self.nombre.replacingOccurrences(of: "�", with: "", options: .literal, range: nil)
+        self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: "�", with: "", options: .literal, range: nil)
+        self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: "�", with: "", options: .literal, range: nil)
         
-        // Filtrar palabras
-        for palabra in palabrasAFiltrar {
-            self.nombre = self.nombre.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
-            self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
-            self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
-        }
-        
-        // Remover inconsistencias
-        self.nombre = self.nombre.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
-        self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
-        self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: "�", with: "", options: NSString.CompareOptions.literal, range: nil)
+        // Remover espacios
         self.nombre = self.nombre.trimmingCharacters(in: .whitespaces)
         self.apellidoPaterno = self.apellidoPaterno.trimmingCharacters(in: .whitespaces)
         self.apellidoMaterno = self.apellidoMaterno.trimmingCharacters(in: .whitespaces)
