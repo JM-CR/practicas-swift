@@ -29,10 +29,6 @@ struct RFCPersonaFisica: PersonaFisica {
     var tablaCuatro: Dictionary<String, String>
     var tablaSeis: Array<String>
     
-    private var componentesDelNombre: [String] = []
-    private var componentesDelPaterno: [String] = []
-    private var componentesDelMaterno: [String] = []
-    
     init() {
         self.tablas = Tablas()
         self.tablaUno = tablas.tablaUno
@@ -46,100 +42,64 @@ struct RFCPersonaFisica: PersonaFisica {
      Crea las siglas del contribuyente.
      */
     mutating func creaSiglas() {
-        self.separaNombreYApellidos()
-        
-        // Match con reglas
-        if self.componentesDelPaterno.count > 1 || self.componentesDelMaterno.count > 1 {
-            self.reglaCinco()
-        } else if self.componentesDelNombre.count > 1 {
-            self.reglaSeis()
-        } else if self.componentesDelPaterno[0].count > 2 && self.componentesDelMaterno[0] != "" {
-            self.reglaUno()
-        } else if self.componentesDelPaterno[0].count <= 2 && self.componentesDelMaterno[0] != "" {
-            self.reglaCuatro()
-        } else {
-            self.reglaSiete()
-        }
-    }
-    
-    /**
-     Separa componentes del nombre y apellido por espacios.
-     */
-    private mutating func separaNombreYApellidos() {
-        // Split
-        self.componentesDelNombre = self.nombre.contains(" ") ?
-            self.nombre.components(separatedBy: " ") : [self.nombre]
-        
-        self.componentesDelPaterno = self.apellidoPaterno.contains(" ") ?
+        //Separa componentes de los apellidos por espacios.
+        let componentesDelPaterno = self.apellidoPaterno.contains(" ") ?
             self.apellidoPaterno.components(separatedBy: " ") : [self.apellidoPaterno]
-            
-        self.componentesDelMaterno = self.apellidoMaterno.contains(" ") ?
+        
+        let componentesDelMaterno = self.apellidoMaterno.contains(" ") ?
             self.apellidoMaterno.components(separatedBy: " ") : [self.apellidoMaterno]
         
-        // Eliminar elementos vacíos
-        self.componentesDelNombre = self.componentesDelNombre.filter { (elemento) -> Bool in
-            elemento != ""
-        }
-        self.componentesDelPaterno = self.componentesDelPaterno.filter { (elemento) -> Bool in
-            elemento != ""
-        }
-        self.componentesDelMaterno = self.componentesDelMaterno.filter { (elemento) -> Bool in
-            elemento != ""
+        // Match con reglas
+        if componentesDelPaterno[0].count > 2 && componentesDelMaterno[0] != "" {
+            self.paternoMayor()
+        } else if componentesDelPaterno[0].count <= 2 && componentesDelMaterno[0] != "" {
+            self.paternoMenor()
+        } else {
+            self.apellidoUnico()
         }
     }
     
     /**
-     Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
-     y si el paterno tiene más de dos letras. El formato es PPMN.
-     */
-    private mutating func reglaUno() {
-        let vocalPaterno = self.primerVocal(palabra: self.apellidoPaterno)
-        let letraPaterno = self.apellidoPaterno.first!
-        let letraMaterno = self.apellidoMaterno.first!
-        let letraNombre = self.nombre.first!
-        
-        self.siglas = "\(letraPaterno)\(vocalPaterno)\(letraMaterno)\(letraNombre)"
-    }
-    
-    /**
-     Calcula las siglas del contribuyente cuando no hay nombre ni apellidos compuestos
-     y si el paterno tiene menos de tres letras. El formato es PMNN.
-     */
-    private mutating func reglaCuatro() {
-        let letraPaterno = self.apellidoPaterno.first!
-        let letraMaterno = self.apellidoMaterno.first!
-        let primerLetraNombre = self.nombre.first!
-        
-        let index = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
-        let segundaLetraNombre = self.nombre[index]
-        
-        self.siglas = "\(letraPaterno)\(letraMaterno)\(primerLetraNombre)\(segundaLetraNombre)"
-    }
-    
-    /**
-     Calcula las siglas del contribuyente cuando algún apellido es compuesto.
+     Calcula las siglas del contribuyente cuando el apellido paterno tiene más de dos letras.
      El formato es PPMN.
      */
-    private mutating func reglaCinco() {
-        if self.componentesDelPaterno[0].count > 2 && self.componentesDelMaterno[0] != "" {
-            self.reglaUno()
-        } else if self.componentesDelPaterno[0].count < 3 && self.componentesDelMaterno[0] != "" {
-            self.reglaCuatro()
-        }
+    private mutating func paternoMayor() {
+        let primerLetra = self.apellidoPaterno.first!
+        let segundaLetra = self.primerVocal(palabra: self.apellidoPaterno)
+        let tercerLetra = self.apellidoMaterno.first!
+        let cuartaLetra = self.nombre.first!
+        
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
     }
     
     /**
-     
+     Calcula las siglas del contribuyente cuando el apellido paterno tiene menos de tres letras.
+     El formato es PMNN.
      */
-    private mutating func reglaSeis() {
+    private mutating func paternoMenor() {
+        let primerLetra = self.apellidoPaterno.first!
+        let segundaLetra = self.apellidoMaterno.first!
+        let tercerLetra = self.nombre.first!
         
+        let index = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
+        let cuartaLetra = self.nombre[index]
+        
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
     }
     
     /**
-     
+     Calcula las siglas del contribuyente cuando el apellido es único.
+     El formato es PPNN.
      */
-    private mutating func reglaSiete() {
+    private mutating func apellidoUnico() {
+        let primerLetra = self.apellidoPaterno.first!
+        let indexPaterno = self.apellidoPaterno.index(self.apellidoPaterno.startIndex, offsetBy: 1)
+        let segundaLetra = self.apellidoPaterno[indexPaterno]
+        let tercerLetra = self.nombre.first!
+        let indexNombre = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
+        let cuartaLetra = self.nombre[indexNombre]
         
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
     }
     
     /**
@@ -177,7 +137,8 @@ struct RFCPersonaFisica: PersonaFisica {
     mutating func filtraNombre() {
         let palabrasAFiltrar = [
             #"\bY\b"#, #"\bE\b"#, #"\bDE\b"#, #"\bLA\b"#, #"\bLAS\b"#, #"\bLOS\b"#,
-            #"\bU\b"#, #"\bSR\b"#, #"\bSRA\b"#, #"\bA\b"#, #"\bM\b"#, #"\bDEL\b"#
+            #"\bU\b"#, #"\bSR\b"#, #"\bSRA\b"#, #"\bA\b"#, #"\bM\b"#, #"\bDEL\b"#,
+            #"\bJOSE\b"#, #"\bMARIA\b"#
         ]
         
         // Pasar todo a mayúsculas
