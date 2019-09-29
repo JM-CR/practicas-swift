@@ -66,6 +66,7 @@ struct RFCPersonaFisica: PersonaFisica {
      Separa componentes del nombre y apellido por espacios.
      */
     private mutating func separaNombreYApellidos() {
+        // Split
         self.componentesDelNombre = self.nombre.contains(" ") ?
             self.nombre.components(separatedBy: " ") : [self.nombre]
         
@@ -74,6 +75,17 @@ struct RFCPersonaFisica: PersonaFisica {
             
         self.componentesDelMaterno = self.apellidoMaterno.contains(" ") ?
             self.apellidoMaterno.components(separatedBy: " ") : [self.apellidoMaterno]
+        
+        // Eliminar elementos vacíos
+        self.componentesDelNombre = self.componentesDelNombre.filter { (elemento) -> Bool in
+            elemento != ""
+        }
+        self.componentesDelPaterno = self.componentesDelPaterno.filter { (elemento) -> Bool in
+            elemento != ""
+        }
+        self.componentesDelMaterno = self.componentesDelMaterno.filter { (elemento) -> Bool in
+            elemento != ""
+        }
     }
     
     /**
@@ -105,10 +117,15 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Calcula las siglas del contribuyente cuando el nombre es compuesto. El formato es PPMN.
+     Calcula las siglas del contribuyente cuando algún apellido es compuesto.
+     El formato es PPMN.
      */
     private mutating func reglaCinco() {
-        
+        if self.componentesDelPaterno[0].count > 2 && self.componentesDelMaterno[0] != "" {
+            self.reglaUno()
+        } else if self.componentesDelPaterno[0].count < 3 && self.componentesDelMaterno[0] != "" {
+            self.reglaCuatro()
+        }
     }
     
     /**
@@ -175,8 +192,8 @@ struct RFCPersonaFisica: PersonaFisica {
             self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
         }
         
-        self.buscaYReemplaza()
         self.limpiaNombrePersona()
+        self.buscaYReemplaza()
     }
     
     /**
