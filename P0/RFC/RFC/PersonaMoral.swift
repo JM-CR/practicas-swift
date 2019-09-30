@@ -50,7 +50,7 @@ extension PersonaMoral {
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nOpción: ")
             let tipoDeSociedad = try validaTipoDeSociedad(opcion: entradaDelUsuario)
-            self.tipoDeSociedad = opciones[tipoDeSociedad]
+            self.tipoDeSociedad = opciones[tipoDeSociedad - 1]
             opcionValida.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
@@ -113,7 +113,12 @@ extension PersonaMoral {
      - Returns: Texto validado.
      */
     private func validaEmpresa(empresa: String) throws -> String {
-        var buscaRegEx = empresa.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨]"#, options: .regularExpression)
+        var buscaRegEx = empresa.range(of: #":"#, options: .regularExpression)
+        guard buscaRegEx == nil else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        buscaRegEx = empresa.range(of: #"[?_!'¿¡|@=()-#·&/\\*}{^`+¨]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
@@ -124,6 +129,7 @@ extension PersonaMoral {
         }
         
         // TODO: Ver casos para entrada vacía.
+        // TODO: Validar doble punto y doble coma
         
         return empresa
     }

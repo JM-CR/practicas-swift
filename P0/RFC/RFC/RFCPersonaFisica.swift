@@ -13,6 +13,7 @@ struct RFCPersonaFisica: PersonaFisica {
     var nombre = ""
     var apellidoPaterno = ""
     var apellidoMaterno = ""
+    var nombreCompleto = ""
     
     var digito = ""
     var homoclave = ""
@@ -157,6 +158,8 @@ struct RFCPersonaFisica: PersonaFisica {
         self.nombre = self.nombre.uppercased()
         self.apellidoPaterno = self.apellidoPaterno.uppercased()
         self.apellidoMaterno = self.apellidoMaterno.uppercased()
+        
+        self.nombreCompleto = "\(self.nombre) \(self.apellidoPaterno) \(self.apellidoMaterno)"
         
         // Filtrar palabras
         for palabra in palabrasAFiltrar {

@@ -9,6 +9,7 @@
 import Foundation
 
 protocol PersonaGeneral: Consola {
+    var nombreCompleto: String { get set }
     var siglas: String { get set }
     var digito: String { get set }
     var homoclave: String { get set }

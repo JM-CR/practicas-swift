@@ -174,12 +174,13 @@ struct Tablas {
     ]
     
     let tablaCinco: Array<String> = [
-        "A. EN P.", "A.C.", "AL", "AND", "C.D.", "C.V.", "CIA", "COMPANY",
-        "COMPAÑÍA", "CON", "COOP", "COOPERATIVA", "DE", "DEL", "E", "E. EN N.C.",
-        "EL", "EN", "I.A.P.",  "LA", "LAS", "LOS", "MAC", "MC", "OF", "PARA",
-        "POR", "R.L.", "S. DE", "S. EN C.", "S. EN C. POR A.", "S.A.", "S.A. DE",
-        "S.C.", "S.C.L.", "S.C.S", "S.N.C.", "SOC", "SOCIEDAD", "SUS", "THE", "VAN",
-        "VON", "Y",
+        #"\bA. EN P.\b"#, #"\bA.C.\b"#, #"\bAL\b"#, #"\bAND\b"#, #"\bC.D.\b"#, #"\bC.V.\b"#,
+        #"\bCIA\b"#, #"\bCOMPANY\b"#, #"\bCOMPAÑIA\b"#, #"\bCON\b"#, #"\bCOOP\b"#, #"\bCOOPERATIVA\b"#,
+        #"\bDE\b"#, #"\bDEL\b"#, #"\bE\b"#, #"\bE. EN N.C.\b"#, #"\bEL\b"#, #"\bEN\b"#, #"\bI.A.P.\b"#,
+        #"\bLA\b"#, #"\bLAS\b"#, #"\bLOS\b"#, #"\bMAC\b"#, #"\bMC\b"#, #"\bOF\b"#, #"\bPARA\b"#, #"\bPOR\b"#,
+        #"\bR.L.\b"#, #"\bS. DE\b"#, #"\bS. EN C.\b"#, #"\bS. EN C. POR A.\b"#, #"\bS.A.\b"#, #"\bS.A. DE\b"#,
+        #"\bS.C\b."#, #"\bS.C.L.\b"#, #"\bS.C.S\b"#, #"\bS.N.C.\b"#,  #"\bSOC\b"#, #"\bSOCIEDAD\b"#,
+        #"\bSUS\b"#, #"\bTHE\b"#, #"\bVAN\b"#, #"\bVON\b"#, #"\bY\b"#
     ]
     
     let tablaSeis: Array<String> = [
