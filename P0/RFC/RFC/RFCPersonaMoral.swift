@@ -55,7 +55,7 @@ struct RFCPersonaMoral: PersonaMoral {
         } else if self.componentesDelNombre.count == 2 {
             self.coincidenciaIntermedia()
         } else {
-            
+            self.coincidenciaMasCorta()
         }
     }
     
@@ -79,11 +79,28 @@ struct RFCPersonaMoral: PersonaMoral {
         let primerLetra = self.componentesDelNombre[0].first!
         let segundaLetra = self.componentesDelNombre[1].first!
         
-        let index = self.nombre.index(self.componentesDelNombre[1].startIndex, offsetBy: 1)
+        let index = self.componentesDelNombre[1].index(self.componentesDelNombre[1].startIndex, offsetBy: 1)
         let tercerLetra = self.componentesDelNombre[1][index]
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
     }
+    
+    /**
+     Calcula las siglas del contribuyente cuando tiene una palabra.
+     El formato es PPP.
+     */
+    private mutating func coincidenciaMasCorta() {
+        let primerLetra = self.componentesDelNombre[0].first!
+        
+        let indexDos = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 1)
+        let segundaLetra = self.componentesDelNombre[0][indexDos]
+        
+        let indexTres = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 2)
+        let tercerLetra = self.componentesDelNombre[0][indexTres]
+        
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
+    }
+    
     
     /**
      Elimina artículos, preposiciones, conjunciones, contracciones y palabras
