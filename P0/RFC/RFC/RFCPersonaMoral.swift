@@ -24,7 +24,7 @@ struct RFCPersonaMoral: PersonaMoral {
     
     var tablaUno: Dictionary<String, String>
     var tablaDos: Dictionary<Int, String>
-    var tablaTres: Dictionary<String, String>
+    var tablaTres: Dictionary<String, Int>
     var tablaCinco: Array<String>
     
     private var componentesDelNombre: [String] = []
@@ -166,6 +166,8 @@ struct RFCPersonaMoral: PersonaMoral {
         // Pasar todo a mayúsculas
         self.nombre = self.nombre.uppercased()
         self.tipoDeSociedad = self.tipoDeSociedad.uppercased()
+        
+        self.limpiaNombreEmpresa()
         self.nombreCompleto = "\(self.nombre), \(self.tipoDeSociedad)"
         
         // Filtrar palabras
@@ -195,7 +197,7 @@ struct RFCPersonaMoral: PersonaMoral {
     }
     
     /**
-     Elimina caracteres innecesarios después del filtrado.
+     Elimina caracteres innecesarios antes y después del filtrado.
      */
     private mutating func limpiaNombreEmpresa() {
         // Remover basura

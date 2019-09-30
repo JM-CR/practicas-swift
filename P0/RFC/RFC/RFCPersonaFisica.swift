@@ -25,7 +25,7 @@ struct RFCPersonaFisica: PersonaFisica {
     
     var tablaUno: Dictionary<String, String>
     var tablaDos: Dictionary<Int, String>
-    var tablaTres: Dictionary<String, String>
+    var tablaTres: Dictionary<String, Int>
     var tablaCuatro: Dictionary<String, String>
     var tablaSeis: Array<String>
     
@@ -148,6 +148,7 @@ struct RFCPersonaFisica: PersonaFisica {
         self.apellidoPaterno = self.apellidoPaterno.uppercased()
         self.apellidoMaterno = self.apellidoMaterno.uppercased()
         
+        self.limpiaNombrePersona()
         self.nombreCompleto = "\(self.apellidoPaterno) \(self.apellidoMaterno) \(self.nombre)"
         
         // Filtrar palabras
@@ -180,7 +181,7 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Elimina caracteres innecesarios después del filtrado.
+     Elimina caracteres innecesarios antes y después del filtrado.
      */
     private mutating func limpiaNombrePersona() {
         // Remover basura

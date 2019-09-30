@@ -52,10 +52,12 @@ if opcionDelMenu == 1 {
     rfcPersonaFisica.creaSiglas()
     print(rfcPersonaFisica.siglas)
     rfcPersonaFisica.generaHomoclave()
+    rfcPersonaFisica.generaDigitoVerificador()
 } else {
     rfcPersonaMoral.filtraNombre()
     rfcPersonaMoral.creaFechaContribuyente()
     rfcPersonaMoral.creaSiglas()
     print(rfcPersonaMoral.siglas)
     rfcPersonaMoral.generaHomoclave()
+    rfcPersonaMoral.generaDigitoVerificador()
 }

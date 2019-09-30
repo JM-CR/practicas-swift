@@ -19,7 +19,7 @@ protocol PersonaGeneral: Consola {
     var año: Int { get set }
     var tablaUno: Dictionary<String, String> { get }
     var tablaDos: Dictionary<Int, String> { get }
-    var tablaTres: Dictionary<String, String> { get }
+    var tablaTres: Dictionary<String, Int> { get }
 }
 
 extension PersonaGeneral {
@@ -55,8 +55,34 @@ extension PersonaGeneral {
         self.homoclave = "\(primerLetra)\(segundaLetra)"
     }
     
-    mutating func generaDigito() {
+    /**
+     Calcula el digito verificador para una persona física o moral.
+     */
+    mutating func generaDigitoVerificador() {
+        // Verificar si es persona moral
+        var rfcParcial = "\(self.siglas)\(self.fecha)\(self.homoclave)"
+        if self is RFCPersonaMoral {
+            rfcParcial = " \(rfcParcial)"
+        }
         
+        // Calcular suma
+        var suma = 0
+        for i in 1...12 {
+            let index = rfcParcial.index(rfcParcial.startIndex, offsetBy: i - 1)
+            let valor = self.tablaTres[String(rfcParcial[index])]!
+            suma += valor * (14 - i)
+        }
+        
+        // Match con reglas
+        let valor = suma % 11
+        switch valor {
+        case 0:
+            self.digito = "0"
+        case 1...9:
+            self.digito = "\(11 - valor)"
+        default:
+            self.digito = "A"
+        }
     }
     
     /**
