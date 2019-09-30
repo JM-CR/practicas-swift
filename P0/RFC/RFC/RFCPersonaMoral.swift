@@ -52,6 +52,10 @@ struct RFCPersonaMoral: PersonaMoral {
         // Match con reglas
         if self.componentesDelNombre.count >= 3 {
             self.coincidenciaMasLarga()
+        } else if self.componentesDelNombre.count == 2 {
+            self.coincidenciaIntermedia()
+        } else {
+            
         }
     }
     
@@ -63,6 +67,20 @@ struct RFCPersonaMoral: PersonaMoral {
         let primerLetra = self.componentesDelNombre[0].first!
         let segundaLetra = self.componentesDelNombre[1].first!
         let tercerLetra = self.componentesDelNombre[2].first!
+        
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
+    }
+    
+    /**
+     Calcula las siglas del contribuyente cuando tiene dos palabras.
+     El formato es PSS.
+     */
+    private mutating func coincidenciaIntermedia() {
+        let primerLetra = self.componentesDelNombre[0].first!
+        let segundaLetra = self.componentesDelNombre[1].first!
+        
+        let index = self.nombre.index(self.componentesDelNombre[1].startIndex, offsetBy: 1)
+        let tercerLetra = self.componentesDelNombre[1][index]
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
     }
