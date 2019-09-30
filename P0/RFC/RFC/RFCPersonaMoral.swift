@@ -79,8 +79,14 @@ struct RFCPersonaMoral: PersonaMoral {
         let primerLetra = self.componentesDelNombre[0].first!
         let segundaLetra = self.componentesDelNombre[1].first!
         
-        let index = self.componentesDelNombre[1].index(self.componentesDelNombre[1].startIndex, offsetBy: 1)
-        let tercerLetra = self.componentesDelNombre[1][index]
+        // Verificar si hay al menos tres letras
+        var tercerLetra: String
+        if self.componentesDelNombre[1].count == 1 {
+            tercerLetra = "X"
+        } else {
+            let index = self.componentesDelNombre[1].index(self.componentesDelNombre[1].startIndex, offsetBy: 1)
+            tercerLetra = String(self.componentesDelNombre[1][index])
+        }
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
     }
@@ -92,11 +98,24 @@ struct RFCPersonaMoral: PersonaMoral {
     private mutating func coincidenciaMasCorta() {
         let primerLetra = self.componentesDelNombre[0].first!
         
-        let indexDos = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 1)
-        let segundaLetra = self.componentesDelNombre[0][indexDos]
-        
-        let indexTres = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 2)
-        let tercerLetra = self.componentesDelNombre[0][indexTres]
+        // Verificar si hay al menos tres letras
+        var segundaLetra: String
+        var tercerLetra: String
+        switch self.componentesDelNombre[0].count {
+        case 1:
+            segundaLetra = "X"
+            tercerLetra = "X"
+        case 2:
+            let indexDos = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 1)
+            segundaLetra = String(self.componentesDelNombre[0][indexDos])
+            tercerLetra = "X"
+        default:
+            let indexDos = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 1)
+            segundaLetra = String(self.componentesDelNombre[0][indexDos])
+            
+            let indexTres = self.componentesDelNombre[0].index(self.componentesDelNombre[0].startIndex, offsetBy: 2)
+            tercerLetra = String(self.componentesDelNombre[0][indexTres])
+        }
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
     }
