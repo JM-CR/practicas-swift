@@ -9,7 +9,9 @@
 import Foundation
 
 struct RFCPersonaMoral: PersonaMoral {
+    var siglas = ""
     var nombre = ""
+    var tipoDeSociedad = ""
     
     var digito = ""
     var homoclave = ""
@@ -19,14 +21,13 @@ struct RFCPersonaMoral: PersonaMoral {
     var mes = 1
     var año = 1900
     
-    var tablas: Tablas
     var tablaUno: Dictionary<String, String>
     var tablaDos: Dictionary<Int, String>
     var tablaTres: Dictionary<String, String>
     var tablaCinco: Array<String>
     
     init() {
-        self.tablas = Tablas()
+        let tablas = Tablas()
         self.tablaUno = tablas.tablaUno
         self.tablaDos = tablas.tablaDos
         self.tablaTres = tablas.tablaTres

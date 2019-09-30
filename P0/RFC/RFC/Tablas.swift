@@ -174,12 +174,12 @@ struct Tablas {
     ]
     
     let tablaCinco: Array<String> = [
-        "EL", "LA", "S. DE", "S.A. DE", "R.L", "C.V.", "DE", "LOS",
-        "LAS", "Y", "DEL", "S.A.", "COMPAÑÍA", "CIA", "SOCIEDAD",
-        "SOC", "COOPERATIVA", "COOP", "A.C", "A. EN P.", "S. EN C. POR A.",
-        "S. EN C.", "E. EN N.C.", "EN", "PARA", "CON",  "POR", "SUS",
-        "AL", "S.C.", "E", "S.C.S", "S.C.L.", "THE", "I.A.P.", "S.N.C.",
-        "AND",  "OF", "C.D", "COMPANY", "MAC", "MC", "VAN", "VON"
+        "A. EN P.", "A.C.", "AL", "AND", "C.D.", "C.V.", "CIA", "COMPANY",
+        "COMPAÑÍA", "CON", "COOP", "COOPERATIVA", "DE", "DEL", "E", "E. EN N.C.",
+        "EL", "EN", "I.A.P.",  "LA", "LAS", "LOS", "MAC", "MC", "OF", "PARA",
+        "POR", "R.L.", "S. DE", "S. EN C.", "S. EN C. POR A.", "S.A.", "S.A. DE",
+        "S.C.", "S.C.L.", "S.C.S", "S.N.C.", "SOC", "SOCIEDAD", "SUS", "THE", "VAN",
+        "VON", "Y",
     ]
     
     let tablaSeis: Array<String> = [

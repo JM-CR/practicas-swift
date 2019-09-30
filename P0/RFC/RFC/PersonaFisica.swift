@@ -9,7 +9,6 @@
 import Foundation
 
 protocol PersonaFisica: PersonaGeneral {
-    var siglas: String { get set }
     var nombre: String { get set }
     var apellidoPaterno: String { get set }
     var apellidoMaterno: String { get set }

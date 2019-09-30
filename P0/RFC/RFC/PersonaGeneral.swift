@@ -9,13 +9,13 @@
 import Foundation
 
 protocol PersonaGeneral: Consola {
+    var siglas: String { get set }
     var digito: String { get set }
     var homoclave: String { get set }
     var fecha: String { get set }
     var dia: Int { get set }
     var mes: Int { get set }
     var año: Int { get set }
-    var tablas: Tablas { get set }
     var tablaUno: Dictionary<String, String> { get }
     var tablaDos: Dictionary<Int, String> { get }
     var tablaTres: Dictionary<String, String> { get }

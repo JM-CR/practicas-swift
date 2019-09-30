@@ -39,7 +39,8 @@ if opcionDelMenu == 1 {
     while !rfcPersonaFisica.introduceApellidoPaterno() { }
     while !rfcPersonaFisica.introduceApellidoMaterno() { }
 } else {
-    
+    print("\nIntroduce los siguientes datos de la empresa")
+    while !rfcPersonaMoral.seleccionaTipoDeSociedad() { }
 }
 
 // CalcularRFC
@@ -48,6 +49,7 @@ if opcionDelMenu == 1 {
     rfcPersonaFisica.filtraNombre()
     rfcPersonaFisica.creaFechaContribuyente()
     rfcPersonaFisica.creaSiglas()
+    print(rfcPersonaFisica.siglas)
 } else {
     
 }

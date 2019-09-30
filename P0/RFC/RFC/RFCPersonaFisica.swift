@@ -22,7 +22,6 @@ struct RFCPersonaFisica: PersonaFisica {
     var mes = 1
     var año = 1900
     
-    var tablas: Tablas
     var tablaUno: Dictionary<String, String>
     var tablaDos: Dictionary<Int, String>
     var tablaTres: Dictionary<String, String>
@@ -30,7 +29,7 @@ struct RFCPersonaFisica: PersonaFisica {
     var tablaSeis: Array<String>
     
     init() {
-        self.tablas = Tablas()
+        let tablas = Tablas()
         self.tablaUno = tablas.tablaUno
         self.tablaDos = tablas.tablaDos
         self.tablaTres = tablas.tablaTres
