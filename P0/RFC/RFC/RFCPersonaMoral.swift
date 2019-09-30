@@ -27,12 +27,44 @@ struct RFCPersonaMoral: PersonaMoral {
     var tablaTres: Dictionary<String, String>
     var tablaCinco: Array<String>
     
+    private var componentesDelNombre: [String] = []
+    
     init() {
         let tablas = Tablas()
         self.tablaUno = tablas.tablaUno
         self.tablaDos = tablas.tablaDos
         self.tablaTres = tablas.tablaTres
         self.tablaCinco = tablas.tablaCinco
+    }
+    
+    /**
+     Crea las siglas del contribuyente.
+     */
+    mutating func creaSiglas() {
+        // Separa componentes de la razon socuial por espacios.
+        self.componentesDelNombre = self.nombre.contains(" ") ?
+            self.nombre.components(separatedBy: " ") : [self.nombre]
+        
+        self.componentesDelNombre = self.componentesDelNombre.filter({ (elemento) -> Bool in
+            elemento != ""
+        })
+        
+        // Match con reglas
+        if self.componentesDelNombre.count >= 3 {
+            self.coincidenciaMasLarga()
+        }
+    }
+    
+    /**
+     Calcula las siglas del contribuyente cuando tiene tres o más palabras.
+     El formato es PST.
+     */
+    private mutating func coincidenciaMasLarga() {
+        let primerLetra = self.componentesDelNombre[0].first!
+        let segundaLetra = self.componentesDelNombre[1].first!
+        let tercerLetra = self.componentesDelNombre[2].first!
+        
+        self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)"
     }
     
     /**
@@ -60,10 +92,10 @@ struct RFCPersonaMoral: PersonaMoral {
      */
     private mutating func buscaYReemplaza() {
         let porReemplazar = ["CH", "LL", ",", "."]
-        let reemplazo = ["C", "L", "", ""]
+        let reemplazo = ["C", "L", "", " "]
         
         // Find & Replace
-        for i in 0..<2 {
+        for i in 0..<porReemplazar.count {
             let porCambiar = porReemplazar[i]
             let cambio = reemplazo[i]
             

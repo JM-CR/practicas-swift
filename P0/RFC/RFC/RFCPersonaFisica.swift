@@ -169,7 +169,7 @@ struct RFCPersonaFisica: PersonaFisica {
         let reemplazo = ["C", "L"]
         
         // Find & Replace
-        for i in 0..<2 {
+        for i in 0..<porReemplazar.count {
             let porCambiar = porReemplazar[i]
             let cambio = reemplazo[i]
             
