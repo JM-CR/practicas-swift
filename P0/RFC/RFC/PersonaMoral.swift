@@ -83,4 +83,48 @@ extension PersonaMoral {
         
         return tipo
     }
+    
+    /**
+     Permite al usuario introducir la razón social y la guarda en la propiedad nombre.
+     
+     - Returns: Regresa true si la razón es válida.
+     */
+    mutating func introduceNombre() -> Bool {
+        var razonValida = false
+        
+        do {
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el nombre: ")
+            self.nombre = try validaEmpresa(empresa: entradaDelUsuario)
+            razonValida.toggle()
+        } catch InputError.InvalidCharacter(let descripcion) {
+            print(descripcion)
+        } catch {
+            print("Error, intenta de nuevo.")
+        }
+        
+        return razonValida
+    }
+    
+    /**
+     Valida la razón social introducida.
+     
+     - Parameter empresa: Razón social.
+     - Throws: InputError.InvalidCharacter
+     - Returns: Texto validado.
+     */
+    private func validaEmpresa(empresa: String) throws -> String {
+        var buscaRegEx = empresa.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨]"#, options: .regularExpression)
+        guard buscaRegEx == nil else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        buscaRegEx = empresa.range(of: #"[áéíóúÁÉÍÓÚ]"#, options: .regularExpression)
+        guard buscaRegEx == nil else {
+            throw InputError.InvalidCharacter(descripcion: "No introduzcas acentos.")
+        }
+        
+        // TODO: Ver casos para entrada vacía.
+        
+        return empresa
+    }
 }

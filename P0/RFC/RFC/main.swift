@@ -41,6 +41,7 @@ if opcionDelMenu == 1 {
 } else {
     print("\nIntroduce los siguientes datos de la empresa")
     while !rfcPersonaMoral.seleccionaTipoDeSociedad() { }
+    while !rfcPersonaMoral.introduceNombre() { }
 }
 
 // CalcularRFC
