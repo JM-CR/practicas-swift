@@ -53,5 +53,6 @@ if opcionDelMenu == 1 {
     print(rfcPersonaFisica.siglas)
 } else {
     rfcPersonaMoral.filtraNombre()
+    rfcPersonaMoral.creaFechaContribuyente()
     print(rfcPersonaMoral.siglas)
 }

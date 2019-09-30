@@ -133,17 +133,6 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Toma el dia, mes y año de nacimiento y genera la clave YYMMDD.
-     */
-    mutating func creaFechaContribuyente() {
-        let dia = self.dia < 9 ? "0\(self.dia)" : "\(self.dia)"
-        let mes = self.mes < 9 ? "0\(self.mes)" : "\(self.mes)"
-        let año = "\(self.año)".suffix(2)
-        
-        self.fecha = "\(año)\(mes)\(dia)"
-    }
-    
-    /**
      Elimina artículos, preposiciones, conjunciones, contracciones y palabras
      innecesarias del nombre(s) o apellido(s).
      */
