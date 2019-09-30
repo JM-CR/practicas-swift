@@ -51,9 +51,11 @@ if opcionDelMenu == 1 {
     rfcPersonaFisica.creaFechaContribuyente()
     rfcPersonaFisica.creaSiglas()
     print(rfcPersonaFisica.siglas)
+    rfcPersonaFisica.generaHomoclave()
 } else {
     rfcPersonaMoral.filtraNombre()
     rfcPersonaMoral.creaFechaContribuyente()
     rfcPersonaMoral.creaSiglas()
     print(rfcPersonaMoral.siglas)
+    rfcPersonaMoral.generaHomoclave()
 }

@@ -23,8 +23,36 @@ protocol PersonaGeneral: Consola {
 }
 
 extension PersonaGeneral {
+    /**
+     Calcula la homoclave según el nombre completo de la persona física o moral.
+     */
     mutating func generaHomoclave() {
+        // Crear string según la tabla 1
+        var numeroEquivalente = "0"
+        for caracter in self.nombreCompleto {
+            numeroEquivalente += self.tablaUno["\(caracter)"]!
+        }
         
+        // Suma de multiplicaciones
+        let tamaño = numeroEquivalente.count - 1
+        var suma = 0
+        for (index, primerDigito) in numeroEquivalente.enumerated() where index < tamaño {
+            let index = numeroEquivalente.index(numeroEquivalente.startIndex, offsetBy: index + 1)
+            let segundoDigito = String(numeroEquivalente[index])
+            let factor = Int("\(primerDigito)\(segundoDigito)")!
+            suma += factor * Int(segundoDigito)!
+        }
+        
+        // Calcular cociente y residuo
+        let index = String(suma).index(String(suma).endIndex, offsetBy: -3)
+        let ultimosDigitos = Int(String(suma).suffix(from: index))!
+        let residuo = (ultimosDigitos % 34)
+        let cociente = (ultimosDigitos - residuo) / 34
+        
+        // Asignar homoclave
+        let primerLetra = self.tablaDos[cociente]!
+        let segundaLetra = self.tablaDos[residuo]!
+        self.homoclave = "\(primerLetra)\(segundaLetra)"
     }
     
     mutating func generaDigito() {

@@ -49,6 +49,11 @@ struct RFCPersonaMoral: PersonaMoral {
             elemento != ""
         })
         
+        // Convertir números arábigos a letra
+        for (index, elemento) in self.componentesDelNombre.enumerated() where Int(elemento) != nil {
+            self.componentesDelNombre[index] = self.convierteNumeroALetras(numero: elemento, posicion: index + 1)
+        }
+        
         // Match con reglas
         if self.componentesDelNombre.count >= 3 {
             self.coincidenciaMasLarga()
@@ -57,6 +62,38 @@ struct RFCPersonaMoral: PersonaMoral {
         } else {
             self.coincidenciaMasCorta()
         }
+    }
+    
+    /**
+     Convierte números arábigos en la razón social a letras fáciles de procesar.
+     
+     - Parameter numero: Número a convertir.
+     - Parameter posicion: Posición dentro del arreglo componentesDelNombre.
+     - Returns: Número en letras.
+     */
+    private mutating func convierteNumeroALetras(numero: String, posicion: Int) -> String {
+        // Traducciones
+//        let unidades: Dictionary<Int, String> = [0: "C", 1: "U", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
+//        let decenas: Dictionary<Int, String> = [1: "D", 2: "V", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
+//        let centenas: Dictionary<Int, String> = [1: "C", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
+//        let millares: Dictionary<Int, String> = [1: "M", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
+//
+        // Verificar posición dentro de arreglo componentesDelNombre
+//        var siglasDelNumero = ""
+//        switch posicion {
+//        case 1:
+//            print("")
+//        case 2:
+//            print("")
+//        case 3:
+//            print("")
+//        default:
+//            siglasDelNumero = numero
+//        }
+        
+        // Match contra diccionarios
+        
+        return numero
     }
     
     /**

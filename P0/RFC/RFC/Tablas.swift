@@ -47,7 +47,8 @@ struct Tablas {
         "W": "36",
         "X": "37",
         "Y": "38",
-        "Z": "39"
+        "Z": "39",
+        ",": "", ".": ""
     ]
     
     let tablaDos: Dictionary<Int, String> = [

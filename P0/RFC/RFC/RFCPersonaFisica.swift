@@ -148,7 +148,7 @@ struct RFCPersonaFisica: PersonaFisica {
         self.apellidoPaterno = self.apellidoPaterno.uppercased()
         self.apellidoMaterno = self.apellidoMaterno.uppercased()
         
-        self.nombreCompleto = "\(self.nombre) \(self.apellidoPaterno) \(self.apellidoMaterno)"
+        self.nombreCompleto = "\(self.apellidoPaterno) \(self.apellidoMaterno) \(self.nombre)"
         
         // Filtrar palabras
         for palabra in palabrasAFiltrar {
