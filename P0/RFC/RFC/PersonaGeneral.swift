@@ -248,4 +248,12 @@ extension PersonaGeneral {
         
         self.fecha = "\(año)\(mes)\(dia)"
     }
+    
+    /**
+     Muestra el RFC final.
+     */
+    func imprimeRFC() {
+        print("\n[\(self.nombreCompleto)]")
+        print("RFC Asignado: \(self.siglas)-\(self.fecha)-\(self.homoclave)-\(self.digito)")
+    }
 }

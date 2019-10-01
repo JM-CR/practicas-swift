@@ -83,12 +83,17 @@ extension Consola {
         Selecciona el tipo de RFC a calcular
             1. Persona física
             2. Persona moral
+            3. Salir
         """
         print("\n\(texto)")
         
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nOpción: ")
             opcion = try validaTipoRFC(opcion: entradaDelUsuario)
+            
+            if opcion == 3 {
+                exit(EXIT_SUCCESS)
+            }
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
         } catch InputError.InvalidNumberInRange(let descripcion) {
@@ -114,7 +119,7 @@ extension Consola {
         }
         
         let numero: Int = Int(opcion)!
-        guard numero > 0 && numero < 3 else {
+        guard numero > 0 && numero < 4 else {
             throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
         }
         
@@ -126,5 +131,12 @@ extension Consola {
      */
     func limpiaConsola() {
         print("\u{001B}[2J")
+    }
+    
+    /**
+     Espera para iniciar el siguiente cálculo de RFC.
+     */
+    func esperaParaContinuar() {
+        _ = self.entradaDeTeclado(mensaje: "\nIngresa cualquier cosa para continuar...")
     }
 }
