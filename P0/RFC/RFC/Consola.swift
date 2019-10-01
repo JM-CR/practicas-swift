@@ -17,7 +17,41 @@ extension Consola {
      Muestra el propósito del programa.
      */
     func imprimeUso() {
-        
+        let descripcion =
+        """
+        Calculadora de RFC
+        Práctica 0 de aplicaciones móviles
+        Desarrollado por: Josue Mosiah Contreras Rocha
+
+        Para ver la descripción y uso ingresa algún argumento al ejecutar
+            Ejemplo: ./RFC ayuda
+        """
+        print("\n\(descripcion)")
+        print("\n-------------")
+        menuDeAyuda()
+    }
+    
+    /**
+     Muestra la sección de ayuda para el usuario.
+     */
+    private func menuDeAyuda() {
+        if CommandLine.argc > 1 {
+            let ayuda =
+            """
+            DESCRIPCION Y USO
+
+            Este programa te permite calcular el RFC para una persona moral o física
+
+            El proceso que tienes que realizar es:
+                1. Elegir el tipo de persona
+                2. Introducir la fecha correspondiente
+                3. Introducir el nombre en el formato solicitado
+
+            El programa continuará ejecutándose hasta que eligas la opción salir
+            """
+            print("\n\(ayuda)")
+            print("\n-------------")
+        }
     }
     
     /**

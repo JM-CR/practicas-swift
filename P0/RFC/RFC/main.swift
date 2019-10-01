@@ -12,6 +12,9 @@ var opcionDelMenu: Int? = nil
 var rfcPersonaFisica = RFCPersonaFisica()
 var rfcPersonaMoral = RFCPersonaMoral()
 
+// Descripción del programa
+rfcPersonaFisica.imprimeUso()
+
 // Menú inicial
 while opcionDelMenu == nil {
     opcionDelMenu = rfcPersonaFisica.seleccionaTipoRFC()
