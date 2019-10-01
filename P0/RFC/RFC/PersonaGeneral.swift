@@ -123,10 +123,18 @@ extension PersonaGeneral {
         
         let dia: Int = Int(valor)!
         guard dia > 0 && dia < 32 else {
+            throw InputError.InvalidDayInMonth(descripcion: "Día fuera de rango.")
+        }
+        
+        let fechaDelUsuario = DateComponents(calendar: .current, year: Int(self.año), month: Int(self.mes), day: Int(valor))
+        guard fechaDelUsuario.isValidDate(in: .current) else {
             throw InputError.InvalidDayInMonth(descripcion: "No existe ese día en el mes.")
         }
         
-        // TODO: Validar cantidad de días del mes
+        let fechaMaxima = Date()
+        guard Calendar.current.date(from: fechaDelUsuario)! <= fechaMaxima else {
+            throw InputError.InvalidDayInMonth(descripcion: "No puedes ingresar un día futuro.")
+        }
         
         return dia
     }
@@ -164,6 +172,8 @@ extension PersonaGeneral {
             print(descripcion)
         } catch InputError.InvalidNumberInRange(let descripcion) {
             print(descripcion)
+        } catch InputError.InvalidMonth(let descripcion) {
+            print(descripcion)
         } catch {
             print("Error, intenta de nuevo.")
         }
@@ -187,6 +197,12 @@ extension PersonaGeneral {
         let mes: Int = Int(opcion)!
         guard mes >= 1 && mes <= 12 else {
             throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
+        }
+        
+        let mesDelUsuario = mes
+        let mesMaximo = Calendar.current.component(.month, from: Date())
+        guard mesDelUsuario <= mesMaximo else {
+            throw InputError.InvalidMonth(descripcion: "No puedes ingresar un mes futuro.")
         }
         
         return mes
@@ -233,7 +249,11 @@ extension PersonaGeneral {
             throw InputError.InvalidYear(descripcion: "Año fuera de rango.")
         }
         
-        // TODO: Validar años en el futuro.
+        let añoDelUsuario = Int(valor)!
+        let añoMaximo = Calendar.current.component(.year, from: Date())
+        guard añoDelUsuario <= añoMaximo else {
+            throw InputError.InvalidYear(descripcion: "No puedes ingresar un año futuro.")
+        }
         
         return año
     }

@@ -13,4 +13,5 @@ enum InputError: Error {
     case InvalidCharacter(descripcion: String)
     case InvalidDayInMonth(descripcion: String)
     case InvalidYear(descripcion: String)
+    case InvalidMonth(descripcion: String)
 }
