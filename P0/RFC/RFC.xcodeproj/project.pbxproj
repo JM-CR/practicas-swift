@@ -127,6 +127,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = CAD6821A2339261600CE3B74;
 			productRefGroup = CAD682242339261600CE3B74 /* Products */;

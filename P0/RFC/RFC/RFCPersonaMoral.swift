@@ -51,7 +51,7 @@ struct RFCPersonaMoral: PersonaMoral {
         
         // Convertir números arábigos a letra
         for (index, elemento) in self.componentesDelNombre.enumerated() where Int(elemento) != nil {
-            self.componentesDelNombre[index] = self.convierteNumeroALetras(numero: elemento, posicion: index + 1)
+            self.componentesDelNombre[index] = self.convierteNumeroALetras(numero: elemento)
         }
         
         // Match con reglas
@@ -68,32 +68,18 @@ struct RFCPersonaMoral: PersonaMoral {
      Convierte números arábigos en la razón social a letras fáciles de procesar.
      
      - Parameter numero: Número a convertir.
-     - Parameter posicion: Posición dentro del arreglo componentesDelNombre.
      - Returns: Número en letras.
      */
-    private mutating func convierteNumeroALetras(numero: String, posicion: Int) -> String {
-        // Traducciones
-//        let unidades: Dictionary<Int, String> = [0: "C", 1: "U", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
-//        let decenas: Dictionary<Int, String> = [1: "D", 2: "V", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
-//        let centenas: Dictionary<Int, String> = [1: "C", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
-//        let millares: Dictionary<Int, String> = [1: "M", 2: "D", 3: "T", 4: "C", 5: "C", 6: "S", 7: "S", 8: "O", 9: "N"]
-//
-        // Verificar posición dentro de arreglo componentesDelNombre
-//        var siglasDelNumero = ""
-//        switch posicion {
-//        case 1:
-//            print("")
-//        case 2:
-//            print("")
-//        case 3:
-//            print("")
-//        default:
-//            siglasDelNumero = numero
-//        }
+    private mutating func convierteNumeroALetras(numero: String) -> String {
+        let traduccion: Dictionary<String, String> = [
+            "0": "CERO", "1": "UNO",
+            "2": "DOS", "3": "TRES",
+            "4": "CUATRO", "5": "CINCO",
+            "6": "SEIS", "7": "SIETE",
+            "8": "OCHO", "9": "NUEVE"
+        ]
         
-        // Match contra diccionarios
-        
-        return numero
+        return traduccion[numero]!
     }
     
     /**
