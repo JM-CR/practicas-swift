@@ -189,8 +189,26 @@ struct RFCPersonaFisica: PersonaFisica {
             self.apellidoMaterno = self.apellidoMaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
         }
         
+        // Verificar caso del nombre Jose Maria
+        self.verificaJoseMaria()
+        
         self.limpiaNombrePersona()
         self.buscaYReemplaza()
+    }
+    
+    /**
+     Valida el caso cuando el nombre empieza con Jose Maria o Maria Jose.
+     */
+    private mutating func verificaJoseMaria() {
+        let regExArray: Array<String> = [#"\bJOSE\b"#, #"\bMARIA\b"#]
+        
+        if self.nombre.contains("JOSE") && self.nombre.contains("MARIA") {
+            if self.nombre.starts(with: "JOSE") {
+                self.nombre = self.nombre.replacingOccurrences(of: regExArray[0], with: "", options: .regularExpression, range: nil)
+            } else {
+                self.nombre = self.nombre.replacingOccurrences(of: regExArray[1], with: "", options: .regularExpression, range: nil)
+            }
+        }
     }
     
     /**

@@ -186,7 +186,7 @@ struct Tablas {
     
     let tablaSeis: Array<String> = [
         #"\bY\b"#, #"\bDE\b"#, #"\bLA\b"#, #"\bLAS\b"#, #"\bLOS\b"#,
-        #"\bD\b"#, #"\bMC\b"#, #"\bDEL\b"#, #"\bJOSE\b"#, #"\bMARIA\b"#,
-        #"\bMAC\b"#, #"\bVON\b"#, #"\bVAN\b"#, #"\bLO\b"#
+        #"\bD\b"#, #"\bMC\b"#, #"\bDEL\b"#, #"\bMAC\b"#, #"\bVON\b"#,
+        #"\bVAN\b"#, #"\bLO\b"#
     ]
 }
