@@ -140,7 +140,23 @@ extension PersonaMoral {
             throw InputError.InvalidCharacter(descripcion: "La razón social solo puede tener números de un dígito.")
         }
         
-        buscaRegEx = empresa!.range(of: #"[?_!'¿¡|@=()-#·&/*}{^`+¨ªº\[\]Ç;ç´]"#, options: .regularExpression)
+        guard !empresa!.contains("^") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !empresa!.contains("*") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !empresa!.contains("[") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !empresa!.contains("]") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        buscaRegEx = empresa!.range(of: #"[?_!'¿¡|@=()-#·&/}{`+¨ªº\Ç;ç´]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }

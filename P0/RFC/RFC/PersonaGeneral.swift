@@ -129,6 +129,10 @@ extension PersonaGeneral {
      - Returns: Día validado.
      */
     private func validaDia(valor: String) throws -> Int {
+        guard !valor.isEmpty else {
+            throw InputError.InvalidCharacter(descripcion: "No puedes dejar el día en blanco.")
+        }
+        
         let buscaRegEx = valor.range(of: #"^\d*$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
             throw InputError.InvalidCharacter(descripcion: "Introduce un día válido.")

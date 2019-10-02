@@ -130,7 +130,23 @@ extension PersonaFisica {
             throw InputError.InvalidCharacter(descripcion: "Error desconocido, introdúcelo de nuevo.")
         }
         
-        var buscaRegEx = texto!.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨ªº\[\]Ç;ç´]"#, options: .regularExpression)
+        guard !texto!.contains("^") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !texto!.contains("*") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !texto!.contains("[") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        guard !texto!.contains("]") else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        var buscaRegEx = texto!.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/}{`+¨ªº\Ç;ç´]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
