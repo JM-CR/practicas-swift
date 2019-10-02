@@ -146,7 +146,11 @@ struct RFCPersonaFisica: PersonaFisica {
         self.apellidoMaterno = self.apellidoMaterno.uppercased()
         
         self.limpiaNombrePersona()
-        self.nombreCompleto = "\(self.apellidoPaterno) \(self.apellidoMaterno) \(self.nombre)"
+        if self.apellidoMaterno != "" {
+            self.nombreCompleto = "\(self.apellidoPaterno) \(self.apellidoMaterno) \(self.nombre)"
+        } else {
+            self.nombreCompleto = "\(self.apellidoPaterno) \(self.nombre)"
+        }
         
         // Filtrar palabras
         let palabrasAFiltrar = self.tablaSeis

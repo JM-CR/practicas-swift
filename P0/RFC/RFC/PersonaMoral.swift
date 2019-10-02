@@ -112,25 +112,37 @@ extension PersonaMoral {
      - Throws: InputError.InvalidCharacter
      - Returns: Texto validado.
      */
-    private func validaEmpresa(empresa: String) throws -> String {
-        var buscaRegEx = empresa.range(of: #":"#, options: .regularExpression)
+    private func validaEmpresa(empresa: String?) throws -> String {
+        if let valor = empresa {
+            guard valor != "" else {
+                throw InputError.InvalidCharacter(descripcion: "No puedes dejar el campo vacío.")
+            }
+        } else {
+            throw InputError.InvalidCharacter(descripcion: "Error desconocido, introdúcelo de nuevo.")
+        }
+        
+        var buscaRegEx = empresa!.range(of: #":"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
         
-        buscaRegEx = empresa.range(of: #"[?_!'¿¡|@=()-#·&/\\*}{^`+¨]"#, options: .regularExpression)
+        buscaRegEx = empresa!.range(of: #"[^.{1,}$]"#, options: .regularExpression)
+        guard buscaRegEx != nil else {
+            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        buscaRegEx = empresa!.range(of: #"[?_!'¿¡|@=()-#·&/*}{^`+¨ªº\[\]Ç;ç´]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
         
-        buscaRegEx = empresa.range(of: #"[áéíóúÁÉÍÓÚ]"#, options: .regularExpression)
+        buscaRegEx = empresa!.range(of: #"[áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙäëïöüÄËÏÖÜâêîôûÂÊÎÔÛ]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "No introduzcas acentos.")
         }
         
-        // TODO: Ver casos para entrada vacía.
         // TODO: Validar doble punto y doble coma
         
-        return empresa
+        return empresa!
     }
 }
