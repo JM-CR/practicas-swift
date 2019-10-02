@@ -116,8 +116,16 @@ struct RFCPersonaFisica: PersonaFisica {
      */
     private mutating func apellidoUnico() {
         let primerLetra = self.apellidoPaterno.first!
-        let indexPaterno = self.apellidoPaterno.index(self.apellidoPaterno.startIndex, offsetBy: 1)
-        let segundaLetra = self.apellidoPaterno[indexPaterno]
+        
+        // Validacion donde no hay materno y el paterno solo es un caracter
+        var segundaLetra: String
+        if self.apellidoPaterno.count == 1 && self.apellidoMaterno == "" {
+            segundaLetra = "X"
+        } else {
+            let indexPaterno = self.apellidoPaterno.index(self.apellidoPaterno.startIndex, offsetBy: 1)
+            segundaLetra = String(self.apellidoPaterno[indexPaterno])
+        }
+        
         let tercerLetra = self.nombre.first!
         let indexNombre = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
         let cuartaLetra = self.nombre[indexNombre]

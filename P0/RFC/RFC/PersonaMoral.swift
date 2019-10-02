@@ -131,6 +131,11 @@ extension PersonaMoral {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
         
+        buscaRegEx = empresa!.range(of: #"\d{2,}"#, options: .regularExpression)
+        guard buscaRegEx == nil else {
+            throw InputError.InvalidCharacter(descripcion: "La razón social solo puede tener números de un dígito.")
+        }
+        
         buscaRegEx = empresa!.range(of: #"[?_!'¿¡|@=()-#·&/*}{^`+¨ªº\[\]Ç;ç´]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
@@ -140,8 +145,6 @@ extension PersonaMoral {
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "No introduzcas acentos.")
         }
-        
-        // TODO: Validar doble punto y doble coma
         
         return empresa!
     }

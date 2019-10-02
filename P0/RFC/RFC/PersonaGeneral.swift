@@ -52,8 +52,13 @@ extension PersonaGeneral {
         }
         
         // Calcular cociente y residuo
-        let index = String(suma).index(String(suma).endIndex, offsetBy: -3)
-        let ultimosDigitos = Int(String(suma).suffix(from: index))!
+        let ultimosDigitos: Int
+        if suma > 999 {
+            let index = String(suma).index(String(suma).endIndex, offsetBy: -3)
+            ultimosDigitos = Int(String(suma).suffix(from: index))!
+        } else {
+            ultimosDigitos = suma
+        }
         let residuo = (ultimosDigitos % 34)
         let cociente = (ultimosDigitos - residuo) / 34
         
