@@ -71,6 +71,10 @@ extension PersonaMoral {
      - Returns: Opción escogida.
      */
     private func validaTipoDeSociedad(opcion: String) throws -> Int {
+        guard !opcion.isEmpty else {
+            throw InputError.InvalidCharacter(descripcion: "No puedes dejar el mes en blanco.")
+        }
+        
         let buscaRegEx = opcion.range(of: #"^\d*$"#, options: .regularExpression)
         guard buscaRegEx != nil else {
             throw InputError.InvalidCharacter(descripcion: "Solo debes introducir una opción del menú.")
