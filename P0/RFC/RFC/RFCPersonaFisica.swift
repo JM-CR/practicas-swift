@@ -84,7 +84,10 @@ struct RFCPersonaFisica: PersonaFisica {
     private mutating func primerVocal(palabra: String) -> String {
         let vocales = ["A", "E", "I", "O", "U"]
         var primerVocal = ""
-        for letra in palabra where vocales.contains(String(letra)) {
+        for (index, letra) in palabra.enumerated() where vocales.contains(String(letra)) {
+            guard index != 0 else {
+                continue
+            }
             primerVocal = String(letra)
             break
         }

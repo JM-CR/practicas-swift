@@ -21,8 +21,31 @@ protocol PersonaFisica: PersonaGeneral {
 }
 
 extension PersonaFisica {
+    /**
+     Valida si la persona es menor de edad.
+     
+     - Returns: True si la persona tiene menos de 18 años.
+     */
     func esMenorDeEdad() -> Bool {
-        return false
+        var esMenor = false
+        let fechaActual = Date()
+        
+        // Calcular fecha mínima para ser legal
+        var mayoriaDeEdad = DateComponents(calendar: .current)
+        mayoriaDeEdad.setValue(-18, for: .year)
+        mayoriaDeEdad.setValue(-6, for: .hour)
+        let fechaMinima = Calendar.current.date(byAdding: mayoriaDeEdad, to: fechaActual)!
+        let fechaDelUsuario = DateComponents(calendar: .current, timeZone: .current, year: Int(self.año), month: Int(self.mes), day: Int(self.dia))
+        let fechaAComparar = Calendar.current.date(from: fechaDelUsuario)!
+        
+        // Ver si es menor de edad
+        if fechaAComparar > fechaMinima {
+            esMenor.toggle()
+            print("\nNo puedes calcular el RFC para una persona menor de edad.")
+            print("Introduce una fecha válida.")
+        }
+        
+        return esMenor
     }
     
     /**

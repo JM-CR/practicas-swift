@@ -26,9 +26,11 @@ while true {
     print("\n-------------")
     if opcionDelMenu == 1 {
         print("\nIntroduce la fecha de nacimiento")
-        while !rfcPersonaFisica.seleccionaAño() { }
-        while !rfcPersonaFisica.seleccionaMes() { }
-        while !rfcPersonaFisica.seleccionaDia() { }
+        repeat {
+            while !rfcPersonaFisica.seleccionaAño() { }
+            while !rfcPersonaFisica.seleccionaMes() { }
+            while !rfcPersonaFisica.seleccionaDia() { }
+        } while rfcPersonaFisica.esMenorDeEdad()
     } else {
         print("\nIntroduce la fecha de creación")
         while !rfcPersonaMoral.seleccionaAño() { }

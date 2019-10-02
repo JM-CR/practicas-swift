@@ -23,6 +23,14 @@ protocol PersonaGeneral: Consola {
 }
 
 extension PersonaGeneral {
+    private var añoMaximo: Int {
+        return Calendar.current.component(.year, from: Date())
+    }
+    
+    private var mesMaximo: Int {
+        return Calendar.current.component(.month, from: Date())
+    }
+    
     /**
      Calcula la homoclave según el nombre completo de la persona física o moral.
      */
@@ -78,7 +86,7 @@ extension PersonaGeneral {
         switch valor {
         case 0:
             self.digito = "0"
-        case 1...9:
+        case 2...9:
             self.digito = "\(11 - valor)"
         default:
             self.digito = "A"
@@ -200,9 +208,10 @@ extension PersonaGeneral {
         }
         
         let mesDelUsuario = mes
-        let mesMaximo = Calendar.current.component(.month, from: Date())
-        guard mesDelUsuario <= mesMaximo else {
-            throw InputError.InvalidMonth(descripcion: "No puedes ingresar un mes futuro.")
+        if Int(self.año) == self.añoMaximo {
+            guard mesDelUsuario <= self.mesMaximo else {
+                throw InputError.InvalidMonth(descripcion: "No puedes ingresar un mes futuro.")
+            }
         }
         
         return mes
@@ -250,8 +259,7 @@ extension PersonaGeneral {
         }
         
         let añoDelUsuario = Int(valor)!
-        let añoMaximo = Calendar.current.component(.year, from: Date())
-        guard añoDelUsuario <= añoMaximo else {
+        guard añoDelUsuario <= self.añoMaximo else {
             throw InputError.InvalidYear(descripcion: "No puedes ingresar un año futuro.")
         }
         
