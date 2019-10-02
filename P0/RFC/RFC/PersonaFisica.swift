@@ -58,7 +58,7 @@ extension PersonaFisica {
         
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el nombre: ")
-            self.nombre = try validaPersona(texto: entradaDelUsuario)
+            self.nombre = try validaPersona(texto: entradaDelUsuario, vacio: false)
             nombreValido.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
@@ -79,7 +79,7 @@ extension PersonaFisica {
         
         do {
             let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el primer apellido: ")
-            self.apellidoPaterno = try validaPersona(texto: entradaDelUsuario)
+            self.apellidoPaterno = try validaPersona(texto: entradaDelUsuario, vacio: false)
             apellidoValido.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
@@ -99,8 +99,8 @@ extension PersonaFisica {
         var apellidoValido = false
         
         do {
-            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el segundo apellido: ")
-            self.apellidoMaterno = try validaPersona(texto: entradaDelUsuario)
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el segundo apellido [Si no aplica dar Enter]: ")
+            self.apellidoMaterno = try validaPersona(texto: entradaDelUsuario, vacio: true)
             apellidoValido.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
             print(descripcion)
@@ -115,22 +115,31 @@ extension PersonaFisica {
      Valida los apellidos o nombres dados.
      
      - Parameter texto: Entrada de usuario.
+     - Parameter vacio: Indica si el parámetro puede estar vacío.
      - Throws: InputError.InvalidCharacter
      - Returns: Texto validado.
      */
-    private func validaPersona(texto: String) throws -> String {
-        var buscaRegEx = texto.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨]"#, options: .regularExpression)
+    private func validaPersona(texto: String?, vacio: Bool) throws -> String {
+        if let valor = texto {
+            if !vacio {
+                guard valor != "" else {
+                    throw InputError.InvalidCharacter(descripcion: "No puedes dejar el campo vacío.")
+                }
+            }
+        } else {
+            throw InputError.InvalidCharacter(descripcion: "Error desconocido, introdúcelo de nuevo.")
+        }
+        
+        var buscaRegEx = texto!.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/*}{^`+¨ªº\[\]Ç;ç´]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
         
-        buscaRegEx = texto.range(of: #"[áéíóúÁÉÍÓÚ]"#, options: .regularExpression)
+        buscaRegEx = texto!.range(of: #"[áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙäëïöüÄËÏÖÜâêîôûÂÊÎÔÛ]"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "No introduzcas acentos.")
         }
         
-        // TODO: Ver casos para entrada vacía.
-        
-        return texto
+        return texto!
     }
 }
