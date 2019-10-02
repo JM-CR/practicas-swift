@@ -8,7 +8,6 @@
 
 import Foundation
 
-var opcionDelMenu: Int? = nil
 var rfcPersonaFisica = RFCPersonaFisica()
 var rfcPersonaMoral = RFCPersonaMoral()
 
@@ -17,6 +16,8 @@ rfcPersonaFisica.limpiaConsola()
 rfcPersonaFisica.imprimeUso()
 
 while true {
+    var opcionDelMenu: Int? = nil
+    
     // Elegir tipo de persona
     while opcionDelMenu == nil {
         opcionDelMenu = rfcPersonaFisica.seleccionaTipoRFC()

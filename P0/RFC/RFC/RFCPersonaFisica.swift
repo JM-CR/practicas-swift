@@ -140,12 +140,6 @@ struct RFCPersonaFisica: PersonaFisica {
      innecesarias del nombre(s) o apellido(s).
      */
     mutating func filtraNombre() {
-        let palabrasAFiltrar = [
-            #"\bY\b"#, #"\bE\b"#, #"\bDE\b"#, #"\bLA\b"#, #"\bLAS\b"#, #"\bLOS\b"#,
-            #"\bU\b"#, #"\bSR\b"#, #"\bSRA\b"#, #"\bA\b"#, #"\bM\b"#, #"\bDEL\b"#,
-            #"\bJOSE\b"#, #"\bMARIA\b"#
-        ]
-        
         // Pasar todo a mayúsculas
         self.nombre = self.nombre.uppercased()
         self.apellidoPaterno = self.apellidoPaterno.uppercased()
@@ -155,6 +149,7 @@ struct RFCPersonaFisica: PersonaFisica {
         self.nombreCompleto = "\(self.apellidoPaterno) \(self.apellidoMaterno) \(self.nombre)"
         
         // Filtrar palabras
+        let palabrasAFiltrar = self.tablaSeis
         for palabra in palabrasAFiltrar {
             self.nombre = self.nombre.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)
             self.apellidoPaterno = self.apellidoPaterno.replacingOccurrences(of: palabra, with: "", options: .regularExpression, range: nil)

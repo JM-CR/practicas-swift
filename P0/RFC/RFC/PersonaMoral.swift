@@ -93,7 +93,7 @@ extension PersonaMoral {
         var razonValida = false
         
         do {
-            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa el nombre: ")
+            let entradaDelUsuario = self.entradaDeTeclado(mensaje: "\nIngresa la razón social: ")
             self.nombre = try validaEmpresa(empresa: entradaDelUsuario)
             razonValida.toggle()
         } catch InputError.InvalidCharacter(let descripcion) {
