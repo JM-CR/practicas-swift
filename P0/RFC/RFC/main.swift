@@ -71,4 +71,5 @@ while true {
     }
     
     rfcPersonaFisica.esperaParaContinuar()
+    rfcPersonaFisica.limpiaConsola()
 }

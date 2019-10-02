@@ -207,6 +207,10 @@ extension PersonaGeneral {
             throw InputError.InvalidCharacter(descripcion: "Solo debes introducir una opción del menú.")
         }
         
+        guard !opcion.isEmpty else {
+            throw InputError.InvalidCharacter(descripcion: "No puedes dejar el mes en blanco.")
+        }
+        
         let mes: Int = Int(opcion)!
         guard mes >= 1 && mes <= 12 else {
             throw InputError.InvalidNumberInRange(descripcion: "Opción inválida.")
