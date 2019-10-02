@@ -68,7 +68,15 @@ struct RFCPersonaFisica: PersonaFisica {
      */
     private mutating func paternoMayor() {
         let primerLetra = self.apellidoPaterno.first!
-        let segundaLetra = self.primerVocal(palabra: self.apellidoPaterno)
+        
+        // Validar caso con paterno de un solo caracter
+        var segundaLetra: String
+        if self.apellidoPaterno.count == 1 {
+            segundaLetra = "X"
+        } else {
+            segundaLetra = self.primerVocal(palabra: self.apellidoPaterno)
+        }
+        
         let tercerLetra = self.apellidoMaterno.first!
         let cuartaLetra = self.nombre.first!
         
@@ -76,7 +84,7 @@ struct RFCPersonaFisica: PersonaFisica {
     }
     
     /**
-     Obtiene la primer vocal de una palabra.
+     Obtiene la primer vocal de una palabra, omitiendo el primer caracter.
      
      - Parameter palabra: Texto en el que se desea buscar.
      - Returns: Vocal encontrada.
@@ -104,8 +112,14 @@ struct RFCPersonaFisica: PersonaFisica {
         let segundaLetra = self.apellidoMaterno.first!
         let tercerLetra = self.nombre.first!
         
-        let index = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
-        let cuartaLetra = self.nombre[index]
+        // Caso con nombre de un caracter
+        var cuartaLetra: String
+        if self.nombre.count == 1 {
+            cuartaLetra = "X"
+        } else {
+            let index = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
+            cuartaLetra = String(self.nombre[index])
+        }
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
     }
@@ -117,7 +131,7 @@ struct RFCPersonaFisica: PersonaFisica {
     private mutating func apellidoUnico() {
         let primerLetra = self.apellidoPaterno.first!
         
-        // Validacion donde no hay materno y el paterno solo es un caracter
+        // Validar caso con paterno de un solo caracter
         var segundaLetra: String
         if self.apellidoPaterno.count == 1 && self.apellidoMaterno == "" {
             segundaLetra = "X"
@@ -127,8 +141,15 @@ struct RFCPersonaFisica: PersonaFisica {
         }
         
         let tercerLetra = self.nombre.first!
-        let indexNombre = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
-        let cuartaLetra = self.nombre[indexNombre]
+        
+        // Validar caso con nombre de un solo caracter
+        var cuartaLetra: String
+        if self.nombre.count == 1 {
+            cuartaLetra = "X"
+        } else {
+            let indexNombre = self.nombre.index(self.nombre.startIndex, offsetBy: 1)
+            cuartaLetra = String(self.nombre[indexNombre])
+        }
         
         self.siglas = "\(primerLetra)\(segundaLetra)\(tercerLetra)\(cuartaLetra)"
     }
