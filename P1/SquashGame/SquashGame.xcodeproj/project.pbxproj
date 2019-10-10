@@ -8,12 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		CA83BFB2234E3702001448F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFB1234E3702001448F8 /* AppDelegate.swift */; };
-		CA83BFB4234E3702001448F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFB3234E3702001448F8 /* ViewController.swift */; };
 		CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB5234E3702001448F8 /* Main.storyboard */; };
 		CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB8234E3702001448F8 /* Assets.xcassets */; };
 		CA83BFBC234E3702001448F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFBA234E3702001448F8 /* LaunchScreen.storyboard */; };
 		CA83BFC7234E3702001448F8 /* SquashGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFC6234E3702001448F8 /* SquashGameTests.swift */; };
 		CA83BFD2234E3702001448F8 /* SquashGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFD1234E3702001448F8 /* SquashGameUITests.swift */; };
+		CA83BFE5234E3C10001448F8 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFE4234E3C10001448F8 /* InicioViewController.swift */; };
+		CA83BFED234E57A8001448F8 /* AyudaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */; };
+		CA83BFEF234E57B4001448F8 /* JuegoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */; };
+		CA83BFF1234E57C7001448F8 /* MarcadorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFF0234E57C7001448F8 /* MarcadorViewController.swift */; };
+		CA910099234FD84500E82EF7 /* Pelota.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA910098234FD84500E82EF7 /* Pelota.swift */; };
+		CA91009B234FD85C00E82EF7 /* Obstaculo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009A234FD85C00E82EF7 /* Obstaculo.swift */; };
+		CA91009D234FD87000E82EF7 /* Puntuacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009C234FD87000E82EF7 /* Puntuacion.swift */; };
+		CA91009F234FD88500E82EF7 /* Raqueta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009E234FD88500E82EF7 /* Raqueta.swift */; };
+		CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A0234FD8A100E82EF7 /* Sonido.swift */; };
+		CA9100A4234FD92E00E82EF7 /* Marcador.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A3234FD92E00E82EF7 /* Marcador.swift */; };
+		CA9100A7234FD95D00E82EF7 /* Ayuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A6234FD95D00E82EF7 /* Ayuda.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +46,6 @@
 /* Begin PBXFileReference section */
 		CA83BFAE234E3702001448F8 /* SquashGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquashGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83BFB1234E3702001448F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CA83BFB3234E3702001448F8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		CA83BFB6234E3702001448F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CA83BFB8234E3702001448F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CA83BFBB234E3702001448F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +56,17 @@
 		CA83BFCD234E3702001448F8 /* SquashGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquashGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83BFD1234E3702001448F8 /* SquashGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquashGameUITests.swift; sourceTree = "<group>"; };
 		CA83BFD3234E3702001448F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA83BFE4234E3C10001448F8 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
+		CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyudaViewController.swift; sourceTree = "<group>"; };
+		CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuegoViewController.swift; sourceTree = "<group>"; };
+		CA83BFF0234E57C7001448F8 /* MarcadorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcadorViewController.swift; sourceTree = "<group>"; };
+		CA910098234FD84500E82EF7 /* Pelota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelota.swift; sourceTree = "<group>"; };
+		CA91009A234FD85C00E82EF7 /* Obstaculo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstaculo.swift; sourceTree = "<group>"; };
+		CA91009C234FD87000E82EF7 /* Puntuacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puntuacion.swift; sourceTree = "<group>"; };
+		CA91009E234FD88500E82EF7 /* Raqueta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raqueta.swift; sourceTree = "<group>"; };
+		CA9100A0234FD8A100E82EF7 /* Sonido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sonido.swift; sourceTree = "<group>"; };
+		CA9100A3234FD92E00E82EF7 /* Marcador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marcador.swift; sourceTree = "<group>"; };
+		CA9100A6234FD95D00E82EF7 /* Ayuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ayuda.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +117,11 @@
 		CA83BFB0234E3702001448F8 /* SquashGame */ = {
 			isa = PBXGroup;
 			children = (
+				CA83BFE3234E3B12001448F8 /* Inicio */,
+				CA83BFEB234E578E001448F8 /* Ayuda */,
+				CA83BFDF234E3A77001448F8 /* Juego */,
+				CA83BFE0234E3A8E001448F8 /* Marcador */,
 				CA83BFB1234E3702001448F8 /* AppDelegate.swift */,
-				CA83BFB3234E3702001448F8 /* ViewController.swift */,
 				CA83BFB5234E3702001448F8 /* Main.storyboard */,
 				CA83BFB8234E3702001448F8 /* Assets.xcassets */,
 				CA83BFBA234E3702001448F8 /* LaunchScreen.storyboard */,
@@ -123,6 +146,69 @@
 				CA83BFD3234E3702001448F8 /* Info.plist */,
 			);
 			path = SquashGameUITests;
+			sourceTree = "<group>";
+		};
+		CA83BFDF234E3A77001448F8 /* Juego */ = {
+			isa = PBXGroup;
+			children = (
+				CA910097234FD76F00E82EF7 /* Modelos */,
+				CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */,
+			);
+			path = Juego;
+			sourceTree = "<group>";
+		};
+		CA83BFE0234E3A8E001448F8 /* Marcador */ = {
+			isa = PBXGroup;
+			children = (
+				CA9100A2234FD91D00E82EF7 /* Modelo */,
+				CA83BFF0234E57C7001448F8 /* MarcadorViewController.swift */,
+			);
+			path = Marcador;
+			sourceTree = "<group>";
+		};
+		CA83BFE3234E3B12001448F8 /* Inicio */ = {
+			isa = PBXGroup;
+			children = (
+				CA83BFE4234E3C10001448F8 /* InicioViewController.swift */,
+			);
+			path = Inicio;
+			sourceTree = "<group>";
+		};
+		CA83BFEB234E578E001448F8 /* Ayuda */ = {
+			isa = PBXGroup;
+			children = (
+				CA9100A5234FD93D00E82EF7 /* Modelo */,
+				CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */,
+			);
+			path = Ayuda;
+			sourceTree = "<group>";
+		};
+		CA910097234FD76F00E82EF7 /* Modelos */ = {
+			isa = PBXGroup;
+			children = (
+				CA91009A234FD85C00E82EF7 /* Obstaculo.swift */,
+				CA910098234FD84500E82EF7 /* Pelota.swift */,
+				CA91009C234FD87000E82EF7 /* Puntuacion.swift */,
+				CA91009E234FD88500E82EF7 /* Raqueta.swift */,
+				CA9100A0234FD8A100E82EF7 /* Sonido.swift */,
+			);
+			path = Modelos;
+			sourceTree = "<group>";
+		};
+		CA9100A2234FD91D00E82EF7 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				CA9100A3234FD92E00E82EF7 /* Marcador.swift */,
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		CA9100A5234FD93D00E82EF7 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				CA9100A6234FD95D00E82EF7 /* Ayuda.swift */,
+			);
+			path = Modelo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -256,8 +342,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA83BFB4234E3702001448F8 /* ViewController.swift in Sources */,
+				CA91009F234FD88500E82EF7 /* Raqueta.swift in Sources */,
+				CA91009B234FD85C00E82EF7 /* Obstaculo.swift in Sources */,
+				CA9100A7234FD95D00E82EF7 /* Ayuda.swift in Sources */,
+				CA91009D234FD87000E82EF7 /* Puntuacion.swift in Sources */,
+				CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */,
+				CA910099234FD84500E82EF7 /* Pelota.swift in Sources */,
+				CA83BFED234E57A8001448F8 /* AyudaViewController.swift in Sources */,
+				CA83BFEF234E57B4001448F8 /* JuegoViewController.swift in Sources */,
+				CA83BFF1234E57C7001448F8 /* MarcadorViewController.swift in Sources */,
+				CA83BFE5234E3C10001448F8 /* InicioViewController.swift in Sources */,
 				CA83BFB2234E3702001448F8 /* AppDelegate.swift in Sources */,
+				CA9100A4234FD92E00E82EF7 /* Marcador.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
