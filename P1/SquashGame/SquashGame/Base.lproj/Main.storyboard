@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina6_1" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,116 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="InicioViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="hzG-TC-9Xm">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sr0-3G-7m1">
+                                <rect key="frame" x="365" y="230" width="167" height="38"/>
+                                <color key="backgroundColor" red="0.89402121305465698" green="0.90169012546539307" blue="0.92939800024032593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Marcadores">
+                                    <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="plz-zc-LHI" kind="show" id="yce-DN-PVy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTy-n4-11d">
+                                <rect key="frame" x="368" y="296" width="164" height="38"/>
+                                <color key="backgroundColor" red="0.89402121305465698" green="0.90169012546539307" blue="0.92939800024032593" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Instrucciones">
+                                    <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="J7g-kE-QMS" kind="show" id="18l-Cw-w9M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNK-Ys-YRY">
+                                <rect key="frame" x="367" y="160" width="167" height="38"/>
+                                <color key="backgroundColor" red="0.89657797320855159" green="0.90044358664472524" blue="0.93126099035529897" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Jugar">
+                                    <color key="titleColor" red="0.86898362636566162" green="0.36894696950912476" blue="0.33719518780708313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <segue destination="evi-8q-Bc3" kind="show" id="dE4-JW-Bd6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hzG-TC-9Xm" secondAttribute="trailing" id="0KT-jI-5SV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qTy-n4-11d" secondAttribute="bottom" constant="59" id="0uy-r8-kzJ"/>
+                            <constraint firstItem="sr0-3G-7m1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="321" id="3Xi-Lk-0NV"/>
+                            <constraint firstItem="qTy-n4-11d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="324" id="7bI-Tr-4ar"/>
+                            <constraint firstItem="qTy-n4-11d" firstAttribute="top" secondItem="sr0-3G-7m1" secondAttribute="bottom" constant="28" id="ANO-t6-wuB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sr0-3G-7m1" secondAttribute="trailing" constant="320" id="Afw-AM-Rtm"/>
+                            <constraint firstItem="sr0-3G-7m1" firstAttribute="top" secondItem="jNK-Ys-YRY" secondAttribute="bottom" constant="32" id="AhG-hd-Iud"/>
+                            <constraint firstItem="jNK-Ys-YRY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="323" id="EBF-9n-9bp"/>
+                            <constraint firstAttribute="bottom" secondItem="hzG-TC-9Xm" secondAttribute="bottom" id="EvN-hL-FXq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jNK-Ys-YRY" secondAttribute="trailing" constant="318" id="FpC-bE-wtq"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTy-n4-11d" secondAttribute="trailing" constant="320" id="dJn-8I-MKi"/>
+                            <constraint firstItem="hzG-TC-9Xm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yS3-Ku-0Tp"/>
+                            <constraint firstItem="hzG-TC-9Xm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ybh-x2-8NJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="26.785714285714285" y="137.68115942028987"/>
+        </scene>
+        <!--Marcador View Controller-->
+        <scene sceneID="Z9b-fK-9aJ">
+            <objects>
+                <viewController id="plz-zc-LHI" customClass="MarcadorViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EQT-FH-9gi">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5ig-9m-SUT"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="138"/>
+        </scene>
+        <!--Juego View Controller-->
+        <scene sceneID="d0o-Wo-TsR">
+            <objects>
+                <viewController id="evi-8q-Bc3" customClass="JuegoViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gpd-Gw-wNm">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="THW-BL-0cD"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fdb-Zh-8jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="-645"/>
+        </scene>
+        <!--Ayuda View Controller-->
+        <scene sceneID="h5R-0h-QAC">
+            <objects>
+                <viewController id="J7g-kE-QMS" customClass="AyudaViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mht-mK-aR4">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RPH-rn-t5i"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lPp-8j-VZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="828" y="936"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Splash.png" width="504" height="360"/>
+    </resources>
 </document>

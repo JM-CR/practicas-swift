@@ -24,6 +24,7 @@
 		CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A0234FD8A100E82EF7 /* Sonido.swift */; };
 		CA9100A4234FD92E00E82EF7 /* Marcador.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A3234FD92E00E82EF7 /* Marcador.swift */; };
 		CA9100A7234FD95D00E82EF7 /* Ayuda.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A6234FD95D00E82EF7 /* Ayuda.swift */; };
+		CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9100B1234FE6FF00E82EF7 /* Splash.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		CA9100A0234FD8A100E82EF7 /* Sonido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sonido.swift; sourceTree = "<group>"; };
 		CA9100A3234FD92E00E82EF7 /* Marcador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marcador.swift; sourceTree = "<group>"; };
 		CA9100A6234FD95D00E82EF7 /* Ayuda.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ayuda.swift; sourceTree = "<group>"; };
+		CA9100B1234FE6FF00E82EF7 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		CA83BFB0234E3702001448F8 /* SquashGame */ = {
 			isa = PBXGroup;
 			children = (
+				CA9100A8234FDCD900E82EF7 /* Assets */,
 				CA83BFE3234E3B12001448F8 /* Inicio */,
 				CA83BFEB234E578E001448F8 /* Ayuda */,
 				CA83BFDF234E3A77001448F8 /* Juego */,
@@ -209,6 +212,14 @@
 				CA9100A6234FD95D00E82EF7 /* Ayuda.swift */,
 			);
 			path = Modelo;
+			sourceTree = "<group>";
+		};
+		CA9100A8234FDCD900E82EF7 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				CA9100B1234FE6FF00E82EF7 /* Splash.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +326,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */,
 				CA83BFBC234E3702001448F8 /* LaunchScreen.storyboard in Resources */,
 				CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */,
 				CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */,
