@@ -29,7 +29,7 @@
                                     <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="plz-zc-LHI" kind="show" id="yce-DN-PVy"/>
+                                    <segue destination="plz-zc-LHI" kind="presentation" identifier="marcadores" id="ch1-5y-1em"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qTy-n4-11d">
@@ -40,7 +40,7 @@
                                     <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="J7g-kE-QMS" kind="show" id="18l-Cw-w9M"/>
+                                    <segue destination="J7g-kE-QMS" kind="presentation" identifier="ayuda" id="aSv-Sy-ADU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jNK-Ys-YRY">
@@ -51,7 +51,7 @@
                                     <color key="titleColor" red="0.86898362636566162" green="0.36894696950912476" blue="0.33719518780708313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="evi-8q-Bc3" kind="show" id="dE4-JW-Bd6"/>
+                                    <segue destination="evi-8q-Bc3" kind="presentation" id="6l6-Ph-Hki"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,17 +81,43 @@
         <!--Marcador View Controller-->
         <scene sceneID="Z9b-fK-9aJ">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="plz-zc-LHI" customClass="MarcadorViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EQT-FH-9gi">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcadores.png" translatesAutoresizingMaskIntoConstraints="NO" id="pYx-i3-y0E">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plz-fZ-Cmp">
+                                <rect key="frame" x="668" y="313" width="164" height="38"/>
+                                <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Regresar">
+                                    <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="regresaAlMenu" destination="plz-zc-LHI" eventType="touchUpInside" id="hSW-Ed-cxP"/>
+                                    <action selector="regresarAlMenu" destination="J7g-kE-QMS" eventType="touchUpInside" id="NVZ-J6-ke6"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pYx-i3-y0E" firstAttribute="leading" secondItem="EQT-FH-9gi" secondAttribute="leading" id="bwr-KH-NNW"/>
+                            <constraint firstAttribute="bottom" secondItem="pYx-i3-y0E" secondAttribute="bottom" id="eed-lP-Qx7"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="bottom" secondItem="Plz-fZ-Cmp" secondAttribute="bottom" constant="42" id="iIg-vI-ck6"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" secondItem="Plz-fZ-Cmp" secondAttribute="trailing" constant="20" id="uHC-OC-VQF"/>
+                            <constraint firstAttribute="trailing" secondItem="pYx-i3-y0E" secondAttribute="trailing" id="upX-EW-gEE"/>
+                            <constraint firstItem="pYx-i3-y0E" firstAttribute="top" secondItem="5ig-9m-SUT" secondAttribute="top" id="wED-hN-6JC"/>
+                            <constraint firstItem="Plz-fZ-Cmp" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="624" id="zTs-Xn-zeY"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5ig-9m-SUT"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="138"/>
+            <point key="canvasLocation" x="827.67857142857144" y="137.68115942028987"/>
         </scene>
         <!--Juego View Controller-->
         <scene sceneID="d0o-Wo-TsR">
@@ -100,13 +126,24 @@
                     <view key="view" contentMode="scaleToFill" id="gpd-Gw-wNm">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="myg-pa-hN9">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="myg-pa-hN9" firstAttribute="top" secondItem="THW-BL-0cD" secondAttribute="top" id="TMm-HB-4rm"/>
+                            <constraint firstAttribute="bottom" secondItem="myg-pa-hN9" secondAttribute="bottom" id="Xik-P0-Stb"/>
+                            <constraint firstItem="myg-pa-hN9" firstAttribute="leading" secondItem="gpd-Gw-wNm" secondAttribute="leading" id="f4y-jN-mtd"/>
+                            <constraint firstAttribute="trailing" secondItem="myg-pa-hN9" secondAttribute="trailing" id="isG-Aa-lFu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="THW-BL-0cD"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdb-Zh-8jH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="-645"/>
+            <point key="canvasLocation" x="827.67857142857144" y="-646.37681159420299"/>
         </scene>
         <!--Ayuda View Controller-->
         <scene sceneID="h5R-0h-QAC">
@@ -115,16 +152,63 @@
                     <view key="view" contentMode="scaleToFill" id="Mht-mK-aR4">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ayuda.png" translatesAutoresizingMaskIntoConstraints="NO" id="GJE-X1-AY1">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH1-Wy-Z94">
+                                <rect key="frame" x="668" y="323" width="164" height="38"/>
+                                <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Regresar">
+                                    <color key="titleColor" red="0.86898362640000004" green="0.3689469695" blue="0.33719518780000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="regresarAlMenu" destination="J7g-kE-QMS" eventType="touchUpInside" id="WLC-of-0FN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="¡Debes buscar el mayor número de puntos!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIK-mK-3za">
+                                <rect key="frame" x="114" y="323" width="442" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ba-9Y-zbU">
+                                <rect key="frame" x="81" y="126" width="735" height="150.5"/>
+                                <mutableString key="text">1. El objetivo del juego es golpear la pelota y evitar que toque la parte inferior de la pantalla.  2. Para jugar moverás una raqueta horizontalmente con tu dedo.   3. Cada vez que devuelvas un golpe recibirás un punto.  4. Cada 10 puntos aparecerá un obstáculo aleatorio.</mutableString>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GH1-Wy-Z94" firstAttribute="leading" secondItem="TIK-mK-3za" secondAttribute="trailing" constant="112" id="4nM-XN-had"/>
+                            <constraint firstItem="GJE-X1-AY1" firstAttribute="leading" secondItem="Mht-mK-aR4" secondAttribute="leading" id="COn-QL-97r"/>
+                            <constraint firstItem="TIK-mK-3za" firstAttribute="leading" secondItem="RPH-rn-t5i" secondAttribute="leading" constant="70" id="Jzr-2K-LHr"/>
+                            <constraint firstItem="GJE-X1-AY1" firstAttribute="top" secondItem="RPH-rn-t5i" secondAttribute="top" id="OC4-g2-VK0"/>
+                            <constraint firstItem="RPH-rn-t5i" firstAttribute="trailing" secondItem="GH1-Wy-Z94" secondAttribute="trailing" constant="20" id="QzM-UT-mtN"/>
+                            <constraint firstItem="RPH-rn-t5i" firstAttribute="trailing" secondItem="4ba-9Y-zbU" secondAttribute="trailing" constant="36" id="SXC-gW-xwF"/>
+                            <constraint firstItem="GH1-Wy-Z94" firstAttribute="leading" secondItem="RPH-rn-t5i" secondAttribute="leading" constant="624" id="YEq-8V-59V"/>
+                            <constraint firstItem="4ba-9Y-zbU" firstAttribute="top" secondItem="RPH-rn-t5i" secondAttribute="top" constant="126" id="cXA-Fw-s5J"/>
+                            <constraint firstItem="4ba-9Y-zbU" firstAttribute="leading" secondItem="RPH-rn-t5i" secondAttribute="leading" constant="37" id="h6M-84-iE2"/>
+                            <constraint firstItem="RPH-rn-t5i" firstAttribute="bottom" secondItem="TIK-mK-3za" secondAttribute="bottom" constant="41" id="kFM-fm-aLM"/>
+                            <constraint firstAttribute="trailing" secondItem="GJE-X1-AY1" secondAttribute="trailing" id="t8F-Jn-PuX"/>
+                            <constraint firstItem="RPH-rn-t5i" firstAttribute="bottom" secondItem="GH1-Wy-Z94" secondAttribute="bottom" constant="32" id="w8i-C6-0qv"/>
+                            <constraint firstAttribute="bottom" secondItem="GJE-X1-AY1" secondAttribute="bottom" id="wLv-hn-yKM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RPH-rn-t5i"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPp-8j-VZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="828" y="936"/>
+            <point key="canvasLocation" x="827.67857142857144" y="934.78260869565224"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Ayuda.png" width="504" height="360"/>
+        <image name="Fondo.png" width="504" height="360"/>
+        <image name="Marcadores.png" width="504" height="360"/>
         <image name="Splash.png" width="504" height="360"/>
     </resources>
 </document>

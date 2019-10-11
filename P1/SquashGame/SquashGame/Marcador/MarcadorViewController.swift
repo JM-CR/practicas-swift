@@ -12,11 +12,14 @@ class MarcadorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
     
-
+    /**
+     Regresa al menú principal desde el modal.
+     */
+    @IBAction func regresaAlMenu() {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
