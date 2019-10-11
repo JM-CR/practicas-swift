@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import UIKit
 
-class Obstaculo {
+class Obstaculo: UIView {
     
 }

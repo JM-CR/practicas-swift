@@ -10,12 +10,18 @@ import UIKit
 
 class JuegoViewController: UIViewController {
     
+    var anchoDePantalla: CGFloat = 0.0
+    var largoDePantalla: CGFloat = 0.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        // Crear raqueta
+        self.anchoDePantalla = self.view.bounds.maxY
+        self.largoDePantalla = self.view.bounds.maxX
+        let raqueta = Raqueta(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
+        self.view.addSubview(raqueta)
     }
-    
 
     /*
     // MARK: - Navigation
