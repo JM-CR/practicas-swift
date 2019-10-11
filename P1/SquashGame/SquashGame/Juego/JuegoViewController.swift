@@ -21,6 +21,10 @@ class JuegoViewController: UIViewController {
         self.largoDePantalla = self.view.bounds.maxX
         let raqueta = Raqueta(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
         self.view.addSubview(raqueta)
+        
+        // Crear pelota
+        let pelota = Pelota(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
+        self.view.addSubview(pelota)
     }
 
     /*
