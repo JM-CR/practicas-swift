@@ -28,6 +28,9 @@ class Pelota: UIView {
         self.agregarFuncionalidad()
     }
     
+    /**
+     Implementación de storyboard.
+     */
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }

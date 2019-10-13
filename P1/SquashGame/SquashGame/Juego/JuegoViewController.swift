@@ -18,15 +18,18 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var efectosDeRaqueta: UIDynamicItemBehavior!
     var animador: UIDynamicAnimator!
     
+    /**
+     Inicializa el juego, carga los elementos e implementa comportamientos necesarios.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Preparar efectos
-        self.animador = UIDynamicAnimator(referenceView: self.view)
-        
-        // Crear raqueta
+        // Elementos iniciales
         self.anchoDePantalla = self.view.bounds.maxY
         self.largoDePantalla = self.view.bounds.maxX
+        self.animador = UIDynamicAnimator(referenceView: self.view)  // Comportamientos
+        
+        // Crear raqueta
         let raqueta = Raqueta(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
@@ -35,13 +38,23 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.view.addSubview(raqueta)
         
         // Crear pelota
-        let pelota = Pelota(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
+        let pelota = Pelota(
+            anchoDePantalla: self.anchoDePantalla,
+            largoDePantalla: self.largoDePantalla
+        )
         self.view.addSubview(pelota)
+        
+        // Preparar puntuación
+        let puntuacion = Puntuacion(
+            anchoDePantalla: self.anchoDePantalla,
+            largoDePantalla: self.largoDePantalla
+        )
+        self.view.addSubview(puntuacion)
     
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
-        self.comportamientoDePelota(pelota)
         self.comportamientoDeRaqueta(raqueta)
+        self.comportamientoDePelota(pelota)
     }
 
     /**
