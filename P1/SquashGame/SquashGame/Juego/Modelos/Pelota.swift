@@ -40,5 +40,6 @@ class Pelota: UIView {
         self.layer.borderWidth = 1
         self.layer.cornerRadius = 40
         self.layer.borderColor = UIColor.orange.cgColor
+        self.clipsToBounds = true
     }
 }
