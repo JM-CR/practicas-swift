@@ -27,7 +27,11 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         // Crear raqueta
         self.anchoDePantalla = self.view.bounds.maxY
         self.largoDePantalla = self.view.bounds.maxX
-        let raqueta = Raqueta(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla, animador: self.animador)
+        let raqueta = Raqueta(
+            anchoDePantalla: self.anchoDePantalla,
+            largoDePantalla: self.largoDePantalla,
+            animador: self.animador
+        )
         self.view.addSubview(raqueta)
         
         // Crear pelota
@@ -105,10 +109,15 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     private func comportamientoDePelota(_ pelota: UIView) {
         // Configurar vector de fuerza inicial
         self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: UIPushBehavior.Mode.instantaneous)
-        let fuerzaEnX = CGFloat.random(in: 0.4...1)
-        let fuerzaEnY = CGFloat(1)
+        
+        let fuerzaEnY = CGFloat.random(in: 0.7...1)
+        var fuerzaEnX: CGFloat
+        repeat {
+            fuerzaEnX = CGFloat.random(in: -1...1)
+        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
+        
         self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
-        self.vectorDeFuerza.magnitude = CGFloat(0.6)    // Velocidad inicial
+        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
         self.animador.addBehavior(vectorDeFuerza)
         
         // Configurar choque elástico
