@@ -21,10 +21,13 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Preparar efectos
+        self.animador = UIDynamicAnimator(referenceView: self.view)
+        
         // Crear raqueta
         self.anchoDePantalla = self.view.bounds.maxY
         self.largoDePantalla = self.view.bounds.maxX
-        let raqueta = Raqueta(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
+        let raqueta = Raqueta(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla, animador: self.animador)
         self.view.addSubview(raqueta)
         
         // Crear pelota
@@ -32,7 +35,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.view.addSubview(pelota)
     
         // Añadir efectos
-        self.animador = UIDynamicAnimator(referenceView: self.view)
         self.añadirColisiones(pelota, raqueta)
         self.comportamientoDePelota(pelota)
         self.comportamientoDeRaqueta(raqueta)
@@ -106,7 +108,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         let fuerzaEnX = CGFloat.random(in: 0.4...1)
         let fuerzaEnY = CGFloat(1)
         self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
-        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
+        self.vectorDeFuerza.magnitude = CGFloat(0.6)    // Velocidad inicial
         self.animador.addBehavior(vectorDeFuerza)
         
         // Configurar choque elástico
@@ -128,7 +130,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.efectosDeRaqueta.density = 10000
         self.efectosDeRaqueta.resistance = 100
         self.efectosDeRaqueta.allowsRotation = false
-        self.efectosDeRaqueta.isAnchored = true
+        self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
         self.animador.addBehavior(efectosDeRaqueta)
     }
     
