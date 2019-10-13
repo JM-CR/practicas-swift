@@ -30,7 +30,7 @@ class Obstaculo: UIView {
      - Parameter largoDePantalla: Largo del dispositivo.
      */
     convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
-        let ancho = anchoDePantalla / 16
+        let ancho = anchoDePantalla / 14
         
         // Largo según el tipo de obstáculo
         var largoAleatorio: CGFloat
@@ -58,7 +58,7 @@ class Obstaculo: UIView {
     }
     
     /**
-     Agrega las características necesarias para usar la pelota.
+     Agrega las características necesarias para usar el obstáculo.
      */
     private func agregarFuncionalidad() {
         self.layer.borderWidth = 1
@@ -68,8 +68,8 @@ class Obstaculo: UIView {
         // Color según el tipo de obstáculo
         var colorAsignado: UIColor
         switch tipoDeObstaculo {
-            case 1: colorAsignado = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-            case 2: colorAsignado = UIColor(red: 1, green: 0.2, blue: 0, alpha: 0.5)
+            case 1: colorAsignado = UIColor(red: 1, green: 0, blue: 0, alpha: 0.5)
+            case 2: colorAsignado = UIColor(red: 0.55, green: 0.45, blue: 0.35, alpha: 0.5)
             default: colorAsignado = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
         }
         self.backgroundColor = colorAsignado

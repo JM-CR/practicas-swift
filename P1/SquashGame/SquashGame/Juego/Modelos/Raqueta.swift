@@ -58,9 +58,8 @@ class Raqueta: UIView {
      */
     private func agregarFuncionalidad() {
         self.backgroundColor = .brown
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 3
         self.layer.cornerRadius = 10
-        self.layer.borderColor = UIColor.brown.cgColor
         self.clipsToBounds = true
         
         // "Drag gesture" para mover la raqueta horizontalmente

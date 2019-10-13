@@ -52,14 +52,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             largoDePantalla: self.largoDePantalla
         )
         self.view.addSubview(puntuacion)
-        
-        // Crear obstáculo
-        let obstaculo = Obstaculo(
-            anchoDePantalla: self.anchoDePantalla,
-            largoDePantalla: self.largoDePantalla
-        )
-        self.view.addSubview(obstaculo)
-    
+            
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
         self.comportamientoDeRaqueta(raqueta)

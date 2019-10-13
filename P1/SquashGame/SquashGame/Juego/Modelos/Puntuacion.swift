@@ -51,7 +51,7 @@ class Puntuacion: UILabel {
     }
     
     /**
-     Agrega las características necesarias para usar la raqueta.
+     Agrega las características necesarias para usar la puntuación.
      */
     private func agregarFuncionalidad() {
         self.backgroundColor = .clear
@@ -59,7 +59,7 @@ class Puntuacion: UILabel {
         
         // Texto inicial
         self.text = "\(self.puntosTotales)"
-        self.font = UIFont(name: self.font.fontName, size: 25)
+        self.font = UIFont(name: self.font.fontName, size: 30)
         self.textAlignment = .center
         self.sizeToFit()
     }

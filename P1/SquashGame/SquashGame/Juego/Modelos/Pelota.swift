@@ -53,9 +53,8 @@ class Pelota: UIView {
      */
     private func agregarFuncionalidad() {
         self.backgroundColor = .orange
-        self.layer.borderWidth = 1
+        self.layer.borderWidth = 3
         self.layer.cornerRadius = 20
-        self.layer.borderColor = UIColor.orange.cgColor
         self.clipsToBounds = true
     }
 }
