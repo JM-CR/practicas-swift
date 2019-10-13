@@ -12,10 +12,12 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var anchoDePantalla: CGFloat = 0.0
     var largoDePantalla: CGFloat = 0.0
-    var limitesDelJuego: UICollisionBehavior!
-    var vectorDeFuerza: UIPushBehavior!
-    var choques: UIDynamicItemBehavior!
-    var efectosDeRaqueta: UIDynamicItemBehavior!
+    
+    // Comportamientos
+    var limitesDelJuego: UICollisionBehavior!       // Pelota, raqueta, osbtáculo y fronteras
+    var vectorDeFuerza: UIPushBehavior!             // Pelota
+    var choques: UIDynamicItemBehavior!             // Pelota
+    var efectosDeRaqueta: UIDynamicItemBehavior!    // Raqueta
     var animador: UIDynamicAnimator!
     
     /**
@@ -27,7 +29,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         // Elementos iniciales
         self.anchoDePantalla = self.view.bounds.maxY
         self.largoDePantalla = self.view.bounds.maxX
-        self.animador = UIDynamicAnimator(referenceView: self.view)  // Comportamientos
+        self.animador = UIDynamicAnimator(referenceView: self.view)   // Comportamientos
         
         // Crear raqueta
         let raqueta = Raqueta(
@@ -50,6 +52,13 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             largoDePantalla: self.largoDePantalla
         )
         self.view.addSubview(puntuacion)
+        
+        // Crear obstáculo
+        let obstaculo = Obstaculo(
+            anchoDePantalla: self.anchoDePantalla,
+            largoDePantalla: self.largoDePantalla
+        )
+        self.view.addSubview(obstaculo)
     
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
@@ -120,19 +129,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      - Parameter pelota: Pelota del juego.
      */
     private func comportamientoDePelota(_ pelota: UIView) {
-        // Configurar vector de fuerza inicial
-        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: .instantaneous)
-        
-        let fuerzaEnY = CGFloat.random(in: 0.7...1)
-        var fuerzaEnX: CGFloat
-        repeat {
-            fuerzaEnX = CGFloat.random(in: -1...1)
-        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
-        
-        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
-        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
-        self.animador.addBehavior(vectorDeFuerza)
-        
         // Configurar choque elástico
         self.choques = UIDynamicItemBehavior(items: [pelota])
         self.choques.elasticity = 1.0
@@ -140,6 +136,18 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.choques.friction = 0.0      // Al chocar
         self.choques.allowsRotation = false
         self.animador.addBehavior(choques)
+        
+        // Configurar vector de fuerza inicial
+        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: .instantaneous)
+        let fuerzaEnY = CGFloat.random(in: 0.7...1) * -1    // Eje vertical invertido
+        var fuerzaEnX: CGFloat
+        repeat {
+            fuerzaEnX = CGFloat.random(in: -1...1)
+        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
+        
+        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
+        self.vectorDeFuerza.magnitude = CGFloat(0.3)    // Velocidad inicial
+        self.animador.addBehavior(vectorDeFuerza)
     }
     
     /**
@@ -149,10 +157,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      */
     private func comportamientoDeRaqueta(_ raqueta: UIView) {
         self.efectosDeRaqueta = UIDynamicItemBehavior(items: [raqueta])
-        self.efectosDeRaqueta.density = 10000
-        self.efectosDeRaqueta.resistance = 100
-        self.efectosDeRaqueta.allowsRotation = false
+        self.efectosDeRaqueta.density = 9000      // Masa inicial
         self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
+        self.efectosDeRaqueta.allowsRotation = false
         self.animador.addBehavior(efectosDeRaqueta)
     }
     

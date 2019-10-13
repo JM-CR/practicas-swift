@@ -14,19 +14,32 @@ class Puntuacion: UILabel {
     var puntosTotales = 0
     
     /**
+     Crea el elemento según las medidas y origen dado.
+     
+     - Parameter coordenada: Origen.
+     - Parameter tamaño: Medidas del obstáculo.
+     */
+    private init(coordenada: CGPoint, tamaño: CGSize) {
+        super.init(frame: CGRect(origin: coordenada, size: tamaño))
+    }
+    
+    /**
      Inicializa el marcador de golpes según las medidas de la pantalla.
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
      */
-    init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
         let ancho = anchoDePantalla / 14
         let largo = largoDePantalla / 14
         let puntoX = largoDePantalla * 0.05
         let puntoY = anchoDePantalla * 0.05
-        let puntuacion = CGRect(x: puntoX, y: puntoY, width: largo, height: ancho)
         
-        super.init(frame: puntuacion)
+        // Llamar inicializador designado
+        let origen = CGPoint(x: puntoX, y: puntoY)
+        let medidas = CGSize(width: largo, height: ancho)
+        
+        self.init(coordenada: origen, tamaño: medidas)
         self.agregarFuncionalidad()
     }
     
@@ -48,7 +61,6 @@ class Puntuacion: UILabel {
         self.text = "\(self.puntosTotales)"
         self.font = UIFont(name: self.font.fontName, size: 25)
         self.textAlignment = .center
-        self.textColor = .brown
         self.sizeToFit()
     }
     

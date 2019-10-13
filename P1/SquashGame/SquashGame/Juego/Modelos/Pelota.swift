@@ -12,19 +12,32 @@ import UIKit
 class Pelota: UIView {
     
     /**
+     Crea la pelota según las medidas y origen dado.
+     
+     - Parameter coordenada: Origen.
+     - Parameter tamaño: Medidas del obstáculo.
+     */
+    private init(coordenada: CGPoint, tamaño: CGSize) {
+        super.init(frame: CGRect(origin: coordenada, size: tamaño))
+    }
+    
+    /**
      Crea la pelota según las medidas de la pantalla.
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
      */
-    init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
         let ancho = anchoDePantalla / 12
         let largo = anchoDePantalla / 12
         let puntoX = largoDePantalla / 2 - largo * 0.5
         let puntoY = anchoDePantalla - ancho * 3
         
-        let pelota = CGRect(x: puntoX, y: puntoY, width: largo, height: ancho)
-        super.init(frame: pelota)
+        // Llamar inicializador designado
+        let origen = CGPoint(x: puntoX, y: puntoY)
+        let medidas = CGSize(width: largo, height: ancho)
+        
+        self.init(coordenada: origen, tamaño: medidas)
         self.agregarFuncionalidad()
     }
     

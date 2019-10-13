@@ -15,20 +15,33 @@ class Raqueta: UIView {
     var animador: UIDynamicAnimator!
     
     /**
+     Crea la raqueta según las medidas y origen dado.
+     
+     - Parameter coordenada: Origen.
+     - Parameter tamaño: Medidas del obstáculo.
+     */
+    private init(coordenada: CGPoint, tamaño: CGSize) {
+        super.init(frame: CGRect(origin: coordenada, size: tamaño))
+    }
+    
+    /**
      Crea la raqueta inicial según las medidas de la pantalla.
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
-     - Parameter animador: Encargado de agregar efectos en raqueta.
+     - Parameter animador: Encargado de agregar comportamientos de raqueta.
      */
-    init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator) {
         let ancho = anchoDePantalla / 12
         let largo = largoDePantalla / 6
         let puntoX = largoDePantalla / 2 - largo * 0.5
         let puntoY = anchoDePantalla - ancho * 1.7
-        let raqueta = CGRect(x: puntoX, y: puntoY, width: largo, height: ancho)
         
-        super.init(frame: raqueta)
+        // Llamar inicializador designado
+        let origen = CGPoint(x: puntoX, y: puntoY)
+        let medidas = CGSize(width: largo, height: ancho)
+        
+        self.init(coordenada: origen, tamaño: medidas)
         self.animador = animador
         self.agregarFuncionalidad()
     }
