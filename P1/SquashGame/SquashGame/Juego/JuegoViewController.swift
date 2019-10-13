@@ -108,7 +108,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      */
     private func comportamientoDePelota(_ pelota: UIView) {
         // Configurar vector de fuerza inicial
-        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: UIPushBehavior.Mode.instantaneous)
+        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: .instantaneous)
         
         let fuerzaEnY = CGFloat.random(in: 0.7...1)
         var fuerzaEnX: CGFloat

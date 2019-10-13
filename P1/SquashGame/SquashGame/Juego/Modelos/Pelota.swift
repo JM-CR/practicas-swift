@@ -18,8 +18,8 @@ class Pelota: UIView {
      - Parameter largoDePantalla: Largo del dispositivo.
      */
     init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
-        let ancho = anchoDePantalla / 10
-        let largo = anchoDePantalla / 10
+        let ancho = anchoDePantalla / 12
+        let largo = anchoDePantalla / 12
         let puntoX = largoDePantalla / 2 - largo * 0.5
         let puntoY = anchoDePantalla - ancho * 3
         
@@ -29,7 +29,7 @@ class Pelota: UIView {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     /**
@@ -38,7 +38,7 @@ class Pelota: UIView {
     private func agregarFuncionalidad() {
         self.backgroundColor = .orange
         self.layer.borderWidth = 1
-        self.layer.cornerRadius = 40
+        self.layer.cornerRadius = 20
         self.layer.borderColor = UIColor.orange.cgColor
         self.clipsToBounds = true
     }

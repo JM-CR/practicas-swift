@@ -42,9 +42,13 @@ class Raqueta: UIView {
      */
     private func agregarFuncionalidad() {
         self.backgroundColor = .brown
+        self.layer.borderWidth = 1
+        self.layer.cornerRadius = 10
+        self.layer.borderColor = UIColor.brown.cgColor
+        self.clipsToBounds = true
         
         // "Drag gesture" para mover la raqueta horizontalmente
-        let dragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(detectPan))
+        let dragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(raquetaMovida))
         self.gestureRecognizers = [dragRecognizer]
     }
     
@@ -53,7 +57,7 @@ class Raqueta: UIView {
      
      - Parameter recognizer: Gesto detectado.
      */
-    @objc func detectPan(_ recognizer: UIPanGestureRecognizer) {
+    @objc func raquetaMovida(_ recognizer: UIPanGestureRecognizer) {
         let translacion = recognizer.translation(in: self.superview)
         
         switch recognizer.state {
@@ -61,7 +65,7 @@ class Raqueta: UIView {
             self.centro = self.center
         case .changed:
             self.center = CGPoint(x: self.centro.x + translacion.x, y: self.centro.y)
-            self.animador.updateItem(usingCurrentState: self)
+            self.animador.updateItem(usingCurrentState: self)   // Actualizar posición en el animador
         default:
             self.center = CGPoint(x: self.centro.x + translacion.x, y: self.centro.y)
         }
