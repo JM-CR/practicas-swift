@@ -13,6 +13,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var anchoDePantalla: CGFloat = 0.0
     var largoDePantalla: CGFloat = 0.0
     var limitesDelJuego: UICollisionBehavior!
+    var vectorDeFuerza: UIPushBehavior!
+    var choques: UIDynamicItemBehavior!
+    var efectosDeRaqueta: UIDynamicItemBehavior!
     var animador: UIDynamicAnimator!
     
     override func viewDidLoad() {
@@ -30,15 +33,20 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
         // Añadir efectos
         self.animador = UIDynamicAnimator(referenceView: self.view)
-        self.limitesDelJuego = UICollisionBehavior(items: [pelota, raqueta])
-        self.añadirColisiones()
+        self.añadirColisiones(pelota, raqueta)
+        self.comportamientoDePelota(pelota)
+        self.comportamientoDeRaqueta(raqueta)
     }
 
     /**
      Añade los límites de colisión para que la pelota rebote.
+     
+     - Parameter pelota: Pelota del juego.
+     - Parameter raqueta: Raqueta del juego.
      */
-    private func añadirColisiones() {
+    private func añadirColisiones(_ pelota: UIView, _ raqueta: UIView) {
         // Configurar colisiones
+        self.limitesDelJuego = UICollisionBehavior(items: [pelota, raqueta])
         self.limitesDelJuego.translatesReferenceBoundsIntoBoundary = true
         self.limitesDelJuego.collisionMode = .everything
         self.limitesDelJuego.collisionDelegate = self
@@ -85,6 +93,43 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             from: inicio,
             to: fin
         )
+    }
+    
+    /**
+     Añade el comportamiento para que la pelota funcione dentro del juego.
+     
+     - Parameter pelota: Pelota del juego.
+     */
+    private func comportamientoDePelota(_ pelota: UIView) {
+        // Configurar vector de fuerza inicial
+        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: UIPushBehavior.Mode.instantaneous)
+        let fuerzaEnX = CGFloat.random(in: 0.4...1)
+        let fuerzaEnY = CGFloat(1)
+        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
+        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
+        self.animador.addBehavior(vectorDeFuerza)
+        
+        // Configurar choque elástico
+        self.choques = UIDynamicItemBehavior(items: [pelota])
+        self.choques.elasticity = 1.0
+        self.choques.resistance = 0.0    // Contra el aire
+        self.choques.friction = 0.0      // Al chocar
+        self.choques.allowsRotation = false
+        self.animador.addBehavior(choques)
+    }
+    
+    /**
+     Añade el comportamiento para que la raqueta funcione dentro del juego.
+     
+     - Parameter raqueta: Raqueta del juego.
+     */
+    private func comportamientoDeRaqueta(_ raqueta: UIView) {
+        self.efectosDeRaqueta = UIDynamicItemBehavior(items: [raqueta])
+        self.efectosDeRaqueta.density = 10000
+        self.efectosDeRaqueta.resistance = 100
+        self.efectosDeRaqueta.allowsRotation = false
+        self.efectosDeRaqueta.isAnchored = true
+        self.animador.addBehavior(efectosDeRaqueta)
     }
     
     /*
