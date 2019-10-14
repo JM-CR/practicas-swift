@@ -12,6 +12,8 @@ import UIKit
 class Obstaculo: UIView {
 
     var tipoDeObstaculo = 1    // Hay de tres tipos
+    var animador: UIDynamicAnimator!
+    var fisicaDelObstaculo: UIDynamicItemBehavior!
     
     /**
      Crea un obstáculo según las medidas y origen dado.
@@ -28,8 +30,10 @@ class Obstaculo: UIView {
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
+     - Parameter animador: Encargado de agregar comportamientos de obstáculo.
+     - Parameter view: View donde se añadirá el obstáculo.
      */
-    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, en view: UIView) {
         let ancho = anchoDePantalla / 14
         
         // Largo según el tipo de obstáculo
@@ -46,6 +50,8 @@ class Obstaculo: UIView {
         let medidas = CGSize(width: largoAleatorio, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
+        view.addSubview(self)
+        self.animador = animador
         self.tipoDeObstaculo = tipoDeObstaculo
         self.agregarFuncionalidad()
     }
@@ -73,5 +79,19 @@ class Obstaculo: UIView {
             default: colorAsignado = UIColor(red: 0, green: 0, blue: 1, alpha: 0.5)
         }
         self.backgroundColor = colorAsignado
+        
+        // Añadir fìsica
+        self.comportamientoDeObstaculo()
+    }
+    
+    /**
+     Añade el comportamiento para que el obstáculo funcione dentro del juego.
+     */
+    private func comportamientoDeObstaculo() {
+        self.fisicaDelObstaculo = UIDynamicItemBehavior(items: [self])
+        self.fisicaDelObstaculo.density = 9000       // Masa inicial
+        self.fisicaDelObstaculo.isAnchored = true    // No moverse después de colisión
+        self.fisicaDelObstaculo.allowsRotation = false
+        self.animador.addBehavior(self.fisicaDelObstaculo)
     }
 }

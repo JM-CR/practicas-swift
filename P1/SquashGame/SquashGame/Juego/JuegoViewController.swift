@@ -14,7 +14,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var largoDePantalla: CGFloat = 0.0
     
     // Comportamientos
-    var limitesDelJuego: UICollisionBehavior!       // Pelota, raqueta, osbtáculo y fronteras
+    var limitesDelJuego: UICollisionBehavior!    // Pelota, raqueta, osbtáculo y fronteras
     var animador: UIDynamicAnimator!
     
     // Elementos del juego
@@ -133,18 +133,15 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     private func verificarPuntuacion() {
         if self.puntuacion!.esMultiploDeDiez() {
             // Crear obstáculo
-            let obstaculo = Obstaculo(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
-            self.view.addSubview(obstaculo)
+            let obstaculo = Obstaculo(
+                anchoDePantalla: self.anchoDePantalla,
+                largoDePantalla: self.largoDePantalla,
+                animador: self.animador,
+                en: self.view
+            )
             
-            // Agregar colisión
+            // Agregar a colisiones
             self.limitesDelJuego.addItem(obstaculo)
-            
-            // Añadir física
-            let fisicaDelObstaculo = UIDynamicItemBehavior(items: [obstaculo])
-            fisicaDelObstaculo.density = 9000       // Masa inicial
-            fisicaDelObstaculo.isAnchored = true    // No moverse después de colisión
-            fisicaDelObstaculo.allowsRotation = false
-            self.limitesDelJuego.addChildBehavior(fisicaDelObstaculo)
         }
     }
     
