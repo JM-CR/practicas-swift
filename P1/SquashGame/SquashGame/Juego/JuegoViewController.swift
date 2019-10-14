@@ -17,7 +17,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var limitesDelJuego: UICollisionBehavior!       // Pelota, raqueta, osbtáculo y fronteras
     var vectorDeFuerza: UIPushBehavior!             // Pelota
     var choques: UIDynamicItemBehavior!             // Pelota
-    var efectosDeRaqueta: UIDynamicItemBehavior!    // Raqueta
     var animador: UIDynamicAnimator!
     
     // Elementos del juego
@@ -38,9 +37,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         let raqueta = Raqueta(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
-            animador: self.animador
+            animador: self.animador,
+            enView: self.view
         )
-        self.view.addSubview(raqueta)
         
         // Crear pelota
         let pelota = Pelota(
@@ -59,7 +58,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
-        self.comportamientoDeRaqueta(raqueta)
         self.comportamientoDePelota(pelota)
     }
 
@@ -146,26 +144,13 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.vectorDeFuerza.magnitude = CGFloat(0.3)    // Velocidad inicial
         self.animador.addBehavior(vectorDeFuerza)
     }
-    
-    /**
-     Añade el comportamiento para que la raqueta funcione dentro del juego.
-     
-     - Parameter raqueta: Raqueta del juego.
-     */
-    private func comportamientoDeRaqueta(_ raqueta: UIView) {
-        self.efectosDeRaqueta = UIDynamicItemBehavior(items: [raqueta])
-        self.efectosDeRaqueta.density = 9000      // Masa inicial
-        self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
-        self.efectosDeRaqueta.allowsRotation = false
-        self.animador.addBehavior(efectosDeRaqueta)
-    }
-    
+        
     /**
      Verifica si la pelota chocó contra la raqueta, si sí aumenta la puntuación en 1
      y checa si hay que agregar un nuevo obstáculo.
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        if item1 is Pelota && item2 is Raqueta {
+        if (item1 is Pelota && item2 is Raqueta) || (item1 is Raqueta && item2 is Pelota) {
             self.puntuacion!.sumaPunto()
             self.verificarPuntuacion()
         }

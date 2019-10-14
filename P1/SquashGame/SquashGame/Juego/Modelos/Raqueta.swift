@@ -13,6 +13,7 @@ class Raqueta: UIView {
     
     var centro = CGPoint(x: 0, y: 0)
     var animador: UIDynamicAnimator!
+    var efectosDeRaqueta: UIDynamicItemBehavior!
     
     /**
      Crea la raqueta según las medidas y origen dado.
@@ -30,8 +31,9 @@ class Raqueta: UIView {
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
      - Parameter animador: Encargado de agregar comportamientos de raqueta.
+     - Parameter enView: View donde se añadirá la raqueta.
      */
-    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, enView: UIView) {
         let ancho = anchoDePantalla / 12
         let largo = largoDePantalla / 6
         let puntoX = largoDePantalla / 2 - largo * 0.5
@@ -42,6 +44,7 @@ class Raqueta: UIView {
         let medidas = CGSize(width: largo, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
+        enView.addSubview(self)
         self.animador = animador
         self.agregarFuncionalidad()
     }
@@ -50,7 +53,7 @@ class Raqueta: UIView {
      Implementación de storyboard.
      */
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     /**
@@ -66,6 +69,9 @@ class Raqueta: UIView {
         let dragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(raquetaMovida))
         self.isUserInteractionEnabled = true
         self.gestureRecognizers = [dragRecognizer]
+        
+        // Añadir físicas
+        self.comportamientoDeRaqueta()
     }
     
     /**
@@ -85,5 +91,16 @@ class Raqueta: UIView {
         default:
             self.center = CGPoint(x: self.centro.x + translacion.x, y: self.centro.y)
         }
+    }
+    
+    /**
+     Añade el comportamiento para que la raqueta funcione dentro del juego.
+     */
+    private func comportamientoDeRaqueta() {
+        self.efectosDeRaqueta = UIDynamicItemBehavior(items: [self])
+        self.efectosDeRaqueta.density = 9000      // Masa inicial
+        self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
+        self.efectosDeRaqueta.allowsRotation = false
+        self.animador.addBehavior(efectosDeRaqueta)
     }
 }
