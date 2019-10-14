@@ -19,6 +19,8 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
     // Elementos del juego
     var puntuacion: Puntuacion? = nil
+    var pelota: Pelota? = nil
+    var raqueta: Raqueta? = nil
     
     /**
      Inicializa el juego, carga los elementos e implementa comportamientos necesarios.
@@ -32,7 +34,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.animador = UIDynamicAnimator(referenceView: self.view)   // Comportamientos
         
         // Crear raqueta
-        let raqueta = Raqueta(
+        self.raqueta = Raqueta(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
             animador: self.animador,
@@ -40,7 +42,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         )
         
         // Crear pelota
-        let pelota = Pelota(
+        self.pelota = Pelota(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
             animador: self.animador,
@@ -48,15 +50,14 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         )
         
         // Preparar puntuación
-        let puntuacion = Puntuacion(
+        self.puntuacion = Puntuacion(
             anchoDePantalla: self.anchoDePantalla,
-            largoDePantalla: self.largoDePantalla
+            largoDePantalla: self.largoDePantalla,
+            en: self.view
         )
-        self.view.addSubview(puntuacion)
-        self.puntuacion = puntuacion
             
         // Añadir efectos
-        self.añadirColisiones(pelota, raqueta)
+        self.añadirColisiones(pelota!, raqueta!)
     }
 
     /**

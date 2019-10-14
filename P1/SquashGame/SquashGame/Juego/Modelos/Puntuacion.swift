@@ -28,8 +28,9 @@ class Puntuacion: UILabel {
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
+     - Parameter view: View donde se añadirá la puntuación.
      */
-    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, en view: UIView) {
         let ancho = anchoDePantalla / 14
         let largo = largoDePantalla / 20
         let puntoX = largoDePantalla * 0.05
@@ -40,6 +41,7 @@ class Puntuacion: UILabel {
         let medidas = CGSize(width: largo, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
+        view.addSubview(self)
         self.agregarFuncionalidad()
     }
     
