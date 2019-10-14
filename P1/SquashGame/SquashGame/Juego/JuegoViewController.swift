@@ -55,7 +55,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             largoDePantalla: self.largoDePantalla,
             en: self.view
         )
-            
+        
         // Añadir efectos
         self.añadirColisiones(pelota!, raqueta!)
     }
@@ -73,47 +73,24 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.limitesDelJuego.collisionMode = .everything
         self.limitesDelJuego.collisionDelegate = self
         
-        // Añadir límites
-        self.agregarLimitesDePantalla()
+        // Añadir frontera
+        self.agregarZonaPerdedora()
         self.animador.addBehavior(self.limitesDelJuego)
     }
     
     /**
-     Crea el perímetro que contendrá al juego.
+     Añade la frontera inferior donde pierde el usuario.
      */
-    private func agregarLimitesDePantalla() {
-        // Límite superior
-        var puntoUno = CGPoint(x: 0, y: 0)
-        var puntoDos = CGPoint(x: 0, y: largoDePantalla)
-        crearFrontera(inicio: puntoUno, fin: puntoDos, nombre: "superior")
+    private func agregarZonaPerdedora() {
+        // Entre puntos
+        let puntoUno = CGPoint(x: 0, y: anchoDePantalla)
+        let puntoDos = CGPoint(x: largoDePantalla, y: anchoDePantalla)
         
-        // Límite izquierdo
-        puntoDos = CGPoint(x: 0, y: anchoDePantalla)
-        crearFrontera(inicio: puntoUno, fin: puntoDos, nombre: "izquierda")
-        
-        // Límite derecho
-        puntoUno = CGPoint(x: 0, y: largoDePantalla)
-        puntoDos = CGPoint(x: largoDePantalla, y: largoDePantalla)
-        crearFrontera(inicio: puntoUno, fin: puntoDos, nombre: "derecha")
-        
-        // Límite inferior
-        puntoUno = CGPoint(x: 0, y: anchoDePantalla)
-        puntoDos = CGPoint(x: anchoDePantalla, y: largoDePantalla)
-        crearFrontera(inicio: puntoUno, fin: puntoDos, nombre: "inferior")
-    }
-    
-    /**
-     Añade una frontera entre los puntos dados al límite del juego.
-     
-     - Parameter inicio: Punto inicial.
-     - Parameter fin: Punto final.
-     - Parameter nombre: Identificador de la frontera.
-     */
-    private func crearFrontera(inicio: CGPoint, fin: CGPoint, nombre: String) {
+        // Agregar a colisiones
         self.limitesDelJuego.addBoundary(
-            withIdentifier: NSString(string: nombre),
-            from: inicio,
-            to: fin
+            withIdentifier: "inferior" as NSCopying,
+            from: puntoUno,
+            to: puntoDos
         )
     }
         
@@ -145,6 +122,29 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             self.limitesDelJuego.addItem(obstaculo)
         }
     }
+    
+    /**
+     Informa al usuario que perdió el juego si la pelota toca la parte inferior de la pantalla.
+     Redirecciona hacia marcadores y detiene el juego.
+     */
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
+        if item is Pelota && identifier as? String == "inferior" {
+            let alerta = UIAlertController(
+                title: "!Has perdido!",
+                message: "Presiona el botón para continuar.",
+                preferredStyle: .alert
+            )
+            
+            let haciaMarcadores = UIAlertAction(title: "Ir a marcadores.", style: .default) { action in
+                // TODO: Agregar navegación hacia marcadores.
+            }
+            
+            alerta.addAction(haciaMarcadores)
+            self.present(alerta, animated: true, completion: nil)
+        }
+    }
+    
+    
     
     /*
     // MARK: - Navigation
