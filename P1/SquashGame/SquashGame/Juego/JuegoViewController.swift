@@ -20,6 +20,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var efectosDeRaqueta: UIDynamicItemBehavior!    // Raqueta
     var animador: UIDynamicAnimator!
     
+    // Elementos del juego
+    var puntuacion: Puntuacion? = nil
+    
     /**
      Inicializa el juego, carga los elementos e implementa comportamientos necesarios.
      */
@@ -52,6 +55,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             largoDePantalla: self.largoDePantalla
         )
         self.view.addSubview(puntuacion)
+        self.puntuacion = puntuacion
             
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
@@ -154,6 +158,16 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
         self.efectosDeRaqueta.allowsRotation = false
         self.animador.addBehavior(efectosDeRaqueta)
+    }
+    
+    /**
+     Verifica si la pelota chocó contra la raqueta, si sí aumenta la puntuación en 1.
+     Si la puntuación es múltiplo de 10 genera un obstáculo aleatorio.
+     */
+    func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
+        if item1 is Pelota && item2 is Raqueta {
+            self.puntuacion!.sumaPunto()
+        }
     }
     
     /*

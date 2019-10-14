@@ -64,6 +64,7 @@ class Raqueta: UIView {
         
         // "Drag gesture" para mover la raqueta horizontalmente
         let dragRecognizer = UIPanGestureRecognizer(target: self, action: #selector(raquetaMovida))
+        self.isUserInteractionEnabled = true
         self.gestureRecognizers = [dragRecognizer]
     }
     

@@ -31,7 +31,7 @@ class Puntuacion: UILabel {
      */
     convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
         let ancho = anchoDePantalla / 14
-        let largo = largoDePantalla / 14
+        let largo = largoDePantalla / 12
         let puntoX = largoDePantalla * 0.05
         let puntoY = anchoDePantalla * 0.05
         
@@ -69,6 +69,7 @@ class Puntuacion: UILabel {
      */
     func sumaPunto() {
         self.puntosTotales += 1
+        self.text = "\(self.puntosTotales)"
     }
     
     /**
