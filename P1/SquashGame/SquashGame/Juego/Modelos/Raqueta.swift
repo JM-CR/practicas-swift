@@ -31,9 +31,9 @@ class Raqueta: UIView {
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
      - Parameter animador: Encargado de agregar comportamientos de raqueta.
-     - Parameter enView: View donde se añadirá la raqueta.
+     - Parameter view: View donde se añadirá la raqueta.
      */
-    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, enView: UIView) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, en view: UIView) {
         let ancho = anchoDePantalla / 12
         let largo = largoDePantalla / 6
         let puntoX = largoDePantalla / 2 - largo * 0.5
@@ -44,7 +44,7 @@ class Raqueta: UIView {
         let medidas = CGSize(width: largo, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
-        enView.addSubview(self)
+        view.addSubview(self)
         self.animador = animador
         self.agregarFuncionalidad()
     }

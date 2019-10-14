@@ -11,6 +11,10 @@ import UIKit
 
 class Pelota: UIView {
     
+    var animador: UIDynamicAnimator!
+    var vectorDeFuerza: UIPushBehavior!
+    var choques: UIDynamicItemBehavior!
+    
     /**
      Crea la pelota según las medidas y origen dado.
      
@@ -26,8 +30,10 @@ class Pelota: UIView {
      
      - Parameter anchoDePantalla: Ancho del dispositivo.
      - Parameter largoDePantalla: Largo del dispositivo.
+     - Parameter animador: Encargado de agregar comportamientos de pelota.
+     - Parameter view: View donde se añadirá la pelota.
      */
-    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat) {
+    convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, en view: UIView) {
         let ancho = anchoDePantalla / 12
         let largo = anchoDePantalla / 12
         let puntoX = largoDePantalla / 2 - largo * 0.5
@@ -38,6 +44,8 @@ class Pelota: UIView {
         let medidas = CGSize(width: largo, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
+        view.addSubview(self)
+        self.animador = animador
         self.agregarFuncionalidad()
     }
     
@@ -56,5 +64,33 @@ class Pelota: UIView {
         self.layer.borderWidth = 3
         self.layer.cornerRadius = 20
         self.clipsToBounds = true
+        
+        // Añadir física
+        self.comportamientoDePelota()
+    }
+    
+    /**
+     Añade el comportamiento para que la pelota funcione dentro del juego.
+     */
+    private func comportamientoDePelota() {
+        // Configurar choque elástico
+        self.choques = UIDynamicItemBehavior(items: [self])
+        self.choques.elasticity = 1.0
+        self.choques.resistance = 0.0    // Contra el aire
+        self.choques.friction = 0.0      // Al chocar
+        self.choques.allowsRotation = false
+        self.animador.addBehavior(self.choques)
+        
+        // Configurar vector de fuerza inicial
+        self.vectorDeFuerza = UIPushBehavior(items: [self], mode: .instantaneous)
+        let fuerzaEnY = CGFloat.random(in: 0.7...1) * -1    // Eje vertical invertido
+        var fuerzaEnX: CGFloat
+        repeat {
+            fuerzaEnX = CGFloat.random(in: -1...1)
+        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
+        
+        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
+        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
+        self.animador.addBehavior(self.vectorDeFuerza)
     }
 }

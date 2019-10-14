@@ -15,8 +15,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
     // Comportamientos
     var limitesDelJuego: UICollisionBehavior!       // Pelota, raqueta, osbtáculo y fronteras
-    var vectorDeFuerza: UIPushBehavior!             // Pelota
-    var choques: UIDynamicItemBehavior!             // Pelota
     var animador: UIDynamicAnimator!
     
     // Elementos del juego
@@ -38,15 +36,16 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
             animador: self.animador,
-            enView: self.view
+            en: self.view
         )
         
         // Crear pelota
         let pelota = Pelota(
             anchoDePantalla: self.anchoDePantalla,
-            largoDePantalla: self.largoDePantalla
+            largoDePantalla: self.largoDePantalla,
+            animador: self.animador,
+            en: self.view
         )
-        self.view.addSubview(pelota)
         
         // Preparar puntuación
         let puntuacion = Puntuacion(
@@ -58,7 +57,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             
         // Añadir efectos
         self.añadirColisiones(pelota, raqueta)
-        self.comportamientoDePelota(pelota)
     }
 
     /**
@@ -116,33 +114,6 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             from: inicio,
             to: fin
         )
-    }
-    
-    /**
-     Añade el comportamiento para que la pelota funcione dentro del juego.
-     
-     - Parameter pelota: Pelota del juego.
-     */
-    private func comportamientoDePelota(_ pelota: UIView) {
-        // Configurar choque elástico
-        self.choques = UIDynamicItemBehavior(items: [pelota])
-        self.choques.elasticity = 1.0
-        self.choques.resistance = 0.0    // Contra el aire
-        self.choques.friction = 0.0      // Al chocar
-        self.choques.allowsRotation = false
-        self.animador.addBehavior(choques)
-        
-        // Configurar vector de fuerza inicial
-        self.vectorDeFuerza = UIPushBehavior(items: [pelota], mode: .instantaneous)
-        let fuerzaEnY = CGFloat.random(in: 0.7...1) * -1    // Eje vertical invertido
-        var fuerzaEnX: CGFloat
-        repeat {
-            fuerzaEnX = CGFloat.random(in: -1...1)
-        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
-        
-        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
-        self.vectorDeFuerza.magnitude = CGFloat(0.3)    // Velocidad inicial
-        self.animador.addBehavior(vectorDeFuerza)
     }
         
     /**
