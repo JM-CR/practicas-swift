@@ -11,7 +11,7 @@ import UIKit
 
 class Obstaculo: UIView {
 
-    var tipoDeObstaculo = 1    // Hay tres tipos (1, 2 ó 3)
+    var tipoDeObstaculo = 1    // Hay de tres tipos
     
     /**
      Crea un obstáculo según las medidas y origen dado.

@@ -161,12 +161,34 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
     /**
-     Verifica si la pelota chocó contra la raqueta, si sí aumenta la puntuación en 1.
-     Si la puntuación es múltiplo de 10 genera un obstáculo aleatorio.
+     Verifica si la pelota chocó contra la raqueta, si sí aumenta la puntuación en 1
+     y checa si hay que agregar un nuevo obstáculo.
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
         if item1 is Pelota && item2 is Raqueta {
             self.puntuacion!.sumaPunto()
+            self.verificarPuntuacion()
+        }
+    }
+    
+    /**
+     Verifica si la puntuación es múltiplo de 10 para agregar un nuevo obstáculo al juego.
+     */
+    private func verificarPuntuacion() {
+        if self.puntuacion!.esMultiploDeDiez() {
+            // Crear obstáculo
+            let obstaculo = Obstaculo(anchoDePantalla: self.anchoDePantalla, largoDePantalla: self.largoDePantalla)
+            self.view.addSubview(obstaculo)
+            
+            // Agregar colisión
+            self.limitesDelJuego.addItem(obstaculo)
+            
+            // Añadir física
+            let fisicaDelObstaculo = UIDynamicItemBehavior(items: [obstaculo])
+            fisicaDelObstaculo.density = 9000       // Masa inicial
+            fisicaDelObstaculo.isAnchored = true    // No moverse después de colisión
+            fisicaDelObstaculo.allowsRotation = false
+            self.limitesDelJuego.addChildBehavior(fisicaDelObstaculo)
         }
     }
     
