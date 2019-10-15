@@ -100,6 +100,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
         if (item1 is Pelota && item2 is Raqueta) || (item1 is Raqueta && item2 is Pelota) {
+            // TODO: Sonido contra raqueta
             self.puntuacion!.sumaPunto()
             self.verificarPuntuacion()
         }
@@ -124,33 +125,58 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     }
     
     /**
-     Informa al usuario que perdió el juego si la pelota toca la parte inferior de la pantalla.
-     Redirecciona hacia marcadores y detiene el juego.
+     Detecta si el usuario perdió cuando la pelota toca la parte inferior de la pantalla.
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
-        if item is Pelota && identifier as? String == "inferior" {
-            let alerta = UIAlertController(
-                title: "!Has perdido!",
-                message: "Presiona el botón para continuar.",
-                preferredStyle: .alert
-            )
-            
-            let haciaMarcadores = UIAlertAction(title: "Ir a marcadores.", style: .default, handler: irAMarcadores)
-            alerta.addAction(haciaMarcadores)
-            self.present(alerta, animated: true, completion: nil)
+        if item is Pelota {
+            switch identifier as? String {
+            case "inferior":
+                self.finDelJuego()
+            default:
+                // TODO: Sonido contra frontera
+                print("Sonido")
+            }
         }
     }
     
     /**
-     Redirecciona al view controller de marcadores desde el modal.
+     Detiene el juego, manda una alerta y reproduce un sonido cuando el usuario pierde.
      */
-    func irAMarcadores(accion: UIAlertAction) {
-        let inicioVC = self.presentingViewController as! InicioViewController
-        dismiss(animated: true, completion: nil)
-        inicioVC.performSegue(withIdentifier: "marcadores", sender: inicioVC)
+    private func finDelJuego() {
+        // Eliminar pelota
+        self.limitesDelJuego.removeItem(self.pelota!)
+        self.pelota!.removeFromSuperview()
         
-//        let marcadorVC = self.storyboard?.instantiateViewController(withIdentifier: "marcador")
-//        self.present(marcadorVC!, animated: true, completion: nil)
+        // Eliminar comportamientos
+        self.limitesDelJuego.removeAllBoundaries()
+        self.animador.removeAllBehaviors()
+        
+        // TODO: Sonido de que perdió
+        
+        // Mensaje de que perdió
+        self.mensajeFinDeJuego()
     }
-
+    
+    /**
+     Muestra una alerta indicando al usuario que perdió el juego y redirecciona hacia marcadores.
+     */
+    private func mensajeFinDeJuego() {
+        // Crear alerta
+        let alerta = UIAlertController(
+            title: "!Has perdido!",
+            message: "Presiona el botón para continuar.",
+            preferredStyle: .alert
+        )
+        
+        // Configurar acción
+        let haciaMarcador = UIAlertAction(title: "Ir a marcadores.", style: .default) { evento in
+            // Crear y redireccionar
+            let marcadorVC = self.storyboard?.instantiateViewController(withIdentifier: "marcador")
+            self.present(marcadorVC!, animated: true, completion: nil)
+        }
+        alerta.addAction(haciaMarcador)
+        
+        // Mostrar
+        self.present(alerta, animated: true, completion: nil)
+    }
 }

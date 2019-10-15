@@ -18,7 +18,8 @@ class MarcadorViewController: UIViewController {
      Regresa al menú principal desde el modal.
      */
     @IBAction func regresaAlMenu() {
-        dismiss(animated: true, completion: nil)
+        let inicioVC = self.storyboard?.instantiateViewController(withIdentifier: "inicio")
+        self.present(inicioVC!, animated: true, completion: nil)
     }
     /*
     // MARK: - Navigation
