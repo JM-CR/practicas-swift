@@ -51,7 +51,7 @@
                                     <color key="titleColor" red="0.86898362636566162" green="0.36894696950912476" blue="0.33719518780708313" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
-                                    <segue destination="evi-8q-Bc3" kind="presentation" id="6l6-Ph-Hki"/>
+                                    <segue destination="evi-8q-Bc3" kind="presentation" identifier="juego" id="6l6-Ph-Hki"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,8 +81,7 @@
         <!--Marcador View Controller-->
         <scene sceneID="Z9b-fK-9aJ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="plz-zc-LHI" customClass="MarcadorViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="marcador" useStoryboardIdentifierAsRestorationIdentifier="YES" id="plz-zc-LHI" customClass="MarcadorViewController" customModule="SquashGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EQT-FH-9gi">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -116,6 +115,7 @@
                         <viewLayoutGuide key="safeArea" id="5ig-9m-SUT"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="827.67857142857144" y="137.68115942028987"/>
         </scene>
@@ -175,7 +175,7 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ba-9Y-zbU">
                                 <rect key="frame" x="81" y="126" width="735" height="150.5"/>
-                                <mutableString key="text">1. El objetivo del juego es golpear la pelota y evitar que toque la parte inferior de la pantalla.  2. Para jugar moverás una raqueta horizontalmente con tu dedo.   3. Cada vez que devuelvas un golpe recibirás un punto.  4. Cada 10 puntos aparecerá un obstáculo aleatorio.</mutableString>
+                                <string key="text">1. El objetivo del juego es golpear la pelota y evitar que toque la parte inferior de la pantalla.  2. Para jugar moverás una raqueta horizontalmente con tu dedo.   3. Cada vez que devuelvas un golpe recibirás un punto.  4. Cada 10 puntos aparecerá un obstáculo aleatorio.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
