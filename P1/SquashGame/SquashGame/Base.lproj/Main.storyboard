@@ -90,7 +90,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plz-fZ-Cmp">
-                                <rect key="frame" x="667" y="328" width="165" height="38"/>
+                                <rect key="frame" x="667" y="355" width="165" height="38"/>
                                 <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="Glt-e3-SoX"/>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-Ij-xvq">
-                                <rect key="frame" x="64" y="328" width="165" height="38"/>
+                                <rect key="frame" x="64" y="355" width="165" height="38"/>
                                 <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="165" id="L5J-T1-gqK"/>
@@ -122,11 +122,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="Plz-fZ-Cmp" firstAttribute="bottom" secondItem="5ig-9m-SUT" secondAttribute="bottom" id="9L9-Ak-G5X"/>
                             <constraint firstItem="Plz-fZ-Cmp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tC7-Ij-xvq" secondAttribute="trailing" constant="438" id="Wl3-St-FXZ"/>
                             <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" secondItem="Plz-fZ-Cmp" secondAttribute="trailing" constant="20" id="ZeP-kl-Kd5"/>
                             <constraint firstItem="pYx-i3-y0E" firstAttribute="leading" secondItem="EQT-FH-9gi" secondAttribute="leading" id="bwr-KH-NNW"/>
-                            <constraint firstItem="5ig-9m-SUT" firstAttribute="bottom" secondItem="Plz-fZ-Cmp" secondAttribute="bottom" constant="27" id="eTl-1B-kEP"/>
-                            <constraint firstItem="5ig-9m-SUT" firstAttribute="bottom" secondItem="tC7-Ij-xvq" secondAttribute="bottom" constant="27" id="eWg-8g-lpI"/>
+                            <constraint firstItem="tC7-Ij-xvq" firstAttribute="bottom" secondItem="5ig-9m-SUT" secondAttribute="bottom" id="dsy-uf-AR2"/>
                             <constraint firstAttribute="bottom" secondItem="pYx-i3-y0E" secondAttribute="bottom" id="eed-lP-Qx7"/>
                             <constraint firstItem="tC7-Ij-xvq" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="20" id="oiG-D8-XmK"/>
                             <constraint firstAttribute="trailing" secondItem="pYx-i3-y0E" secondAttribute="trailing" id="upX-EW-gEE"/>

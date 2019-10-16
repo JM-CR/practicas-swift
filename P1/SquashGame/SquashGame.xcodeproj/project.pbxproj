@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */ = {isa = PBXBuildFile; fileRef = CA1FF84F2350EA88001D77D0 /* Ayuda.png */; };
+		CA22888123569DC300A6FA38 /* Marcadores.png in Resources */ = {isa = PBXBuildFile; fileRef = CA22888023569DC300A6FA38 /* Marcadores.png */; };
 		CA83BFB2234E3702001448F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFB1234E3702001448F8 /* AppDelegate.swift */; };
 		CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB5234E3702001448F8 /* Main.storyboard */; };
 		CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB8234E3702001448F8 /* Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A0234FD8A100E82EF7 /* Sonido.swift */; };
 		CA9100A4234FD92E00E82EF7 /* Marcador.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A3234FD92E00E82EF7 /* Marcador.swift */; };
 		CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9100B1234FE6FF00E82EF7 /* Splash.png */; };
-		CAC57B472350F18000A83A5A /* Marcadores.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC57B462350F17F00A83A5A /* Marcadores.png */; };
 		CAC57B492350F39900A83A5A /* Fondo.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC57B482350F39900A83A5A /* Fondo.png */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		CA1FF84F2350EA88001D77D0 /* Ayuda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ayuda.png; sourceTree = "<group>"; };
+		CA22888023569DC300A6FA38 /* Marcadores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marcadores.png; sourceTree = "<group>"; };
 		CA83BFAE234E3702001448F8 /* SquashGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquashGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83BFB1234E3702001448F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA83BFB6234E3702001448F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		CA9100A0234FD8A100E82EF7 /* Sonido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sonido.swift; sourceTree = "<group>"; };
 		CA9100A3234FD92E00E82EF7 /* Marcador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marcador.swift; sourceTree = "<group>"; };
 		CA9100B1234FE6FF00E82EF7 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
-		CAC57B462350F17F00A83A5A /* Marcadores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Marcadores.png; sourceTree = "<group>"; };
 		CAC57B482350F39900A83A5A /* Fondo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Fondo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -214,7 +214,7 @@
 			children = (
 				CA1FF84F2350EA88001D77D0 /* Ayuda.png */,
 				CAC57B482350F39900A83A5A /* Fondo.png */,
-				CAC57B462350F17F00A83A5A /* Marcadores.png */,
+				CA22888023569DC300A6FA38 /* Marcadores.png */,
 				CA9100B1234FE6FF00E82EF7 /* Splash.png */,
 			);
 			path = Assets;
@@ -324,10 +324,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA22888123569DC300A6FA38 /* Marcadores.png in Resources */,
 				CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */,
 				CA83BFBC234E3702001448F8 /* LaunchScreen.storyboard in Resources */,
 				CAC57B492350F39900A83A5A /* Fondo.png in Resources */,
-				CAC57B472350F18000A83A5A /* Marcadores.png in Resources */,
 				CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */,
 				CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */,
 				CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */,
