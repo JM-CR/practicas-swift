@@ -170,6 +170,10 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         
         // Configurar acción
         let haciaMarcador = UIAlertAction(title: "Ir a marcadores.", style: .default) { evento in
+            // Mandar nueva puntuacion al marcador
+            let marcador = Marcador()
+            marcador.nuevaPuntuacion(puntaje: self.puntuacion!.puntosTotales)
+            
             // Crear y redireccionar
             let marcadorVC = self.storyboard?.instantiateViewController(withIdentifier: "marcador")
             self.present(marcadorVC!, animated: true, completion: nil)

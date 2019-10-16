@@ -13,15 +13,15 @@ class MarcadorViewController: UIViewController {
     @IBOutlet weak var botonRegresar: UIButton!
     @IBOutlet weak var botonBorrar: UIButton!
     
-    // Rastreo de mejores puntuaciones
-    var puntuaciones: [Int]? = nil
-    var fechasDeCreacion: [String]? = nil
+    var marcador: Marcador? = nil
     
     /**
      Realiza acciones después de que cargó el controlador.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.marcador = Marcador()
+        self.marcador!.cargarHistorial()
     }
     
     /**
@@ -34,37 +34,17 @@ class MarcadorViewController: UIViewController {
     }
     
     /**
+     Borra el historial de puntuaciones.
+     */
+    @IBAction func borrarMarcador(_ sender: UIButton) {
+        self.marcador!.borrar()
+    }
+    
+    /**
      Regresa al menú principal desde el modal.
      */
     @IBAction func regresaAlMenu() {
         let inicioVC = self.storyboard?.instantiateViewController(withIdentifier: "inicio")
         self.present(inicioVC!, animated: true, completion: nil)
-    }
-    
-    /**
-     Borra el marcador del dispositivo y de la pantalla.
-     */
-    @IBAction func borrarMarcador(_ sender: UIButton) {
-        self.puntuaciones?.removeAll()
-        self.fechasDeCreacion?.removeAll()
-        self.guardarHistorial()
-    }
-    
-    /**
-     Guarda el historial de puntuaciones en el dispositivo.
-     */
-    private func guardarHistorial() {
-        let defaults = UserDefaults.standard
-        defaults.set(self.fechasDeCreacion, forKey: "fechas")
-        defaults.set(self.puntuaciones, forKey: "puntos")
-    }
-    
-    /**
-     Lee del dispositivo el historial de puntuaciones.
-     */
-    private func cargarHistorial() {
-        let defaults = UserDefaults.standard
-        self.fechasDeCreacion = defaults.stringArray(forKey: "fechas") ?? [String]()
-        self.puntuaciones = defaults.array(forKey: "puntos") as? [Int] ?? [Int]()
     }
 }
