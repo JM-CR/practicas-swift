@@ -16,7 +16,7 @@ class MarcadorViewController: UIViewController {
     var marcador: Marcador? = nil
     
     /**
-     Realiza acciones después de que cargó el controlador.
+     Realiza acciones después de que se instanció el view.
      */
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class MarcadorViewController: UIViewController {
     }
     
     /**
-     Realiza acciones antes de que aparezca el controlador.
+     Realiza acciones antes de que aparezca el view.
      */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
