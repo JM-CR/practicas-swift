@@ -11,7 +11,7 @@ import Foundation
 class Marcador {
     
     var puntuaciones = [Int]()
-    var fechas = [String]()
+    var historial = [String]()
     
     /**
      Carga el historial del dispositivo.
@@ -33,35 +33,54 @@ class Marcador {
         
         // Añadir elemento si el historial está vacío
         guard self.puntuaciones.count != 0 else {
-            self.puntuaciones.append(puntaje)
-            self.fechas.append(self.fechaDeCreacion())
-            self.guardarHistorial()
+            self.creaRegistro(totalDePuntos: puntaje, en: 0)
             return
         }
         
-        // Verificar si entra en el top
-        var nuevoElemento = false    // Bandera
-        for (index, numero) in self.puntuaciones.enumerated() {
-            if puntaje >= numero {
-                self.puntuaciones.insert(puntaje, at: index)
-                self.fechas.insert(self.fechaDeCreacion(), at: index)
-                nuevoElemento.toggle()
-                break
-            }
+        // Verificar si es el mejor
+        if puntaje > self.puntuaciones[0] {
+            self.creaRegistro(totalDePuntos: puntaje, en: 0)
+        } else {
+            self.creaRegistro(totalDePuntos: puntaje, en: nil)
         }
-        
-        if !nuevoElemento && self.puntuaciones.count < 6 {
-            self.puntuaciones.append(puntaje)
-            self.fechas.append(self.fechaDeCreacion())
-            self.guardarHistorial()
+    }
+    
+    /**
+     Añade un elemento al historial de partidas.
+     
+     - Parameter totalDePuntos: Puntuación obtenida en la partida.
+     - Parameter indice: Indica la posición donde agregar al elemento. Si es nil al final.
+     */
+    private func creaRegistro(totalDePuntos: Int, en indice: Int?) {
+        // No agregar más si ya son seis
+        guard self.puntuaciones.count <= 6 else {
             return
         }
         
-        // Borrar elementos que salgan del top
+        // Crear entrada
+        var texto: String
+        let fechaDeRegistro = self.fechaDeCreacion()
+        if totalDePuntos == 1 {
+            texto = "Obtuviste \(totalDePuntos) punto el \(fechaDeRegistro)"
+        } else {
+            texto = "Obtuviste \(totalDePuntos) puntos el \(fechaDeRegistro)"
+        }
+        
+        // Agregar al historial
+        if let posicion = indice {
+            self.puntuaciones.insert(totalDePuntos, at: posicion)
+            self.historial.insert(texto, at: posicion)
+        } else {
+            self.puntuaciones.append(totalDePuntos)
+            self.historial.append(texto)
+        }
+        
+        // Borrar elementos extra
         if self.puntuaciones.count > 6 {
-            self.puntuaciones.removeLast()
-            self.fechas.removeLast()
+            self.puntuaciones.remove(at: 1)
+            self.historial.remove(at: 1)
         }
+        
         self.guardarHistorial()
     }
     
@@ -84,7 +103,7 @@ class Marcador {
         let año = calendarioActual.component(.year, from: fechaActual)
         let fecha = "\(dia)/\(mes)/\(año)"
         
-        return "\(fecha) \(tiempo)";
+        return "\(fecha) a las \(tiempo)";
     }
     
     /**
@@ -92,7 +111,7 @@ class Marcador {
      */
     func guardarHistorial() {
         let defaults = UserDefaults.standard
-        defaults.set(self.fechas, forKey: "fechas")
+        defaults.set(self.historial, forKey: "historial")
         defaults.set(self.puntuaciones, forKey: "puntos")
     }
     
@@ -101,7 +120,7 @@ class Marcador {
      */
     func cargarHistorial() {
         let defaults = UserDefaults.standard
-        self.fechas = defaults.stringArray(forKey: "fechas") ?? [String]()
+        self.historial = defaults.stringArray(forKey: "historial") ?? [String]()
         self.puntuaciones = defaults.array(forKey: "puntos") as? [Int] ?? [Int]()
     }
     
@@ -110,7 +129,7 @@ class Marcador {
      */
     func borrar() {
         self.puntuaciones.removeAll()
-        self.fechas.removeAll()
+        self.historial = [String]()
         self.guardarHistorial()
     }
 }

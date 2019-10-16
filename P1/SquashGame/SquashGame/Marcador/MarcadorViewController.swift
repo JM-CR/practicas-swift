@@ -13,7 +13,15 @@ class MarcadorViewController: UIViewController {
     @IBOutlet weak var botonRegresar: UIButton!
     @IBOutlet weak var botonBorrar: UIButton!
     
+    @IBOutlet weak var labelMaximaPuntuacion: UILabel!
+    @IBOutlet weak var primerLabel: UILabel!
+    @IBOutlet weak var segundoLabel: UILabel!
+    @IBOutlet weak var tercerLabel: UILabel!
+    @IBOutlet weak var cuartoLabel: UILabel!
+    @IBOutlet weak var quintoLabel: UILabel!
+    
     var marcador: Marcador? = nil
+    var labels = [UILabel]()
     
     /**
      Realiza acciones después de que se instanció el view.
@@ -22,6 +30,14 @@ class MarcadorViewController: UIViewController {
         super.viewDidLoad()
         self.marcador = Marcador()
         self.marcador!.cargarHistorial()
+        
+        // Añadir labels en arreglo para fácil interacción
+        self.labels.append(self.labelMaximaPuntuacion)
+        self.labels.append(self.quintoLabel)
+        self.labels.append(self.cuartoLabel)
+        self.labels.append(self.tercerLabel)
+        self.labels.append(self.segundoLabel)
+        self.labels.append(self.primerLabel)
     }
     
     /**
@@ -31,6 +47,7 @@ class MarcadorViewController: UIViewController {
         super.viewWillAppear(true)
         self.botonRegresar.layer.cornerRadius = 15
         self.botonBorrar.layer.cornerRadius = 15
+        self.mostrarHistorial()
     }
     
     /**
@@ -38,6 +55,21 @@ class MarcadorViewController: UIViewController {
      */
     @IBAction func borrarMarcador(_ sender: UIButton) {
         self.marcador!.borrar()
+        self.mostrarHistorial()
+    }
+    
+    /**
+     Actualiza el contenido de los labels con las puntuaciones.
+     */
+    private func mostrarHistorial() {
+        let totalDeElementos = self.marcador!.historial.count
+        for indice in 0...5 {
+            if totalDeElementos >= indice + 1 {
+                self.labels[indice].text = self.marcador!.historial[indice]
+            } else {
+                self.labels[indice].text = "Sin puntuación"
+            }
+        }
     }
     
     /**

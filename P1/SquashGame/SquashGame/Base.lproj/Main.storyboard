@@ -89,6 +89,36 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcadores.png" translatesAutoresizingMaskIntoConstraints="NO" id="pYx-i3-y0E">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4C-tf-3Ge">
+                                <rect key="frame" x="339" y="136" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HeE-iw-e6G">
+                                <rect key="frame" x="339" y="175" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hc3-7i-2Ip">
+                                <rect key="frame" x="339" y="212" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MaO-nV-yxy">
+                                <rect key="frame" x="339" y="251" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zld-Pk-W6B">
+                                <rect key="frame" x="339" y="291" width="127.5" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Plz-fZ-Cmp">
                                 <rect key="frame" x="667" y="355" width="165" height="38"/>
                                 <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -104,6 +134,12 @@
                                     <action selector="regresarAlMenu" destination="J7g-kE-QMS" eventType="touchUpInside" id="NVZ-J6-ke6"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sin puntuación" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="445-py-2kY">
+                                <rect key="frame" x="376.5" y="91" width="143" height="21"/>
+                                <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tC7-Ij-xvq">
                                 <rect key="frame" x="64" y="355" width="165" height="38"/>
                                 <color key="backgroundColor" red="0.89402121310000005" green="0.90169012550000005" blue="0.92939800019999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -122,21 +158,45 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="445-py-2kY" firstAttribute="top" secondItem="5ig-9m-SUT" secondAttribute="top" constant="91" id="0CU-Yz-ZkZ"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="HeE-iw-e6G" secondAttribute="trailing" constant="399" id="7av-04-Cty"/>
                             <constraint firstItem="Plz-fZ-Cmp" firstAttribute="bottom" secondItem="5ig-9m-SUT" secondAttribute="bottom" id="9L9-Ak-G5X"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="z4C-tf-3Ge" secondAttribute="trailing" constant="399" id="9L9-fN-c8n"/>
+                            <constraint firstItem="zld-Pk-W6B" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="295" id="CCn-hU-37W"/>
+                            <constraint firstItem="HeE-iw-e6G" firstAttribute="top" secondItem="z4C-tf-3Ge" secondAttribute="bottom" constant="18" id="EL6-s6-ede"/>
+                            <constraint firstItem="MaO-nV-yxy" firstAttribute="top" secondItem="Hc3-7i-2Ip" secondAttribute="bottom" constant="18" id="Oal-MP-ikU"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="MaO-nV-yxy" secondAttribute="trailing" constant="399" id="P3U-Xv-Nu9"/>
                             <constraint firstItem="Plz-fZ-Cmp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tC7-Ij-xvq" secondAttribute="trailing" constant="438" id="Wl3-St-FXZ"/>
                             <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" secondItem="Plz-fZ-Cmp" secondAttribute="trailing" constant="20" id="ZeP-kl-Kd5"/>
                             <constraint firstItem="pYx-i3-y0E" firstAttribute="leading" secondItem="EQT-FH-9gi" secondAttribute="leading" id="bwr-KH-NNW"/>
+                            <constraint firstItem="MaO-nV-yxy" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="295" id="cEl-H0-Zgt"/>
                             <constraint firstItem="tC7-Ij-xvq" firstAttribute="bottom" secondItem="5ig-9m-SUT" secondAttribute="bottom" id="dsy-uf-AR2"/>
+                            <constraint firstItem="HeE-iw-e6G" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="295" id="eMU-aV-DCh"/>
                             <constraint firstAttribute="bottom" secondItem="pYx-i3-y0E" secondAttribute="bottom" id="eed-lP-Qx7"/>
+                            <constraint firstItem="Hc3-7i-2Ip" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="295" id="fQk-KD-YAT"/>
+                            <constraint firstItem="zld-Pk-W6B" firstAttribute="top" secondItem="MaO-nV-yxy" secondAttribute="bottom" constant="19" id="fZA-Sv-4A9"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Hc3-7i-2Ip" secondAttribute="trailing" constant="399" id="k7R-sc-lVZ"/>
+                            <constraint firstItem="Hc3-7i-2Ip" firstAttribute="top" secondItem="HeE-iw-e6G" secondAttribute="bottom" constant="16" id="ksb-5k-I3E"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="zld-Pk-W6B" secondAttribute="trailing" constant="399" id="nch-X2-yU0"/>
+                            <constraint firstItem="445-py-2kY" firstAttribute="centerX" secondItem="pYx-i3-y0E" secondAttribute="centerX" id="nhR-Cf-gMa"/>
                             <constraint firstItem="tC7-Ij-xvq" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="20" id="oiG-D8-XmK"/>
+                            <constraint firstItem="5ig-9m-SUT" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="zld-Pk-W6B" secondAttribute="bottom" constant="81" id="uec-fi-eGM"/>
+                            <constraint firstItem="z4C-tf-3Ge" firstAttribute="top" secondItem="445-py-2kY" secondAttribute="bottom" constant="24" id="uiA-5L-XNS"/>
                             <constraint firstAttribute="trailing" secondItem="pYx-i3-y0E" secondAttribute="trailing" id="upX-EW-gEE"/>
                             <constraint firstItem="pYx-i3-y0E" firstAttribute="top" secondItem="5ig-9m-SUT" secondAttribute="top" id="wED-hN-6JC"/>
+                            <constraint firstItem="z4C-tf-3Ge" firstAttribute="leading" secondItem="5ig-9m-SUT" secondAttribute="leading" constant="295" id="zTv-3M-QoC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5ig-9m-SUT"/>
                     </view>
                     <connections>
                         <outlet property="botonBorrar" destination="tC7-Ij-xvq" id="wld-aJ-yDT"/>
                         <outlet property="botonRegresar" destination="Plz-fZ-Cmp" id="QW3-Pf-SxU"/>
+                        <outlet property="cuartoLabel" destination="MaO-nV-yxy" id="aci-92-b2a"/>
+                        <outlet property="labelMaximaPuntuacion" destination="445-py-2kY" id="bkL-ZR-Jan"/>
+                        <outlet property="primerLabel" destination="z4C-tf-3Ge" id="BSK-K0-PTd"/>
+                        <outlet property="quintoLabel" destination="zld-Pk-W6B" id="6K9-7g-ook"/>
+                        <outlet property="segundoLabel" destination="HeE-iw-e6G" id="WoQ-7s-3Yw"/>
+                        <outlet property="tercerLabel" destination="Hc3-7i-2Ip" id="KQY-0d-Ido"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ui0-No-QAj" userLabel="First Responder" sceneMemberID="firstResponder"/>
