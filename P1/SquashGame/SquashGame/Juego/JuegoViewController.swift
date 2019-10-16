@@ -100,6 +100,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
         if (item1 is Pelota && item2 is Raqueta) || (item1 is Raqueta && item2 is Pelota) {
+            self.pelota!.cambiarColor()
             // TODO: Sonido contra raqueta
             self.puntuacion!.sumaPunto()
             self.verificarPuntuacion()

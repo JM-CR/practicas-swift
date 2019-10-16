@@ -93,4 +93,14 @@ class Pelota: UIView {
         self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
         self.animador.addBehavior(self.vectorDeFuerza)
     }
+    
+    /**
+     Cambia el color de la pelota.
+     */
+    func cambiarColor() {
+        let rojo = CGFloat.random(in: 0...1)
+        let verde = CGFloat.random(in: 0...1)
+        let azul = CGFloat.random(in: 0...1)
+        self.backgroundColor = UIColor(red: rojo, green: verde, blue: azul, alpha: 1)
+    }
 }
