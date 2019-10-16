@@ -18,10 +18,10 @@
 		CA83BFED234E57A8001448F8 /* AyudaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */; };
 		CA83BFEF234E57B4001448F8 /* JuegoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */; };
 		CA83BFF1234E57C7001448F8 /* MarcadorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFF0234E57C7001448F8 /* MarcadorViewController.swift */; };
-		CA910099234FD84500E82EF7 /* Pelota.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA910098234FD84500E82EF7 /* Pelota.swift */; };
-		CA91009B234FD85C00E82EF7 /* Obstaculo.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009A234FD85C00E82EF7 /* Obstaculo.swift */; };
+		CA910099234FD84500E82EF7 /* PelotaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA910098234FD84500E82EF7 /* PelotaView.swift */; };
+		CA91009B234FD85C00E82EF7 /* ObstaculoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009A234FD85C00E82EF7 /* ObstaculoView.swift */; };
 		CA91009D234FD87000E82EF7 /* Puntuacion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009C234FD87000E82EF7 /* Puntuacion.swift */; };
-		CA91009F234FD88500E82EF7 /* Raqueta.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009E234FD88500E82EF7 /* Raqueta.swift */; };
+		CA91009F234FD88500E82EF7 /* RaquetaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA91009E234FD88500E82EF7 /* RaquetaView.swift */; };
 		CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A0234FD8A100E82EF7 /* Sonido.swift */; };
 		CA9100A4234FD92E00E82EF7 /* Marcador.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9100A3234FD92E00E82EF7 /* Marcador.swift */; };
 		CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA9100B1234FE6FF00E82EF7 /* Splash.png */; };
@@ -64,10 +64,10 @@
 		CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyudaViewController.swift; sourceTree = "<group>"; };
 		CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuegoViewController.swift; sourceTree = "<group>"; };
 		CA83BFF0234E57C7001448F8 /* MarcadorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcadorViewController.swift; sourceTree = "<group>"; };
-		CA910098234FD84500E82EF7 /* Pelota.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pelota.swift; sourceTree = "<group>"; };
-		CA91009A234FD85C00E82EF7 /* Obstaculo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Obstaculo.swift; sourceTree = "<group>"; };
+		CA910098234FD84500E82EF7 /* PelotaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PelotaView.swift; sourceTree = "<group>"; };
+		CA91009A234FD85C00E82EF7 /* ObstaculoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstaculoView.swift; sourceTree = "<group>"; };
 		CA91009C234FD87000E82EF7 /* Puntuacion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puntuacion.swift; sourceTree = "<group>"; };
-		CA91009E234FD88500E82EF7 /* Raqueta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Raqueta.swift; sourceTree = "<group>"; };
+		CA91009E234FD88500E82EF7 /* RaquetaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaquetaView.swift; sourceTree = "<group>"; };
 		CA9100A0234FD8A100E82EF7 /* Sonido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sonido.swift; sourceTree = "<group>"; };
 		CA9100A3234FD92E00E82EF7 /* Marcador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marcador.swift; sourceTree = "<group>"; };
 		CA9100B1234FE6FF00E82EF7 /* Splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Splash.png; sourceTree = "<group>"; };
@@ -192,10 +192,10 @@
 		CA910097234FD76F00E82EF7 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
-				CA91009A234FD85C00E82EF7 /* Obstaculo.swift */,
-				CA910098234FD84500E82EF7 /* Pelota.swift */,
+				CA91009A234FD85C00E82EF7 /* ObstaculoView.swift */,
+				CA910098234FD84500E82EF7 /* PelotaView.swift */,
 				CA91009C234FD87000E82EF7 /* Puntuacion.swift */,
-				CA91009E234FD88500E82EF7 /* Raqueta.swift */,
+				CA91009E234FD88500E82EF7 /* RaquetaView.swift */,
 				CA9100A0234FD8A100E82EF7 /* Sonido.swift */,
 			);
 			path = Modelos;
@@ -355,11 +355,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA91009F234FD88500E82EF7 /* Raqueta.swift in Sources */,
-				CA91009B234FD85C00E82EF7 /* Obstaculo.swift in Sources */,
+				CA91009F234FD88500E82EF7 /* RaquetaView.swift in Sources */,
+				CA91009B234FD85C00E82EF7 /* ObstaculoView.swift in Sources */,
 				CA91009D234FD87000E82EF7 /* Puntuacion.swift in Sources */,
 				CA9100A1234FD8A100E82EF7 /* Sonido.swift in Sources */,
-				CA910099234FD84500E82EF7 /* Pelota.swift in Sources */,
+				CA910099234FD84500E82EF7 /* PelotaView.swift in Sources */,
 				CA83BFED234E57A8001448F8 /* AyudaViewController.swift in Sources */,
 				CA83BFEF234E57B4001448F8 /* JuegoViewController.swift in Sources */,
 				CA83BFF1234E57C7001448F8 /* MarcadorViewController.swift in Sources */,

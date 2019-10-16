@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Obstaculo: UIView {
+class ObstaculoView: UIView {
 
     var tipoDeObstaculo = 1    // Hay de tres tipos
     var animador: UIDynamicAnimator!

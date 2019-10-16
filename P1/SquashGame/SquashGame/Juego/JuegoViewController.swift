@@ -19,8 +19,8 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
     // Elementos del juego
     var puntuacion: Puntuacion? = nil
-    var pelota: Pelota? = nil
-    var raqueta: Raqueta? = nil
+    var pelota: PelotaView? = nil
+    var raqueta: RaquetaView? = nil
     
     /**
      Inicializa el juego, carga los elementos e implementa comportamientos necesarios.
@@ -34,7 +34,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.animador = UIDynamicAnimator(referenceView: self.view)   // Comportamientos
         
         // Crear raqueta
-        self.raqueta = Raqueta(
+        self.raqueta = RaquetaView(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
             animador: self.animador,
@@ -42,7 +42,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         )
         
         // Crear pelota
-        self.pelota = Pelota(
+        self.pelota = PelotaView(
             anchoDePantalla: self.anchoDePantalla,
             largoDePantalla: self.largoDePantalla,
             animador: self.animador,
@@ -99,7 +99,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      y checa si hay que agregar un nuevo obstáculo.
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
-        if (item1 is Pelota && item2 is Raqueta) || (item1 is Raqueta && item2 is Pelota) {
+        if (item1 is PelotaView && item2 is RaquetaView) || (item1 is RaquetaView && item2 is PelotaView) {
             self.pelota!.cambiarColor()
             // TODO: Sonido contra raqueta
             self.puntuacion!.sumaPunto()
@@ -113,7 +113,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     private func verificarPuntuacion() {
         if self.puntuacion!.esMultiploDeDiez() {
             // Crear obstáculo
-            let obstaculo = Obstaculo(
+            let obstaculo = ObstaculoView(
                 anchoDePantalla: self.anchoDePantalla,
                 largoDePantalla: self.largoDePantalla,
                 animador: self.animador,
@@ -129,7 +129,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
      Detecta si el usuario perdió cuando la pelota toca la parte inferior de la pantalla.
      */
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item: UIDynamicItem, withBoundaryIdentifier identifier: NSCopying?, at p: CGPoint) {
-        if item is Pelota {
+        if item is PelotaView {
             switch identifier as? String {
             case "inferior":
                 self.finDelJuego()

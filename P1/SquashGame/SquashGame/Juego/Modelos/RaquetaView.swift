@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Raqueta: UIView {
+class RaquetaView: UIView {
     
     var centro = CGPoint(x: 0, y: 0)
     var animador: UIDynamicAnimator!
