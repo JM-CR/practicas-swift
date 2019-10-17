@@ -98,7 +98,6 @@ class RaquetaView: UIView {
      */
     private func comportamientoDeRaqueta() {
         self.efectosDeRaqueta = UIDynamicItemBehavior(items: [self])
-        self.efectosDeRaqueta.density = 9000      // Masa inicial
         self.efectosDeRaqueta.isAnchored = true    // No moverse después de colisión
         self.efectosDeRaqueta.allowsRotation = false
         self.animador.addBehavior(efectosDeRaqueta)

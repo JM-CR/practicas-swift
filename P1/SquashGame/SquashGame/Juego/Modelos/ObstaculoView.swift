@@ -96,7 +96,6 @@ class ObstaculoView: UIView {
      */
     private func comportamientoDeObstaculo() {
         self.fisicaDelObstaculo = UIDynamicItemBehavior(items: [self])
-        self.fisicaDelObstaculo.density = 9000       // Masa inicial
         self.fisicaDelObstaculo.isAnchored = true    // No moverse después de colisión
         self.fisicaDelObstaculo.allowsRotation = false
         self.animador.addBehavior(self.fisicaDelObstaculo)
