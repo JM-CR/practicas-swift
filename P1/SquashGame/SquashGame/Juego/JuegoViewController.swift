@@ -152,6 +152,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         self.limitesDelJuego.removeAllBoundaries()
         self.animador.removeAllBehaviors()
         
+        // Vaciar arreglo de obstáculos
+        ObstaculoView.obstaculos.removeAll()
+        
         // TODO: Sonido de que perdió
         
         // Mensaje de que perdió

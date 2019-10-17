@@ -14,6 +14,9 @@ class ObstaculoView: UIView {
     var tipoDeObstaculo = 1    // Hay de tres tipos
     var animador: UIDynamicAnimator!
     var fisicaDelObstaculo: UIDynamicItemBehavior!
+    var largoDePantalla: CGFloat = 0.0
+    var anchoDePantalla: CGFloat = 0.0
+    static var obstaculos = [ObstaculoView]()    // Usado para verificar colisiones
     
     /**
      Crea un obstáculo según las medidas y origen dado.
@@ -34,15 +37,14 @@ class ObstaculoView: UIView {
      - Parameter view: View donde se añadirá el obstáculo.
      */
     convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, en view: UIView) {
+        // Generar tamaño del obstáculo
         let ancho = anchoDePantalla / 14
-        
-        // Largo según el tipo de obstáculo
         var largoAleatorio: CGFloat
         let tipoDeObstaculo = Int.random(in: 1...3)
         switch tipoDeObstaculo {
-            case 1: largoAleatorio = largoDePantalla / 8
-            case 2: largoAleatorio = largoDePantalla / 10
-            default: largoAleatorio = largoDePantalla / 15
+            case 1: largoAleatorio = largoDePantalla / 12
+            case 2: largoAleatorio = largoDePantalla / 15
+            default: largoAleatorio = largoDePantalla / 18
         }
         
         // Llamar inicializador designado
@@ -50,9 +52,14 @@ class ObstaculoView: UIView {
         let medidas = CGSize(width: largoAleatorio, height: ancho)
         
         self.init(coordenada: origen, tamaño: medidas)
-        view.addSubview(self)
         self.animador = animador
         self.tipoDeObstaculo = tipoDeObstaculo
+        self.largoDePantalla = largoDePantalla
+        self.anchoDePantalla = anchoDePantalla
+        
+        // Verificar colisión entre obstáculos
+        self.origenSinColision(en: view)
+        ObstaculoView.obstaculos.append(self)
         self.agregarFuncionalidad()
     }
     
@@ -93,5 +100,42 @@ class ObstaculoView: UIView {
         self.fisicaDelObstaculo.isAnchored = true    // No moverse después de colisión
         self.fisicaDelObstaculo.allowsRotation = false
         self.animador.addBehavior(self.fisicaDelObstaculo)
+    }
+    
+    /**
+     Crea un origen aleatorio que no colisione con otros obstáculos.
+     
+     - Parameter view: View donde se añadirá el obstáculo.
+     */
+    private func origenSinColision(en view: UIView) {
+        var obstaculoValido = false    // Bandera
+        
+        // Verificar obstáculo creado
+        var punto = CGPoint(x: 0, y: 0)
+        while !obstaculoValido {
+            // Crear punto aleatorio
+            punto.x = CGFloat.random(in: 0...self.largoDePantalla - self.bounds.maxX)
+            punto.y = CGFloat.random(in: 0...self.anchoDePantalla * (1 - 1/3) - self.bounds.maxY)
+            self.frame.origin = punto
+            
+            // Verificar si es el primer elemento
+            guard ObstaculoView.obstaculos.count != 0 else {
+                obstaculoValido.toggle()
+                view.addSubview(self)
+                break
+            }
+            
+            // Verificar colisión
+            view.addSubview(self)
+            for obstaculo in ObstaculoView.obstaculos {
+                if self.frame.intersects(obstaculo.frame) {
+                    self.removeFromSuperview()
+                    obstaculoValido = false
+                    break
+                } else {
+                    obstaculoValido = true
+                }
+            }
+        }
     }
 }
