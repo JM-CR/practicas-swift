@@ -187,4 +187,12 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         // Mostrar
         self.present(alerta, animated: true, completion: nil)
     }
+    
+    /**
+     Pausa el juego y lo reanuda.
+     */
+    @IBAction func pausarJuego(_ sender: UIButton) {
+        let alerta = self.pelota!.pausa()
+        self.present(alerta, animated: true, completion: nil)
+    }
 }

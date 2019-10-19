@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA15DC48235A916D00710C2C /* Pausa.png in Resources */ = {isa = PBXBuildFile; fileRef = CA15DC47235A916D00710C2C /* Pausa.png */; };
 		CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */ = {isa = PBXBuildFile; fileRef = CA1FF84F2350EA88001D77D0 /* Ayuda.png */; };
 		CA83BFB2234E3702001448F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFB1234E3702001448F8 /* AppDelegate.swift */; };
 		CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB5234E3702001448F8 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA15DC47235A916D00710C2C /* Pausa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pausa.png; sourceTree = "<group>"; };
 		CA1FF84F2350EA88001D77D0 /* Ayuda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ayuda.png; sourceTree = "<group>"; };
 		CA83BFAE234E3702001448F8 /* SquashGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquashGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83BFB1234E3702001448F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				CAC57B482350F39900A83A5A /* Fondo.png */,
 				CAAA7AA82357C172009F4A75 /* Marcadores.png */,
 				CA9100B1234FE6FF00E82EF7 /* Splash.png */,
+				CA15DC47235A916D00710C2C /* Pausa.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				CAC57B492350F39900A83A5A /* Fondo.png in Resources */,
 				CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */,
 				CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */,
+				CA15DC48235A916D00710C2C /* Pausa.png in Resources */,
 				CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

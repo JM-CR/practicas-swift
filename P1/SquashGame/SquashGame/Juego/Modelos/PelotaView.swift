@@ -103,4 +103,27 @@ class PelotaView: UIView {
         let azul = CGFloat.random(in: 0...1)
         self.backgroundColor = UIColor(red: rojo, green: verde, blue: azul, alpha: 1)
     }
+    
+    /**
+     Pausa la pelota y la relanza al reanudar.
+     
+     - Returns: Alerta con la funcionalidad de pausa.
+     */
+    func pausa() -> UIAlertController {
+        // Calcular vector de velocidad al momento de pausar
+        let velocidad = self.choques.linearVelocity(for: self)
+        
+        // Detener pelota
+        self.choques.resistance = 100.0
+        
+        // Preparar alerta
+        let alerta = UIAlertController(title: "Juego en pausa", message: "", preferredStyle: .alert)
+        let reanudarJuego = UIAlertAction(title: "Reanudar", style: .default) { accion in
+            self.choques.resistance = 0.0
+            self.choques.addLinearVelocity(velocidad, for: self)
+        }
+        alerta.addAction(reanudarJuego)
+        
+        return alerta
+    }
 }

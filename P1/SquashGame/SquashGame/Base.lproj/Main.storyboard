@@ -214,13 +214,27 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Fondo.png" translatesAutoresizingMaskIntoConstraints="NO" id="myg-pa-hN9">
                                 <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                             </imageView>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGb-UQ-3gR">
+                                <rect key="frame" x="798" y="29" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="34" id="6gE-Y0-Cuk"/>
+                                    <constraint firstAttribute="height" constant="34" id="ut9-Wo-wge"/>
+                                </constraints>
+                                <state key="normal" image="Pausa.png"/>
+                                <connections>
+                                    <action selector="pausarJuego:" destination="evi-8q-Bc3" eventType="touchUpInside" id="svk-jq-ymE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="XGb-UQ-3gR" firstAttribute="top" secondItem="THW-BL-0cD" secondAttribute="top" constant="29" id="KiK-Xw-GOu"/>
                             <constraint firstItem="myg-pa-hN9" firstAttribute="top" secondItem="THW-BL-0cD" secondAttribute="top" id="TMm-HB-4rm"/>
                             <constraint firstAttribute="bottom" secondItem="myg-pa-hN9" secondAttribute="bottom" id="Xik-P0-Stb"/>
                             <constraint firstItem="myg-pa-hN9" firstAttribute="leading" secondItem="gpd-Gw-wNm" secondAttribute="leading" id="f4y-jN-mtd"/>
+                            <constraint firstItem="XGb-UQ-3gR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="THW-BL-0cD" secondAttribute="leading" constant="748" id="hUI-tv-wtD"/>
                             <constraint firstAttribute="trailing" secondItem="myg-pa-hN9" secondAttribute="trailing" id="isG-Aa-lFu"/>
+                            <constraint firstItem="THW-BL-0cD" firstAttribute="trailing" secondItem="XGb-UQ-3gR" secondAttribute="trailing" constant="20" id="jT6-3o-GdS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="THW-BL-0cD"/>
                     </view>
@@ -293,6 +307,7 @@
         <image name="Ayuda.png" width="504" height="360"/>
         <image name="Fondo.png" width="504" height="360"/>
         <image name="Marcadores.png" width="504" height="360"/>
+        <image name="Pausa.png" width="396.3870849609375" height="396.3870849609375"/>
         <image name="Splash.png" width="504" height="360"/>
     </resources>
 </document>
