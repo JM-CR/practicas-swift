@@ -38,7 +38,7 @@ class ObstaculoView: UIView {
      */
     convenience init(anchoDePantalla: CGFloat, largoDePantalla: CGFloat, animador: UIDynamicAnimator, en view: UIView) {
         // Generar tamaño del obstáculo
-        let ancho = anchoDePantalla / 14
+        let ancho = anchoDePantalla / 18
         var largoAleatorio: CGFloat
         let tipoDeObstaculo = Int.random(in: 1...3)
         switch tipoDeObstaculo {

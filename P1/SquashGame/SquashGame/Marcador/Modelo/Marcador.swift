@@ -52,11 +52,6 @@ class Marcador {
      - Parameter indice: Indica la posición donde agregar al elemento. Si es nil al final.
      */
     private func creaRegistro(totalDePuntos: Int, en indice: Int?) {
-        // No agregar más si ya son seis
-        guard self.puntuaciones.count <= 6 else {
-            return
-        }
-        
         // Crear entrada
         var texto: String
         let fechaDeRegistro = self.fechaDeCreacion()
@@ -129,7 +124,7 @@ class Marcador {
      */
     func borrar() {
         self.puntuaciones.removeAll()
-        self.historial = [String]()
+        self.historial.removeAll()
         self.guardarHistorial()
     }
 }
