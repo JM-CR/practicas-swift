@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		CA15DC48235A916D00710C2C /* Pausa.png in Resources */ = {isa = PBXBuildFile; fileRef = CA15DC47235A916D00710C2C /* Pausa.png */; };
 		CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */ = {isa = PBXBuildFile; fileRef = CA1FF84F2350EA88001D77D0 /* Ayuda.png */; };
+		CA5B126B235BC76700FB2F49 /* End.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1267235BC76500FB2F49 /* End.wav */; };
+		CA5B126C235BC76700FB2F49 /* Start.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1268235BC76600FB2F49 /* Start.wav */; };
+		CA5B126D235BC76700FB2F49 /* Racket.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5B1269235BC76700FB2F49 /* Racket.wav */; };
+		CA5B126E235BC76700FB2F49 /* Boundary.wav in Resources */ = {isa = PBXBuildFile; fileRef = CA5B126A235BC76700FB2F49 /* Boundary.wav */; };
 		CA83BFB2234E3702001448F8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFB1234E3702001448F8 /* AppDelegate.swift */; };
 		CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB5234E3702001448F8 /* Main.storyboard */; };
 		CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFB8234E3702001448F8 /* Assets.xcassets */; };
 		CA83BFBC234E3702001448F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA83BFBA234E3702001448F8 /* LaunchScreen.storyboard */; };
-		CA83BFC7234E3702001448F8 /* SquashGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFC6234E3702001448F8 /* SquashGameTests.swift */; };
-		CA83BFD2234E3702001448F8 /* SquashGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFD1234E3702001448F8 /* SquashGameUITests.swift */; };
 		CA83BFE5234E3C10001448F8 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFE4234E3C10001448F8 /* InicioViewController.swift */; };
 		CA83BFED234E57A8001448F8 /* AyudaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */; };
 		CA83BFEF234E57B4001448F8 /* JuegoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */; };
@@ -50,6 +52,10 @@
 /* Begin PBXFileReference section */
 		CA15DC47235A916D00710C2C /* Pausa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pausa.png; sourceTree = "<group>"; };
 		CA1FF84F2350EA88001D77D0 /* Ayuda.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ayuda.png; sourceTree = "<group>"; };
+		CA5B1267235BC76500FB2F49 /* End.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = End.wav; sourceTree = "<group>"; };
+		CA5B1268235BC76600FB2F49 /* Start.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Start.wav; sourceTree = "<group>"; };
+		CA5B1269235BC76700FB2F49 /* Racket.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Racket.wav; sourceTree = "<group>"; };
+		CA5B126A235BC76700FB2F49 /* Boundary.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Boundary.wav; sourceTree = "<group>"; };
 		CA83BFAE234E3702001448F8 /* SquashGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SquashGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA83BFB1234E3702001448F8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA83BFB6234E3702001448F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -57,11 +63,7 @@
 		CA83BFBB234E3702001448F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CA83BFBD234E3702001448F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA83BFC2234E3702001448F8 /* SquashGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquashGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA83BFC6234E3702001448F8 /* SquashGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquashGameTests.swift; sourceTree = "<group>"; };
-		CA83BFC8234E3702001448F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA83BFCD234E3702001448F8 /* SquashGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SquashGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA83BFD1234E3702001448F8 /* SquashGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquashGameUITests.swift; sourceTree = "<group>"; };
-		CA83BFD3234E3702001448F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA83BFE4234E3C10001448F8 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
 		CA83BFEC234E57A8001448F8 /* AyudaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AyudaViewController.swift; sourceTree = "<group>"; };
 		CA83BFEE234E57B4001448F8 /* JuegoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JuegoViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				CA83BFB0234E3702001448F8 /* SquashGame */,
-				CA83BFC5234E3702001448F8 /* SquashGameTests */,
-				CA83BFD0234E3702001448F8 /* SquashGameUITests */,
 				CA83BFAF234E3702001448F8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -137,24 +137,6 @@
 				CA83BFBD234E3702001448F8 /* Info.plist */,
 			);
 			path = SquashGame;
-			sourceTree = "<group>";
-		};
-		CA83BFC5234E3702001448F8 /* SquashGameTests */ = {
-			isa = PBXGroup;
-			children = (
-				CA83BFC6234E3702001448F8 /* SquashGameTests.swift */,
-				CA83BFC8234E3702001448F8 /* Info.plist */,
-			);
-			path = SquashGameTests;
-			sourceTree = "<group>";
-		};
-		CA83BFD0234E3702001448F8 /* SquashGameUITests */ = {
-			isa = PBXGroup;
-			children = (
-				CA83BFD1234E3702001448F8 /* SquashGameUITests.swift */,
-				CA83BFD3234E3702001448F8 /* Info.plist */,
-			);
-			path = SquashGameUITests;
 			sourceTree = "<group>";
 		};
 		CA83BFDF234E3A77001448F8 /* Juego */ = {
@@ -219,6 +201,10 @@
 				CAAA7AA82357C172009F4A75 /* Marcadores.png */,
 				CA9100B1234FE6FF00E82EF7 /* Splash.png */,
 				CA15DC47235A916D00710C2C /* Pausa.png */,
+				CA5B126A235BC76700FB2F49 /* Boundary.wav */,
+				CA5B1267235BC76500FB2F49 /* End.wav */,
+				CA5B1269235BC76700FB2F49 /* Racket.wav */,
+				CA5B1268235BC76600FB2F49 /* Start.wav */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -327,11 +313,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA5B126B235BC76700FB2F49 /* End.wav in Resources */,
+				CA5B126D235BC76700FB2F49 /* Racket.wav in Resources */,
 				CAAA7AA92357C172009F4A75 /* Marcadores.png in Resources */,
 				CA9100B2234FE6FF00E82EF7 /* Splash.png in Resources */,
 				CA83BFBC234E3702001448F8 /* LaunchScreen.storyboard in Resources */,
 				CAC57B492350F39900A83A5A /* Fondo.png in Resources */,
+				CA5B126C235BC76700FB2F49 /* Start.wav in Resources */,
 				CA83BFB9234E3702001448F8 /* Assets.xcassets in Resources */,
+				CA5B126E235BC76700FB2F49 /* Boundary.wav in Resources */,
 				CA83BFB7234E3702001448F8 /* Main.storyboard in Resources */,
 				CA15DC48235A916D00710C2C /* Pausa.png in Resources */,
 				CA1FF8502350EA88001D77D0 /* Ayuda.png in Resources */,
@@ -377,7 +367,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA83BFC7234E3702001448F8 /* SquashGameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA83BFD2234E3702001448F8 /* SquashGameUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

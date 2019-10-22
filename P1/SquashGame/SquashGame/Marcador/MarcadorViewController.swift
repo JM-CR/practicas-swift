@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Controla el historial de marcadores del juego.
+ */
 class MarcadorViewController: UIViewController {
 
     @IBOutlet weak var botonRegresar: UIButton!

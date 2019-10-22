@@ -6,7 +6,6 @@
 //  Copyright © 2019 Josue Mosiah Contreras Rocha. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class ObstaculoView: UIView {

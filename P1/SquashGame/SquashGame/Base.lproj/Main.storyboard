@@ -58,7 +58,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="hzG-TC-9Xm" secondAttribute="trailing" id="0KT-jI-5SV"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qTy-n4-11d" secondAttribute="bottom" constant="59" id="0uy-r8-kzJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="qTy-n4-11d" secondAttribute="bottom" priority="999" constant="59" id="0uy-r8-kzJ"/>
                             <constraint firstItem="sr0-3G-7m1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="321" id="3Xi-Lk-0NV"/>
                             <constraint firstItem="qTy-n4-11d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="324" id="7bI-Tr-4ar"/>
                             <constraint firstItem="qTy-n4-11d" firstAttribute="top" secondItem="sr0-3G-7m1" secondAttribute="bottom" constant="28" id="ANO-t6-wuB"/>
@@ -67,12 +67,18 @@
                             <constraint firstItem="jNK-Ys-YRY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="323" id="EBF-9n-9bp"/>
                             <constraint firstAttribute="bottom" secondItem="hzG-TC-9Xm" secondAttribute="bottom" id="EvN-hL-FXq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="jNK-Ys-YRY" secondAttribute="trailing" constant="318" id="FpC-bE-wtq"/>
+                            <constraint firstItem="jNK-Ys-YRY" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" multiplier="10" priority="998" constant="160" id="air-zW-fMd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qTy-n4-11d" secondAttribute="trailing" constant="320" id="dJn-8I-MKi"/>
                             <constraint firstItem="hzG-TC-9Xm" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yS3-Ku-0Tp"/>
                             <constraint firstItem="hzG-TC-9Xm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ybh-x2-8NJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="botonInstrucciones" destination="qTy-n4-11d" id="ybh-qv-oYa"/>
+                        <outlet property="botonJugar" destination="jNK-Ys-YRY" id="TPG-qX-bAe"/>
+                        <outlet property="botonMarcadores" destination="sr0-3G-7m1" id="SZp-0T-fr5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -297,6 +303,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RPH-rn-t5i"/>
                     </view>
+                    <connections>
+                        <outlet property="botonRegresar" destination="GH1-Wy-Z94" id="xud-ae-EhC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lPp-8j-VZF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

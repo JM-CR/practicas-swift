@@ -6,7 +6,6 @@
 //  Copyright © 2019 Josue Mosiah Contreras Rocha. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class PelotaView: UIView {
@@ -62,7 +61,7 @@ class PelotaView: UIView {
     private func agregarFuncionalidad() {
         self.backgroundColor = .orange
         self.layer.borderWidth = 3
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = self.bounds.width / 2
         self.clipsToBounds = true
         
         // Añadir física
@@ -80,18 +79,6 @@ class PelotaView: UIView {
         self.choques.friction = 0.0      // Al chocar
         self.choques.allowsRotation = false
         self.animador.addBehavior(self.choques)
-        
-        // Configurar vector de fuerza inicial
-        self.vectorDeFuerza = UIPushBehavior(items: [self], mode: .instantaneous)
-        let fuerzaEnY = CGFloat.random(in: 0.7...1) * -1    // Eje vertical invertido
-        var fuerzaEnX: CGFloat
-        repeat {
-            fuerzaEnX = CGFloat.random(in: -1...1)
-        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
-        
-        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
-        self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
-        self.animador.addBehavior(self.vectorDeFuerza)
     }
     
     /**
@@ -125,5 +112,31 @@ class PelotaView: UIView {
         alerta.addAction(reanudarJuego)
         
         return alerta
+    }
+    
+    /**
+     Arroja la pelota con el vector de fuerza inicial.
+     */
+    func lanzar() {
+        // Configurar vector
+        self.vectorDeFuerza = UIPushBehavior(items: [self], mode: .instantaneous)
+        let fuerzaEnY = CGFloat.random(in: 0.7...1) * -1    // Eje vertical invertido
+        var fuerzaEnX: CGFloat
+        repeat {
+            fuerzaEnX = CGFloat.random(in: -1...1)
+        } while fuerzaEnX > -0.4 && fuerzaEnX < 0.4
+        
+        self.vectorDeFuerza.pushDirection = CGVector(dx: fuerzaEnX, dy: fuerzaEnY)
+        
+        // Detectar tipo de dispositivo
+        let horizontalTrait = self.traitCollection.horizontalSizeClass
+        let verticalTrait = self.traitCollection.verticalSizeClass
+        if horizontalTrait == .regular && verticalTrait == .regular {
+            self.vectorDeFuerza.magnitude = CGFloat(2.0)    // Velocidad inicial
+        } else {
+            self.vectorDeFuerza.magnitude = CGFloat(0.5)    // Velocidad inicial
+        }
+        
+        self.animador.addBehavior(self.vectorDeFuerza)
     }
 }

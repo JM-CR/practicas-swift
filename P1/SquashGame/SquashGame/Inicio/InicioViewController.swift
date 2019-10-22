@@ -13,20 +13,18 @@ import UIKit
  */
 class InicioViewController: UIViewController {
 
+    @IBOutlet weak var botonJugar: UIButton!
+    @IBOutlet weak var botonMarcadores: UIButton!
+    @IBOutlet weak var botonInstrucciones: UIButton!
+    
+    /**
+     Da formato a los botones.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.botonJugar.layer.cornerRadius = 15
+        self.botonMarcadores.layer.cornerRadius = 15
+        self.botonInstrucciones.layer.cornerRadius = 15
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

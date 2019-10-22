@@ -8,6 +8,9 @@
 
 import UIKit
 
+/**
+ Controla todo el comportamiento del juego.
+ */
 class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
     var anchoDePantalla: CGFloat = 0.0
@@ -21,6 +24,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     var puntuacion: Puntuacion? = nil
     var pelota: PelotaView? = nil
     var raqueta: RaquetaView? = nil
+    var sonido = Sonido()
     
     /**
      Inicializa el juego, carga los elementos e implementa comportamientos necesarios.
@@ -57,18 +61,27 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         )
         
         // Añadir efectos
-        self.añadirColisiones(pelota!, raqueta!)
+        self.añadirColisiones()
+    }
+    
+    /**
+     Arroja la pelota después de escuchar el sonido inicial del juego.
+     */
+    override func viewDidAppear(_ animated: Bool) {
+        self.sonido.reproduce(archivoSinExtension: "Start")
+        
+        // Esperar a que acabe el sonido
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.pelota!.lanzar()
+        }
     }
 
     /**
      Añade los límites de colisión para que la pelota rebote.
-     
-     - Parameter pelota: Pelota del juego.
-     - Parameter raqueta: Raqueta del juego.
      */
-    private func añadirColisiones(_ pelota: UIView, _ raqueta: UIView) {
+    private func añadirColisiones() {
         // Configurar colisiones
-        self.limitesDelJuego = UICollisionBehavior(items: [pelota, raqueta])
+        self.limitesDelJuego = UICollisionBehavior(items: [self.pelota!, self.raqueta!])
         self.limitesDelJuego.translatesReferenceBoundsIntoBoundary = true
         self.limitesDelJuego.collisionMode = .everything
         self.limitesDelJuego.collisionDelegate = self
@@ -101,7 +114,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     func collisionBehavior(_ behavior: UICollisionBehavior, beganContactFor item1: UIDynamicItem, with item2: UIDynamicItem, at p: CGPoint) {
         if (item1 is PelotaView && item2 is RaquetaView) || (item1 is RaquetaView && item2 is PelotaView) {
             self.pelota!.cambiarColor()
-            // TODO: Sonido contra raqueta
+            self.sonido.reproduce(archivoSinExtension: "Racket")
             self.puntuacion!.sumaPunto()
             self.verificarPuntuacion()
         }
@@ -134,8 +147,7 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
             case "inferior":
                 self.finDelJuego()
             default:
-                // TODO: Sonido contra frontera
-                print("Sonido")
+                self.sonido.reproduce(archivoSinExtension: "Boundary")
             }
         }
     }
@@ -155,7 +167,8 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         // Vaciar arreglo de obstáculos
         ObstaculoView.obstaculos.removeAll()
         
-        // TODO: Sonido de que perdió
+        // Sonido de que perdió
+        self.sonido.reproduce(archivoSinExtension: "End")
         
         // Mensaje de que perdió
         self.mensajeFinDeJuego()
