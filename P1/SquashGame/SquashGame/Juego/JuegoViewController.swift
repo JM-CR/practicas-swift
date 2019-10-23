@@ -13,6 +13,7 @@ import UIKit
  */
 class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
     
+    @IBOutlet weak var botonPausa: UIButton!
     var anchoDePantalla: CGFloat = 0.0
     var largoDePantalla: CGFloat = 0.0
     
@@ -73,6 +74,9 @@ class JuegoViewController: UIViewController, UICollisionBehaviorDelegate {
         // Esperar a que acabe el sonido
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.pelota!.lanzar()
+            
+            // Mostrar pausa
+            self.botonPausa.isHidden = false
         }
     }
 
