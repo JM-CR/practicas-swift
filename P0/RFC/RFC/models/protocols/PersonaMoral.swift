@@ -135,12 +135,15 @@ extension PersonaMoral {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
         }
         
-        buscaRegEx = empresa!.range(of: #"\d{2,}*"#, options: .regularExpression)
+        buscaRegEx = empresa!.range(of: #"\d{2,}"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "La razón social solo puede tener números de un dígito.")
         }
         
-        let caracteresInvalidos = ["?", "_", "!", "'", "¿", "¡", "|", "@", "=", "(", ")", "-", "#", "·", "&", "/", "}", "{", "`", "+", "¨", "ª", "º", "Ç", ";", "ç", "´", "^", "[", "]", "\\"]
+        let caracteresInvalidos = [
+            "?", "_", "!", "'", "¿", "¡", "|", "@", "=", "(", ")", "-", "#", "·",
+            "&", "/", "}", "{", "`", "+", "¨", "ª", "º", "Ç", ";", "ç", "´", "^",
+            "[", "]", "\\",  "*", "¨", "ª", "º", "·", ":", "'"]
         for valor in caracteresInvalidos {
             guard !empresa!.contains(valor) else {
                 throw InputError.InvalidCharacter(descripcion: "Texto inválido.")

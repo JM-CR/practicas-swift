@@ -171,7 +171,8 @@ struct Tablas {
         "LOKA": "LOKX",
         "QULO": "QULX",
         "RUIN": "RUIX",
-        "RATA": "RATX"
+        "RATA": "RATX",
+        "COJO": "COJX"
     ]
     
     let tablaCinco: Array<String> = [

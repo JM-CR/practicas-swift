@@ -130,25 +130,19 @@ extension PersonaFisica {
             throw InputError.InvalidCharacter(descripcion: "Error desconocido, introdúcelo de nuevo.")
         }
         
-        guard !texto!.contains("^") else {
-            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
-        }
-        
-        guard !texto!.contains("*") else {
-            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
-        }
-        
-        guard !texto!.contains("[") else {
-            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
-        }
-        
-        guard !texto!.contains("]") else {
-            throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
-        }
-        
-        var buscaRegEx = texto!.range(of: #"[\d?_!'¿¡|@,=()-:.#·&/}{`+¨ªº\Ç;ç´]"#, options: .regularExpression)
+        var buscaRegEx = texto!.range(of: #"\d"#, options: .regularExpression)
         guard buscaRegEx == nil else {
             throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+        }
+        
+        let caracteresInvalidos = [
+            "?", "_", "!", "'", "¿", "¡", "|", "@", "=", "(", ")", "-", "#", "·",
+            "&", "/", "}", "{", "`", "+", "¨", "ª", "º", "Ç", ";", "ç", "´", "^",
+            "[", "]", "\\", "*", ".", "¨", "ª", "º", "·", ":", "'"]
+        for valor in caracteresInvalidos {
+            guard !texto!.contains(valor) else {
+                throw InputError.InvalidCharacter(descripcion: "Texto inválido.")
+            }
         }
         
         buscaRegEx = texto!.range(of: #"[áéíóúÁÉÍÓÚàèìòùÀÈÌÒÙäëïöüÄËÏÖÜâêîôûÂÊÎÔÛ]"#, options: .regularExpression)

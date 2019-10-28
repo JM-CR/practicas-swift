@@ -74,8 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2E5F2C2346BD510075DE62 /* errors */,
-				EA2E5F2B2346BD480075DE62 /* protocols */,
-				EA2E5F2D2346BD590075DE62 /* src */,
+				EA2E5F2D2346BD590075DE62 /* models */,
 				CAD682262339261600CE3B74 /* main.swift */,
 			);
 			path = RFC;
@@ -100,14 +99,15 @@
 			path = errors;
 			sourceTree = "<group>";
 		};
-		EA2E5F2D2346BD590075DE62 /* src */ = {
+		EA2E5F2D2346BD590075DE62 /* models */ = {
 			isa = PBXGroup;
 			children = (
+				EA2E5F2B2346BD480075DE62 /* protocols */,
 				CAD6824523395A9500CE3B74 /* RFCPersonaFisica.swift */,
 				CA4A984D233E63F300741BD3 /* RFCPersonaMoral.swift */,
 				CAD6823D2339379000CE3B74 /* Tablas.swift */,
 			);
-			path = src;
+			path = models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
