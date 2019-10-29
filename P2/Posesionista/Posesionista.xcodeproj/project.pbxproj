@@ -1,0 +1,635 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */; };
+		EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */; };
+		EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */; };
+		EAFC125F234EB0A50089571A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC125E234EB0A50089571A /* AppDelegate.swift */; };
+		EAFC1264234EB0A50089571A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1262234EB0A50089571A /* Main.storyboard */; };
+		EAFC1266234EB0A50089571A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1265234EB0A50089571A /* Assets.xcassets */; };
+		EAFC1269234EB0A50089571A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */; };
+		EAFC1274234EB0A50089571A /* PosesionistaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC1273234EB0A50089571A /* PosesionistaTests.swift */; };
+		EAFC127F234EB0A50089571A /* PosesionistaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */; };
+		EAFC128D234EB1310089571A /* Cosa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC128C234EB1310089571A /* Cosa.swift */; };
+		EAFC128F234EB5F80089571A /* Inventario.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC128E234EB5F80089571A /* Inventario.swift */; };
+		EAFC1291234EB72C0089571A /* CosasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC1290234EB72C0089571A /* CosasTableViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAFC1270234EB0A50089571A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAFC1253234EB0A50089571A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAFC125A234EB0A50089571A;
+			remoteInfo = Posesionista;
+		};
+		EAFC127B234EB0A50089571A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAFC1253234EB0A50089571A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAFC125A234EB0A50089571A;
+			remoteInfo = Posesionista;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioDeImagenes.swift; sourceTree = "<group>"; };
+		EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosaTableViewCell.swift; sourceTree = "<group>"; };
+		EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
+		EAFC125B234EB0A50089571A /* Posesionista.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Posesionista.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFC125E234EB0A50089571A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EAFC1263234EB0A50089571A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EAFC1265234EB0A50089571A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EAFC1268234EB0A50089571A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EAFC126A234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFC126F234EB0A50089571A /* PosesionistaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosesionistaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFC1273234EB0A50089571A /* PosesionistaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosesionistaTests.swift; sourceTree = "<group>"; };
+		EAFC1275234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFC127A234EB0A50089571A /* PosesionistaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosesionistaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosesionistaUITests.swift; sourceTree = "<group>"; };
+		EAFC1280234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAFC128C234EB1310089571A /* Cosa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosa.swift; sourceTree = "<group>"; };
+		EAFC128E234EB5F80089571A /* Inventario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventario.swift; sourceTree = "<group>"; };
+		EAFC1290234EB72C0089571A /* CosasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosasTableViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EAFC1258234EB0A50089571A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC126C234EB0A50089571A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC1277234EB0A50089571A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EAE4C2D42357EBA8004F0B12 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+				EAFC128C234EB1310089571A /* Cosa.swift */,
+				EAFC128E234EB5F80089571A /* Inventario.swift */,
+				EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */,
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		EAE4C2D52357EBB8004F0B12 /* Tabla */ = {
+			isa = PBXGroup;
+			children = (
+				EAFC1290234EB72C0089571A /* CosasTableViewController.swift */,
+				EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */,
+			);
+			path = Tabla;
+			sourceTree = "<group>";
+		};
+		EAE4C2D62357EBF7004F0B12 /* Detalle */ = {
+			isa = PBXGroup;
+			children = (
+				EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */,
+			);
+			path = Detalle;
+			sourceTree = "<group>";
+		};
+		EAFC1252234EB0A50089571A = {
+			isa = PBXGroup;
+			children = (
+				EAFC125D234EB0A50089571A /* Posesionista */,
+				EAFC1272234EB0A50089571A /* PosesionistaTests */,
+				EAFC127D234EB0A50089571A /* PosesionistaUITests */,
+				EAFC125C234EB0A50089571A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EAFC125C234EB0A50089571A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAFC125B234EB0A50089571A /* Posesionista.app */,
+				EAFC126F234EB0A50089571A /* PosesionistaTests.xctest */,
+				EAFC127A234EB0A50089571A /* PosesionistaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAFC125D234EB0A50089571A /* Posesionista */ = {
+			isa = PBXGroup;
+			children = (
+				EAE4C2D42357EBA8004F0B12 /* Modelo */,
+				EAE4C2D52357EBB8004F0B12 /* Tabla */,
+				EAE4C2D62357EBF7004F0B12 /* Detalle */,
+				EAFC125E234EB0A50089571A /* AppDelegate.swift */,
+				EAFC1262234EB0A50089571A /* Main.storyboard */,
+				EAFC1265234EB0A50089571A /* Assets.xcassets */,
+				EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */,
+				EAFC126A234EB0A50089571A /* Info.plist */,
+			);
+			path = Posesionista;
+			sourceTree = "<group>";
+		};
+		EAFC1272234EB0A50089571A /* PosesionistaTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAFC1273234EB0A50089571A /* PosesionistaTests.swift */,
+				EAFC1275234EB0A50089571A /* Info.plist */,
+			);
+			path = PosesionistaTests;
+			sourceTree = "<group>";
+		};
+		EAFC127D234EB0A50089571A /* PosesionistaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */,
+				EAFC1280234EB0A50089571A /* Info.plist */,
+			);
+			path = PosesionistaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAFC125A234EB0A50089571A /* Posesionista */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFC1283234EB0A50089571A /* Build configuration list for PBXNativeTarget "Posesionista" */;
+			buildPhases = (
+				EAFC1257234EB0A50089571A /* Sources */,
+				EAFC1258234EB0A50089571A /* Frameworks */,
+				EAFC1259234EB0A50089571A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Posesionista;
+			productName = Posesionista;
+			productReference = EAFC125B234EB0A50089571A /* Posesionista.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EAFC126E234EB0A50089571A /* PosesionistaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFC1286234EB0A50089571A /* Build configuration list for PBXNativeTarget "PosesionistaTests" */;
+			buildPhases = (
+				EAFC126B234EB0A50089571A /* Sources */,
+				EAFC126C234EB0A50089571A /* Frameworks */,
+				EAFC126D234EB0A50089571A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAFC1271234EB0A50089571A /* PBXTargetDependency */,
+			);
+			name = PosesionistaTests;
+			productName = PosesionistaTests;
+			productReference = EAFC126F234EB0A50089571A /* PosesionistaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EAFC1279234EB0A50089571A /* PosesionistaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAFC1289234EB0A50089571A /* Build configuration list for PBXNativeTarget "PosesionistaUITests" */;
+			buildPhases = (
+				EAFC1276234EB0A50089571A /* Sources */,
+				EAFC1277234EB0A50089571A /* Frameworks */,
+				EAFC1278234EB0A50089571A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAFC127C234EB0A50089571A /* PBXTargetDependency */,
+			);
+			name = PosesionistaUITests;
+			productName = PosesionistaUITests;
+			productReference = EAFC127A234EB0A50089571A /* PosesionistaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EAFC1253234EB0A50089571A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = "Contreras Rocha Josue Mosiah";
+				TargetAttributes = {
+					EAFC125A234EB0A50089571A = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					EAFC126E234EB0A50089571A = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = EAFC125A234EB0A50089571A;
+					};
+					EAFC1279234EB0A50089571A = {
+						CreatedOnToolsVersion = 10.3;
+						TestTargetID = EAFC125A234EB0A50089571A;
+					};
+				};
+			};
+			buildConfigurationList = EAFC1256234EB0A50089571A /* Build configuration list for PBXProject "Posesionista" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EAFC1252234EB0A50089571A;
+			productRefGroup = EAFC125C234EB0A50089571A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAFC125A234EB0A50089571A /* Posesionista */,
+				EAFC126E234EB0A50089571A /* PosesionistaTests */,
+				EAFC1279234EB0A50089571A /* PosesionistaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EAFC1259234EB0A50089571A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFC1269234EB0A50089571A /* LaunchScreen.storyboard in Resources */,
+				EAFC1266234EB0A50089571A /* Assets.xcassets in Resources */,
+				EAFC1264234EB0A50089571A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC126D234EB0A50089571A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC1278234EB0A50089571A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EAFC1257234EB0A50089571A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */,
+				EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */,
+				EAFC125F234EB0A50089571A /* AppDelegate.swift in Sources */,
+				EAFC1291234EB72C0089571A /* CosasTableViewController.swift in Sources */,
+				EAFC128F234EB5F80089571A /* Inventario.swift in Sources */,
+				EAFC128D234EB1310089571A /* Cosa.swift in Sources */,
+				EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC126B234EB0A50089571A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFC1274234EB0A50089571A /* PosesionistaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAFC1276234EB0A50089571A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAFC127F234EB0A50089571A /* PosesionistaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EAFC1271234EB0A50089571A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAFC125A234EB0A50089571A /* Posesionista */;
+			targetProxy = EAFC1270234EB0A50089571A /* PBXContainerItemProxy */;
+		};
+		EAFC127C234EB0A50089571A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAFC125A234EB0A50089571A /* Posesionista */;
+			targetProxy = EAFC127B234EB0A50089571A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EAFC1262234EB0A50089571A /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAFC1263234EB0A50089571A /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EAFC1268234EB0A50089571A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EAFC1281234EB0A50089571A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		EAFC1282234EB0A50089571A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAFC1284234EB0A50089571A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = Posesionista/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.Posesionista;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAFC1285234EB0A50089571A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = Posesionista/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.Posesionista;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		EAFC1287234EB0A50089571A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = PosesionistaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.PosesionistaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Posesionista.app/Posesionista";
+			};
+			name = Debug;
+		};
+		EAFC1288234EB0A50089571A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = PosesionistaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.PosesionistaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Posesionista.app/Posesionista";
+			};
+			name = Release;
+		};
+		EAFC128A234EB0A50089571A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = PosesionistaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.PosesionistaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Posesionista;
+			};
+			name = Debug;
+		};
+		EAFC128B234EB0A50089571A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				INFOPLIST_FILE = PosesionistaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mosh.PosesionistaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Posesionista;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EAFC1256234EB0A50089571A /* Build configuration list for PBXProject "Posesionista" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFC1281234EB0A50089571A /* Debug */,
+				EAFC1282234EB0A50089571A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFC1283234EB0A50089571A /* Build configuration list for PBXNativeTarget "Posesionista" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFC1284234EB0A50089571A /* Debug */,
+				EAFC1285234EB0A50089571A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFC1286234EB0A50089571A /* Build configuration list for PBXNativeTarget "PosesionistaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFC1287234EB0A50089571A /* Debug */,
+				EAFC1288234EB0A50089571A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAFC1289234EB0A50089571A /* Build configuration list for PBXNativeTarget "PosesionistaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAFC128A234EB0A50089571A /* Debug */,
+				EAFC128B234EB0A50089571A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EAFC1253234EB0A50089571A /* Project object */;
+}
