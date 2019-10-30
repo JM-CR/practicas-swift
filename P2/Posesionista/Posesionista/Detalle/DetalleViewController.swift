@@ -51,7 +51,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         self.labelFecha.text = formatoDeFecha.string(from: cosaADetallar.fechaDeCreacion)
         
         // Cargar imagen
-        self.foto.image = self.inventarioDeImagenes.getImagen(paraLaLlave: cosaADetallar.llaveDeCosa)
+        self.foto.image = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,7 +76,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let imagen = info[.originalImage] as! UIImage
         self.foto.image = imagen
-        self.inventarioDeImagenes.setImagen(imagen, paraLaLlave: self.cosaADetallar.llaveDeCosa)
+        self.inventarioDeImagenes.setImagen(imagen, para: self.cosaADetallar.llaveDeCosa)
         dismiss(animated: true, completion: nil)
     }
     

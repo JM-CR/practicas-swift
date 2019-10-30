@@ -22,7 +22,6 @@ class CosasTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = CGFloat(65)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -33,6 +32,11 @@ class CosasTableViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.rowHeight = CGFloat(65)
     }
 
     // MARK: - Table view data source
@@ -86,7 +90,7 @@ class CosasTableViewController: UITableViewController {
             // Delete the row from the data source
             let cosaABorrar = miInventario.todasLasCosas[indexPath.row]
             self.miInventario.eliminaCosa(cosaAEliminar: cosaABorrar)
-            self.inventarioDeImagenes.borraImagen(paraLaLlave: cosaABorrar.llaveDeCosa)
+            self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

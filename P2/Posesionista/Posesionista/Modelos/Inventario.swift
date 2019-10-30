@@ -8,15 +8,21 @@
 
 import Foundation
 
+/**
+ Representa un inventario de cosas.
+ */
 class Inventario {
     
     var todasLasCosas = [Cosa]()
     let rutaDelInventarioEnElDisco: URL = {
-       return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("cosas.archivo")
+        return FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent("cosas.archivo")
     }()
     
     /**
-     Inicializa el inventario desde el que está guardado en disco.
+     Crea el inventario con las cosas guardadas en el disco.
      */
     init() {
         do {
@@ -24,21 +30,16 @@ class Inventario {
             let data = try Data(contentsOf: self.rutaDelInventarioEnElDisco)
         
             // Restaurar
-            do {
-                let cosasGuardadas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-                self.todasLasCosas = cosasGuardadas as! [Cosa]
-            } catch {
-                print("Error al des-serializar el inventario \(error.localizedDescription)")
-            }
+            let cosasGuardadas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
+            self.todasLasCosas = cosasGuardadas as! [Cosa]
         } catch {
-            print("Error al leer del disco")
+            print("\(error.localizedDescription)")
         }
-
-//        for _ in 0..<5 {
-//            creaCosa()
-//        }
     }
     
+    /**
+     Crea una nueva cosa y la agrega al inventario.
+     */
     @discardableResult func creaCosa() -> Cosa {
         let nuevaCosa = Cosa()
         self.todasLasCosas.append(nuevaCosa)
@@ -46,9 +47,9 @@ class Inventario {
     }
     
     /**
-     Elimina un elemento del arreglo de cosas.
+     Elimina una cosa del inventario.
      
-     - Parameter cosaAEliminar: Elemento a borrar.
+     - Parameter cosaAEliminar: Cosa a borrar.
      */
     func eliminaCosa(cosaAEliminar: Cosa) {
         if let indiceDeCosa = self.todasLasCosas.firstIndex(of: cosaAEliminar) {
@@ -57,42 +58,42 @@ class Inventario {
     }
     
     /**
-     Mueve un elemento de un index hacia otro.
+     Acomoda una cosa dentro del inventario.
      
-     - Parameter de: Primer elemento.
-     - Parameter hacia: Segundo elemento.
+     - Parameter de: Posición inicial.
+     - Parameter hacia: Nueva posición.
      */
     func reordena(de: Int, hacia: Int) {
+        // Verificar que no se mueva al mismo lugar.
         guard de != hacia else {
             return
         }
+        
+        // Realizar operación
         let cosaAMover = todasLasCosas[de]
         todasLasCosas.remove(at: de)
         todasLasCosas.insert(cosaAMover, at: hacia)
     }
     
     /**
-     Guarda el inventario de Cosas en disco.
+     Guarda el inventario en el sistema de archivos del disco.
      
      - Returns: True si la operación se pudo realizar exitosamente.
      */
     func guardaEnDisco() -> Bool {
-        print("El inventario se guardará en \(self.rutaDelInventarioEnElDisco.path)")
+        var operacionExitosa = false
+        
         do {
             // Serializar
             let data = try NSKeyedArchiver.archivedData(withRootObject: self.todasLasCosas, requiringSecureCoding: false)
             
             // Guardar en disco
-            do {
-               try data.write(to: self.rutaDelInventarioEnElDisco, options: [.atomic])
-                return true
-            } catch {
-                print("Error al guardar a disco \(error.localizedDescription)")
-            }
+            try data.write(to: self.rutaDelInventarioEnElDisco, options: [.atomic])
+            operacionExitosa.toggle()
         } catch {
-            print("Error al serializar el inventario: \(error.localizedDescription)")
+            print("\(error.localizedDescription)")
         }
         
-        return false
+        return operacionExitosa
     }
 }

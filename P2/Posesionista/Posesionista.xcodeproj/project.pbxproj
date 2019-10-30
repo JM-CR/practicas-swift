@@ -84,14 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		EAE4C2D42357EBA8004F0B12 /* Modelo */ = {
+		EAE4C2D42357EBA8004F0B12 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
 				EAFC128C234EB1310089571A /* Cosa.swift */,
 				EAFC128E234EB5F80089571A /* Inventario.swift */,
 				EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */,
 			);
-			path = Modelo;
+			path = Modelos;
 			sourceTree = "<group>";
 		};
 		EAE4C2D52357EBB8004F0B12 /* Tabla */ = {
@@ -134,14 +134,14 @@
 		EAFC125D234EB0A50089571A /* Posesionista */ = {
 			isa = PBXGroup;
 			children = (
-				EAE4C2D42357EBA8004F0B12 /* Modelo */,
-				EAE4C2D52357EBB8004F0B12 /* Tabla */,
-				EAE4C2D62357EBF7004F0B12 /* Detalle */,
 				EAFC125E234EB0A50089571A /* AppDelegate.swift */,
 				EAFC1262234EB0A50089571A /* Main.storyboard */,
-				EAFC1265234EB0A50089571A /* Assets.xcassets */,
 				EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */,
 				EAFC126A234EB0A50089571A /* Info.plist */,
+				EAE4C2D42357EBA8004F0B12 /* Modelos */,
+				EAE4C2D52357EBB8004F0B12 /* Tabla */,
+				EAE4C2D62357EBF7004F0B12 /* Detalle */,
+				EAFC1265234EB0A50089571A /* Assets.xcassets */,
 			);
 			path = Posesionista;
 			sourceTree = "<group>";

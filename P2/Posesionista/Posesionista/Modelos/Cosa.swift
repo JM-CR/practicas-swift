@@ -8,6 +8,9 @@
 
 import Foundation
 
+/**
+ Representa una cosa del inventario.
+ */
 class Cosa: NSObject, NSCoding {
     
     var nombre: String
@@ -16,6 +19,11 @@ class Cosa: NSObject, NSCoding {
     let fechaDeCreacion: Date
     let llaveDeCosa: String
     
+    /**
+     Serializa el objeto y lo almacena en el sistema de archivos del disco.
+     
+     - Parameter aCoder: Archiver.
+     */
     func encode(with aCoder: NSCoder) {
         aCoder.encode(self.nombre, forKey: "nombre")
         aCoder.encode(self.valorEnPesos, forKey: "valorEnPesos")
@@ -24,6 +32,11 @@ class Cosa: NSObject, NSCoding {
         aCoder.encode(self.llaveDeCosa, forKey: "llaveDeCosa")
     }
     
+    /**
+     Deserializa una Cosa del sistema de archivos del disco.
+     
+     - Parameter aDecoder: Unarchiver.
+     */
     required init?(coder aDecoder: NSCoder) {
         self.nombre = aDecoder.decodeObject(forKey: "nombre") as! String
         self.valorEnPesos = aDecoder.decodeInteger(forKey: "valorEnPesos")
@@ -33,6 +46,14 @@ class Cosa: NSObject, NSCoding {
         super.init()
     }
     
+    /**
+     Crea una cosa.
+     
+     - Parameter nombre: Nombre de la cosa.
+     - Parameter valor: Precio.
+     - Parameter serie: Número de serie.
+     - Parameter alta: Fecha de creación.
+     */
     init(nombre: String, valor: Int, serie: String?, alta: Date) {
         self.nombre = nombre
         self.valorEnPesos = valor
@@ -42,6 +63,9 @@ class Cosa: NSObject, NSCoding {
         super.init()
     }
     
+    /**
+     Crea un objeto Cosa con valores iniciales aleatorios.
+     */
     override convenience init() {
         let sustantivos = ["Aguacate", "Termo", "Audífonos"]
         let adjetivos = ["Verde", "Viejo", "Caro"]
