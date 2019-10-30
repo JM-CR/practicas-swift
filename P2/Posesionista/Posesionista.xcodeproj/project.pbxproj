@@ -84,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA5FB40F236A2D980079EDB0 /* Controladores */ = {
+			isa = PBXGroup;
+			children = (
+				EAE4C2D52357EBB8004F0B12 /* Tabla */,
+				EAE4C2D62357EBF7004F0B12 /* Detalle */,
+			);
+			path = Controladores;
+			sourceTree = "<group>";
+		};
 		EAE4C2D42357EBA8004F0B12 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,8 +148,7 @@
 				EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */,
 				EAFC126A234EB0A50089571A /* Info.plist */,
 				EAE4C2D42357EBA8004F0B12 /* Modelos */,
-				EAE4C2D52357EBB8004F0B12 /* Tabla */,
-				EAE4C2D62357EBF7004F0B12 /* Detalle */,
+				CA5FB40F236A2D980079EDB0 /* Controladores */,
 				EAFC1265234EB0A50089571A /* Assets.xcassets */,
 			);
 			path = Posesionista;

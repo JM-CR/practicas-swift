@@ -14,15 +14,19 @@ class CosaTableViewCell: UITableViewCell {
     @IBOutlet weak var labelSerie: UILabel!
     @IBOutlet weak var labelPrecio: UILabel!
 
+    /**
+     Realiza una acción cuando aparece en el storyboard.
+     */
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    /**
+     Establece el estado de la celda cuando es seleccionada.
+     */
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
