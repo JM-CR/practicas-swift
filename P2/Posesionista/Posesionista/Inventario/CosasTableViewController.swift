@@ -42,6 +42,30 @@ class CosasTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         self.tableView.reloadData()
     }
+    
+    /**
+     Añade una nueva cosa al inventario.
+     
+     - Parameter sender: Objeto barButtonItem que invocó al mètodo.
+     */
+    @IBAction func añadeCosas(_ sender: UIBarButtonItem) {
+        // Crear cosa
+        let nuevaCosa = self.miInventario.creaCosa()
+        
+        // Insertar en tabla
+        let indiceDeNuevaCosa = self.miInventario.todasLasCosas.firstIndex(of: nuevaCosa)!
+        let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
+    // MARK: - Table Style
+    
+    /**
+     Define el texto para el botón de borrar al hacer swipe.
+     */
+    override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Eliminar"
+    }
 
     // MARK: - Data source
 
@@ -76,33 +100,18 @@ class CosasTableViewController: UITableViewController {
      - Returns: Celda configurada.
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Enlazar con el TableViewCell
+        // Enlazar con CosaTableViewCell
         let cell = tableView.dequeueReusableCell(withIdentifier: "cosaCell", for: indexPath) as! CosaTableViewCell
         
-        // Obtener datos del modelo
+        // Recuperar datos del modelo
         let item = self.miInventario.todasLasCosas[indexPath.row]
         
-        // Configurar
+        // Formatear celda
         cell.labelNombre.text = item.nombre
         cell.labelPrecio.text = "$\(item.valorEnPesos)"
         cell.labelSerie.text = item.numeroDeSerie
         
         return cell
-    }
-
-    /**
-     Añade una nueva cosa al inventario.
-     
-     - Parameter sender: Objeto barButtonItem que invocó al mètodo.
-     */
-    @IBAction func añadeCosas(_ sender: UIBarButtonItem) {
-        // Crear cosa
-        let nuevaCosa = self.miInventario.creaCosa()
-        
-        // Insertar en tabla
-        let indiceDeNuevaCosa = self.miInventario.todasLasCosas.firstIndex(of: nuevaCosa)!
-        let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
     /*
@@ -122,16 +131,28 @@ class CosasTableViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Buscar cosa a borrar en el modelo
-            let cosaABorrar = self.miInventario.todasLasCosas[indexPath.row]
+            // Preguntar confirmación
+            let alerta = UIAlertController(title: "¿Seguro?", message: "Estás por borrar un elemento", preferredStyle: .alert)
             
-            // Borrar
-            self.miInventario.eliminaCosa(cosaAEliminar: cosaABorrar)
-            self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
-            self.tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            // Acción de borrar
+            let ok = UIAlertAction(title: "Continuar", style: .destructive) { accion in
+                // Buscar cosa en el modelo
+                let cosaABorrar = self.miInventario.todasLasCosas[indexPath.row]
+                
+                // Realizar acción
+                self.miInventario.eliminaCosa(cosaAEliminar: cosaABorrar)
+                self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+            alerta.addAction(ok)
+            
+            // Acción de cancelar
+            let cancelar = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            alerta.addAction(cancelar)
+            
+            // Mostrar
+            present(alerta, animated: true, completion: nil)
+        }
     }
 
     /**
