@@ -19,7 +19,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     var inventarioDeImagenes: InventarioDeImagenes!
     var cosaADetallar: Cosa! {
         didSet {
-            navigationItem.title = self.cosaADetallar.nombre
+            self.navigationItem.title = self.cosaADetallar.nombre
         }
     }
     
@@ -36,6 +36,9 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         return formatter
     }()
     
+    /**
+     Realiza acciones después de que se instancia el view.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,18 +47,23 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         self.campoPrecio.delegate = self
         self.campoSerie.delegate = self
         
-        // Mostrar texto
-        self.campoNombre.text = cosaADetallar.nombre
-        self.campoSerie.text = cosaADetallar.numeroDeSerie
-        self.campoPrecio.text = formatoDePrecio.string(from: NSNumber(value: cosaADetallar.valorEnPesos))
-        self.labelFecha.text = formatoDeFecha.string(from: cosaADetallar.fechaDeCreacion)
+        // Recuperar datos
+        self.campoNombre.text = self.cosaADetallar.nombre
+        self.campoSerie.text = self.cosaADetallar.numeroDeSerie
+        self.campoPrecio.text = self.formatoDePrecio.string(from: NSNumber(value: cosaADetallar.valorEnPesos))
+        self.labelFecha.text = self.formatoDeFecha.string(from: cosaADetallar.fechaDeCreacion)
         
         // Cargar imagen
         self.foto.image = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa)
     }
     
+    /**
+     Realiza acciones cuando la vista está por desaparecer de pantalla.
+     */
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Pasar datos de regreso
         self.cosaADetallar.nombre = self.campoNombre.text ?? ""
         self.cosaADetallar.numeroDeSerie = self.campoSerie.text ?? ""
         if let valor = self.campoPrecio.text, let valorEntero = self.formatoDePrecio.number(from: valor) {
@@ -65,13 +73,22 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
     }
     
+    /**
+     Responde ante acciones del keyboard en un UITextField.
+     
+     - Parameter textField: Objeto que acciona el método.
+     */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Desaparecer keyboard
         textField.resignFirstResponder()
         return true
     }
     
     /**
-     Trata la imagen después de que el usuario la selecciona.
+     Da tratamiento a la imagen después de que el usuario la selecciona.
+     
+     - Parameter picker: Controlador que maneja la imagen.
+     - Parameter info: Diccionario con propiedades de la imagen.
      */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let imagen = info[.originalImage] as! UIImage
@@ -80,20 +97,23 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         dismiss(animated: true, completion: nil)
     }
     
+    /**
+     Toma una foto para la cosa de la cámara o biblioteca.
+     
+     - Parameter sender: Objeto que accionó el método.
+     */
     @IBAction func tomaFoto(_ sender: UIBarButtonItem) {
         let picker = UIImagePickerController()
         
-        // Configurar tipo de cámera
+        // Origen de la imagen
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
         } else {
             picker.sourceType = .photoLibrary
         }
         
-        // Delegado
+        // Mostrar
         picker.delegate = self
-        
-        // Presentar
         present(picker, animated: true, completion: nil)
     }
 

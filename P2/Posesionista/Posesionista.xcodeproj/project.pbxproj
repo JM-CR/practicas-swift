@@ -84,13 +84,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CA5FB40F236A2D980079EDB0 /* Controladores */ = {
+		CA711FA8236B692A007BAD4E /* Celda */ = {
 			isa = PBXGroup;
 			children = (
-				EAE4C2D52357EBB8004F0B12 /* Tabla */,
-				EAE4C2D62357EBF7004F0B12 /* Detalle */,
+				EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */,
+				EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */,
 			);
-			path = Controladores;
+			path = Celda;
 			sourceTree = "<group>";
 		};
 		EAE4C2D42357EBA8004F0B12 /* Modelos */ = {
@@ -103,21 +103,13 @@
 			path = Modelos;
 			sourceTree = "<group>";
 		};
-		EAE4C2D52357EBB8004F0B12 /* Tabla */ = {
+		EAE4C2D52357EBB8004F0B12 /* Inventario */ = {
 			isa = PBXGroup;
 			children = (
 				EAFC1290234EB72C0089571A /* CosasTableViewController.swift */,
-				EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */,
+				CA711FA8236B692A007BAD4E /* Celda */,
 			);
-			path = Tabla;
-			sourceTree = "<group>";
-		};
-		EAE4C2D62357EBF7004F0B12 /* Detalle */ = {
-			isa = PBXGroup;
-			children = (
-				EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */,
-			);
-			path = Detalle;
+			path = Inventario;
 			sourceTree = "<group>";
 		};
 		EAFC1252234EB0A50089571A = {
@@ -147,8 +139,8 @@
 				EAFC1262234EB0A50089571A /* Main.storyboard */,
 				EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */,
 				EAFC126A234EB0A50089571A /* Info.plist */,
+				EAE4C2D52357EBB8004F0B12 /* Inventario */,
 				EAE4C2D42357EBA8004F0B12 /* Modelos */,
-				CA5FB40F236A2D980079EDB0 /* Controladores */,
 				EAFC1265234EB0A50089571A /* Assets.xcassets */,
 			);
 			path = Posesionista;
