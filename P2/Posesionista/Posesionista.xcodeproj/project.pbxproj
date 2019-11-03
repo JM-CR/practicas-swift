@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA2B8D6A236F3D7000061322 /* Seccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B8D69236F3D7000061322 /* Seccion.swift */; };
 		CA711FAA236BA4FE007BAD4E /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA711FA9236BA4FE007BAD4E /* InputError.swift */; };
 		EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */; };
 		EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */; };
@@ -41,7 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CA2B8D69236F3D7000061322 /* Seccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seccion.swift; sourceTree = "<group>"; };
 		CA711FA9236BA4FE007BAD4E /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioDeImagenes.swift; sourceTree = "<group>"; };
 		EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosaTableViewCell.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				EAFC128C234EB1310089571A /* Cosa.swift */,
-				CA2B8D69236F3D7000061322 /* Seccion.swift */,
 				EAFC128E234EB5F80089571A /* Inventario.swift */,
 				EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */,
 			);
@@ -310,7 +307,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */,
-				CA2B8D6A236F3D7000061322 /* Seccion.swift in Sources */,
 				EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */,
 				EAFC125F234EB0A50089571A /* AppDelegate.swift in Sources */,
 				EAFC1291234EB72C0089571A /* CosasTableViewController.swift in Sources */,

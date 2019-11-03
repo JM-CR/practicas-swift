@@ -13,28 +13,40 @@ import Foundation
  */
 class Inventario {
     
-    var todasLasCosas = [Cosa]()
-    let rutaDelInventarioEnElDisco: URL = {
-        return FileManager.default
-            .urls(for: .documentDirectory, in: .userDomainMask)
-            .first!
-            .appendingPathComponent("cosas.archivo")
-    }()
+    var cosas = [Cosa]()
+    var nombreDeSeccion: String!
     
     /**
      Crea el inventario con las cosas guardadas en el disco.
+     
+     - Parameter seccion: Nombre de la sección a recuperar.
      */
-    init() {
+    init(seccion: String) {
         do {
             // Obtener datos del disco
-            let data = try Data(contentsOf: self.rutaDelInventarioEnElDisco)
+            self.nombreDeSeccion = seccion
+            let path = self.rutaDelInventarioEnElDisco(seccion: self.nombreDeSeccion)
+            let data = try Data(contentsOf: path)
         
             // Restaurar
             let cosasGuardadas = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data)
-            self.todasLasCosas = cosasGuardadas as! [Cosa]
+            self.cosas = cosasGuardadas as! [Cosa]
         } catch {
             print("\(error.localizedDescription)")
         }
+    }
+    
+    /**
+     Obtiene el path de la sección en el sistema de archivos del disco.
+     
+     - Parameter seccion: Nombre de la sección a recuperar.
+     - Returns: URL de la ubicación.
+     */
+    func rutaDelInventarioEnElDisco(seccion: String) -> URL {
+        return FileManager.default
+            .urls(for: .documentDirectory, in: .userDomainMask)
+            .first!
+            .appendingPathComponent("cosas.\(seccion)")
     }
     
     /**
@@ -42,7 +54,7 @@ class Inventario {
      */
     @discardableResult func creaCosa() -> Cosa {
         let nuevaCosa = Cosa()
-        self.todasLasCosas.append(nuevaCosa)
+        self.cosas.append(nuevaCosa)
         return nuevaCosa
     }
     
@@ -52,8 +64,8 @@ class Inventario {
      - Parameter cosaAEliminar: Cosa a borrar.
      */
     func eliminaCosa(cosaAEliminar: Cosa) {
-        if let indiceDeCosa = self.todasLasCosas.firstIndex(of: cosaAEliminar) {
-            todasLasCosas.remove(at: indiceDeCosa)
+        if let indiceDeCosa = self.cosas.firstIndex(of: cosaAEliminar) {
+            cosas.remove(at: indiceDeCosa)
         }
     }
     
@@ -70,9 +82,9 @@ class Inventario {
         }
         
         // Realizar operación
-        let cosaAMover = todasLasCosas[de]
-        todasLasCosas.remove(at: de)
-        todasLasCosas.insert(cosaAMover, at: hacia)
+        let cosaAMover = cosas[de]
+        cosas.remove(at: de)
+        cosas.insert(cosaAMover, at: hacia)
     }
     
     /**
@@ -80,15 +92,16 @@ class Inventario {
      
      - Returns: True si la operación se pudo realizar exitosamente.
      */
-    func guardaEnDisco() -> Bool {
+    @discardableResult func guardaEnDisco() -> Bool {
         var operacionExitosa = false
         
         do {
             // Serializar
-            let data = try NSKeyedArchiver.archivedData(withRootObject: self.todasLasCosas, requiringSecureCoding: false)
+            let data = try NSKeyedArchiver.archivedData(withRootObject: self.cosas, requiringSecureCoding: false)
             
             // Guardar en disco
-            try data.write(to: self.rutaDelInventarioEnElDisco, options: [.atomic])
+            let path = self.rutaDelInventarioEnElDisco(seccion: self.nombreDeSeccion)
+            try data.write(to: path, options: [.atomic])
             operacionExitosa.toggle()
         } catch {
             print("\(error.localizedDescription)")

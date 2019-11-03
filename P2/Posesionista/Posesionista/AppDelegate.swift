@@ -12,16 +12,25 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let inventario = Inventario()
+    var inventarios = [Inventario]()
     
     /**
      Realiza una acción cuando la aplicación termina de instanciarse.
      */
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Pasar inventario a la tabla
+        // Buscar CosasTableViewController
         let navController = self.window!.rootViewController as! UINavigationController
         let cosasTVC = navController.topViewController as! CosasTableViewController
-        cosasTVC.miInventario = self.inventario
+        
+        // Cargar inventarios del disco
+        let secciones = ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"]
+        for nombre in secciones {
+            let inventarioPorSeccion = Inventario(seccion: nombre)
+            self.inventarios.append(inventarioPorSeccion)
+        }
+        
+        // Pasar inventarios a CosasTVC
+        cosasTVC.inventarios = self.inventarios
         
         return true
     }
@@ -35,11 +44,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
      Realiza una acción cuando la aplicación entra en background.
      */
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Guardar inventario en disco
-        if self.inventario.guardaEnDisco() {
-            print("Archivo guardado exitosamente")
-        } else {
-            print("Ocurrió un error al guardar el inventario")
+        // Guardar inventarios en disco
+        for seccion in self.inventarios {
+            seccion.guardaEnDisco()
         }
     }
 

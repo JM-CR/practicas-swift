@@ -10,7 +10,7 @@ import UIKit
 
 class CosasTableViewController: UITableViewController {
 
-    var miInventario: Inventario!
+    var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
     
     /**
@@ -49,11 +49,13 @@ class CosasTableViewController: UITableViewController {
      - Parameter sender: Objeto barButtonItem que invocó al mètodo.
      */
     @IBAction func añadeCosas(_ sender: UIBarButtonItem) {
+        // FIXME: Asignar cosa a la sección correcta.
+        
         // Crear cosa
-        let nuevaCosa = self.miInventario.creaCosa()
+        let nuevaCosa = self.inventarios[0].creaCosa()
         
         // Insertar en tabla
-        let indiceDeNuevaCosa = self.miInventario.todasLasCosas.firstIndex(of: nuevaCosa)!
+        let indiceDeNuevaCosa = self.inventarios[0].cosas.firstIndex(of: nuevaCosa)!
         let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -77,7 +79,7 @@ class CosasTableViewController: UITableViewController {
      */
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return self.inventarios.count
     }
 
     /**
@@ -89,7 +91,7 @@ class CosasTableViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.miInventario.todasLasCosas.count
+        return self.inventarios[section].cosas.count
     }
 
     /**
@@ -104,7 +106,7 @@ class CosasTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cosaCell", for: indexPath) as! CosaTableViewCell
         
         // Recuperar datos del modelo
-        let item = self.miInventario.todasLasCosas[indexPath.row]
+        let item = self.inventarios[indexPath.section].cosas[indexPath.row]
         
         // Formatear celda
         cell.labelNombre.text = item.nombre
@@ -137,10 +139,10 @@ class CosasTableViewController: UITableViewController {
             // Acción de borrar
             let ok = UIAlertAction(title: "Continuar", style: .destructive) { accion in
                 // Buscar cosa en el modelo
-                let cosaABorrar = self.miInventario.todasLasCosas[indexPath.row]
+                let cosaABorrar = self.inventarios[indexPath.section].cosas[indexPath.row]
                 
                 // Realizar acción
-                self.miInventario.eliminaCosa(cosaAEliminar: cosaABorrar)
+                self.inventarios[indexPath.section].eliminaCosa(cosaAEliminar: cosaABorrar)
                 self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
             }
@@ -163,7 +165,7 @@ class CosasTableViewController: UITableViewController {
      - Parameter to: Indicador con la nueva posición de la celda.
      */
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        self.miInventario.reordena(de: fromIndexPath.row, hacia: to.row)
+        self.inventarios[fromIndexPath.section].reordena(de: fromIndexPath.row, hacia: to.row)
     }
 
     /*
@@ -181,12 +183,12 @@ class CosasTableViewController: UITableViewController {
      - Parameter sender: Objeto que inició la transición.
      */
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "muestraDetalle", let filaSeleccionada = self.tableView.indexPathForSelectedRow {
+        if segue.identifier == "muestraDetalle", let indexPath = self.tableView.indexPathForSelectedRow {
             // Identificar destino
             let detalleVC = segue.destination as! DetalleViewController
             
             // Pasar datos al destino
-            detalleVC.cosaADetallar = miInventario.todasLasCosas[filaSeleccionada.row]
+            detalleVC.cosaADetallar = self.inventarios[indexPath.section].cosas[indexPath.row]
             detalleVC.inventarioDeImagenes = self.inventarioDeImagenes
         }
     }
