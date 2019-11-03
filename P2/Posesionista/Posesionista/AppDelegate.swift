@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let cosasTVC = navController.topViewController as! CosasTableViewController
         
         // Cargar inventarios del disco
-        let secciones = ["100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"]
+        let secciones = ["0", "100", "200", "300", "400", "500", "600", "700", "800", "900", "1000"]
         for nombre in secciones {
             let inventarioPorSeccion = Inventario(seccion: nombre)
             self.inventarios.append(inventarioPorSeccion)

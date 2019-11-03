@@ -10,6 +10,7 @@ import UIKit
 
 class CosasTableViewController: UITableViewController {
 
+    let headerID = "headerCell"
     var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
     
@@ -28,10 +29,10 @@ class CosasTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Activar botón Editar
+        // Propiedades de NavigationVC
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         
-        // Ancho de fila
+        // Propiedades de tabla
         self.tableView.rowHeight = CGFloat(65)
     }
     
@@ -58,15 +59,50 @@ class CosasTableViewController: UITableViewController {
         let indiceDeNuevaCosa = self.inventarios[0].cosas.firstIndex(of: nuevaCosa)!
         let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
+        self.tableView.reloadData()
     }
     
     // MARK: - Table Style
     
     /**
      Define el texto para el botón de borrar al hacer swipe.
+     
+     - Parameter tableView: Objeto TableView que invocó al método.
+     - Parameter indexPath: Ubicación de la celda en la tabla.
+     - Returns: Texto del botón.
      */
     override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
         return "Eliminar"
+    }
+    
+    /**
+     Formatea el view de encabezado de sección.
+     
+     - Parameter tableView: Objeto TableView que invocó al método.
+     - Parameter section: Sección mostrada dentro de la tabla.
+     - Returns: View con el encabezado.
+     */
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // Obtener celda reutilizable
+        let header = self.tableView.dequeueReusableCell(withIdentifier: self.headerID) as! HeaderTableViewCell
+        
+        // Preparar la descripción de la sección
+        let precioMinimo = self.inventarios[section].nombreDeSeccion!
+        var descripcion = ""
+        
+        // Obtener rango de precios
+        if section == self.inventarios.count - 1 {
+            descripcion = "De $\(Int(precioMinimo)! + 1) en adelante"
+        } else {
+            let precioMaximo = self.inventarios[section + 1].nombreDeSeccion!
+            let precioBase = precioMinimo != "0" ? "\(Int(precioMinimo)! + 1)" : "0"
+            descripcion = "De $\(precioBase) a $\(precioMaximo)"
+        }
+        
+        // Poner descripción
+        header.labelDescripcion.text = descripcion
+        
+        return header
     }
 
     // MARK: - Data source
@@ -145,6 +181,7 @@ class CosasTableViewController: UITableViewController {
                 self.inventarios[indexPath.section].eliminaCosa(cosaAEliminar: cosaABorrar)
                 self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadData()
             }
             alerta.addAction(ok)
             
