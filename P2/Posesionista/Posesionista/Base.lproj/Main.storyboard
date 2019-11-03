@@ -51,7 +51,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWO-RZ-4wq">
-                                            <rect key="frame" x="20" y="4" width="42" height="21"/>
+                                            <rect key="frame" x="20" y="11" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                                         <constraint firstAttribute="bottom" secondItem="4PR-ni-ao4" secondAttribute="bottom" constant="10.5" id="BlL-ma-H9j"/>
                                         <constraint firstItem="4PR-ni-ao4" firstAttribute="leading" secondItem="4En-Rc-zK5" secondAttribute="leading" constant="20" id="KY9-cX-pkP"/>
                                         <constraint firstItem="QcF-7J-vXl" firstAttribute="leading" relation="lessThanOrEqual" secondItem="YWO-RZ-4wq" secondAttribute="trailing" constant="290" id="d0v-OW-v8p"/>
-                                        <constraint firstItem="YWO-RZ-4wq" firstAttribute="top" secondItem="4En-Rc-zK5" secondAttribute="top" constant="4" id="g3v-Q3-JUu"/>
+                                        <constraint firstItem="YWO-RZ-4wq" firstAttribute="top" secondItem="4En-Rc-zK5" secondAttribute="top" constant="11" id="g3v-Q3-JUu"/>
                                         <constraint firstItem="QcF-7J-vXl" firstAttribute="centerY" secondItem="4En-Rc-zK5" secondAttribute="centerY" id="nNw-XP-Arc"/>
                                         <constraint firstItem="YWO-RZ-4wq" firstAttribute="leading" secondItem="4En-Rc-zK5" secondAttribute="leading" constant="20" id="qgy-4C-SdX"/>
                                     </constraints>
@@ -85,6 +85,56 @@
                                     <outlet property="labelPrecio" destination="QcF-7J-vXl" id="9vg-zx-nt6"/>
                                     <outlet property="labelSerie" destination="4PR-ni-ao4" id="adu-gN-bDM"/>
                                     <segue destination="gVN-ki-SPW" kind="show" identifier="muestraDetalle" id="BKr-zl-NT3"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="footerCell" rowHeight="30" id="e3R-gG-0TK" customClass="FooterTableViewCell" customModule="Posesionista" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="123" width="414" height="30"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="e3R-gG-0TK" id="lca-Qw-4ma">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="29.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total de cosas: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="syo-sf-Jhs">
+                                            <rect key="frame" x="17" y="4.5" width="127" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEE-vC-9xg">
+                                            <rect key="frame" x="147" y="4.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio total:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8C-90-Fe4">
+                                            <rect key="frame" x="220" y="4.5" width="100" height="21"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRC-61-D1A">
+                                            <rect key="frame" x="326" y="4.5" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" red="0.34144625067710876" green="0.63260161876678467" blue="0.86657083034515381" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nRC-61-D1A" secondAttribute="trailing" constant="46" id="ABa-oU-reS"/>
+                                        <constraint firstItem="QEE-vC-9xg" firstAttribute="leading" secondItem="syo-sf-Jhs" secondAttribute="trailing" constant="3" id="Gex-Iw-pyI"/>
+                                        <constraint firstItem="QEE-vC-9xg" firstAttribute="centerY" secondItem="lca-Qw-4ma" secondAttribute="centerY" id="JJg-GR-GZq"/>
+                                        <constraint firstItem="syo-sf-Jhs" firstAttribute="centerY" secondItem="lca-Qw-4ma" secondAttribute="centerY" id="SpY-U0-F2G"/>
+                                        <constraint firstItem="z8C-90-Fe4" firstAttribute="centerY" secondItem="lca-Qw-4ma" secondAttribute="centerY" id="TmT-DV-Xln"/>
+                                        <constraint firstItem="syo-sf-Jhs" firstAttribute="leading" secondItem="lca-Qw-4ma" secondAttribute="leading" constant="17" id="U3H-mS-fpU"/>
+                                        <constraint firstItem="z8C-90-Fe4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QEE-vC-9xg" secondAttribute="trailing" constant="31" id="Uez-Bo-XQ5"/>
+                                        <constraint firstItem="nRC-61-D1A" firstAttribute="centerY" secondItem="lca-Qw-4ma" secondAttribute="centerY" id="ibF-Tn-dco"/>
+                                        <constraint firstItem="nRC-61-D1A" firstAttribute="leading" secondItem="z8C-90-Fe4" secondAttribute="trailing" constant="6" id="yn3-O0-cLc"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="labelPrecioTotal" destination="nRC-61-D1A" id="CkA-KS-8nl"/>
+                                    <outlet property="labelTotalDeCosas" destination="QEE-vC-9xg" id="Bmf-FJ-Qeg"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

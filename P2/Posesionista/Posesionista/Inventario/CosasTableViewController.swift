@@ -10,7 +10,6 @@ import UIKit
 
 class CosasTableViewController: UITableViewController {
 
-    let headerID = "headerCell"
     var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
     
@@ -59,7 +58,10 @@ class CosasTableViewController: UITableViewController {
         let indiceDeNuevaCosa = self.inventarios[0].cosas.firstIndex(of: nuevaCosa)!
         let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
-        self.tableView.reloadData()
+        
+        // Recargar sección
+        let indexSet: IndexSet = [indexPath.section]
+        self.tableView.reloadSections(indexSet, with: .automatic)
     }
     
     // MARK: - Table Style
@@ -84,7 +86,7 @@ class CosasTableViewController: UITableViewController {
      */
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         // Obtener celda reutilizable
-        let header = self.tableView.dequeueReusableCell(withIdentifier: self.headerID) as! HeaderTableViewCell
+        let header = self.tableView.dequeueReusableCell(withIdentifier: "headerCell") as! HeaderTableViewCell
         
         // Preparar la descripción de la sección
         let precioMinimo = self.inventarios[section].nombreDeSeccion!
@@ -102,7 +104,25 @@ class CosasTableViewController: UITableViewController {
         // Poner descripción
         header.labelDescripcion.text = descripcion
         
-        return header
+        return header.contentView
+    }
+    
+    /**
+     Formatea el view de footer de sección.
+     
+     - Parameter tableView: Objeto TableView que invocó al método.
+     - Parameter section: Sección mostrada dentro de la tabla.
+     - Returns: View con el footer.
+     */
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // Obtener celda reutilizable
+        let footer = self.tableView.dequeueReusableCell(withIdentifier: "footerCell") as! FooterTableViewCell
+        
+        // Mostrar totales
+        footer.labelTotalDeCosas.text = "\(self.inventarios[section].cosas.count)"
+        footer.labelPrecioTotal.text = self.inventarios[section].precioAcumulado()
+        
+        return footer.contentView
     }
 
     // MARK: - Data source
@@ -181,7 +201,10 @@ class CosasTableViewController: UITableViewController {
                 self.inventarios[indexPath.section].eliminaCosa(cosaAEliminar: cosaABorrar)
                 self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
-                self.tableView.reloadData()
+                
+                // Recargar sección
+                let indexSet: IndexSet = [indexPath.section]
+                self.tableView.reloadSections(indexSet, with: .automatic)
             }
             alerta.addAction(ok)
             

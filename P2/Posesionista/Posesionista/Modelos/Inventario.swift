@@ -109,4 +109,14 @@ class Inventario {
         
         return operacionExitosa
     }
+    
+    /**
+     Calcula el precio total acumulado.
+     */
+    func precioAcumulado() -> String {
+        var precioTotal = 0
+        self.cosas.forEach { precioTotal += $0.valorEnPesos  }
+        return "$\(precioTotal)"
+    }
+    
 }
