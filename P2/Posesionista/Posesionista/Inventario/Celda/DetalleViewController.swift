@@ -85,6 +85,25 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     /**
+     Verifica que ningún detalle quede vacío.
+     
+     - Throws: InputError.EmptyField
+     */
+    func verificaCamposVacios() throws {
+        guard !(self.campoNombre.text?.isEmpty)! else {
+            throw InputError.EmptyField(descripcion: "La cosa debe tener un nombre.")
+        }
+        
+        guard !(self.campoSerie.text?.isEmpty)! else {
+            throw InputError.EmptyField(descripcion: "La cosa debe tener un número de serie.")
+        }
+        
+        guard self.formatoDePrecio.number(from: self.campoPrecio.text!) != nil else {
+            throw InputError.EmptyField(descripcion: "La cosa debe tener un precio.")
+        }
+    }
+    
+    /**
      Da tratamiento a la imagen después de que el usuario la selecciona.
      
      - Parameter picker: Controlador que maneja la imagen.

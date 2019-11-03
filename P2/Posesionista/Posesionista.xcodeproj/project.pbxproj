@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA2B8D6A236F3D7000061322 /* Seccion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B8D69236F3D7000061322 /* Seccion.swift */; };
+		CA711FAA236BA4FE007BAD4E /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA711FA9236BA4FE007BAD4E /* InputError.swift */; };
 		EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */; };
 		EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */; };
 		EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA2B8D69236F3D7000061322 /* Seccion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Seccion.swift; sourceTree = "<group>"; };
+		CA711FA9236BA4FE007BAD4E /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioDeImagenes.swift; sourceTree = "<group>"; };
 		EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosaTableViewCell.swift; sourceTree = "<group>"; };
 		EAE4C2D12357EB68004F0B12 /* DetalleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViewController.swift; sourceTree = "<group>"; };
@@ -93,10 +97,19 @@
 			path = Celda;
 			sourceTree = "<group>";
 		};
+		CA711FAB236BA505007BAD4E /* Errores */ = {
+			isa = PBXGroup;
+			children = (
+				CA711FA9236BA4FE007BAD4E /* InputError.swift */,
+			);
+			path = Errores;
+			sourceTree = "<group>";
+		};
 		EAE4C2D42357EBA8004F0B12 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
 				EAFC128C234EB1310089571A /* Cosa.swift */,
+				CA2B8D69236F3D7000061322 /* Seccion.swift */,
 				EAFC128E234EB5F80089571A /* Inventario.swift */,
 				EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */,
 			);
@@ -141,6 +154,7 @@
 				EAFC126A234EB0A50089571A /* Info.plist */,
 				EAE4C2D52357EBB8004F0B12 /* Inventario */,
 				EAE4C2D42357EBA8004F0B12 /* Modelos */,
+				CA711FAB236BA505007BAD4E /* Errores */,
 				EAFC1265234EB0A50089571A /* Assets.xcassets */,
 			);
 			path = Posesionista;
@@ -296,10 +310,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */,
+				CA2B8D6A236F3D7000061322 /* Seccion.swift in Sources */,
 				EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */,
 				EAFC125F234EB0A50089571A /* AppDelegate.swift in Sources */,
 				EAFC1291234EB72C0089571A /* CosasTableViewController.swift in Sources */,
 				EAFC128F234EB5F80089571A /* Inventario.swift in Sources */,
+				CA711FAA236BA4FE007BAD4E /* InputError.swift in Sources */,
 				EAFC128D234EB1310089571A /* Cosa.swift in Sources */,
 				EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */,
 			);
@@ -476,8 +492,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Posesionista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -485,6 +501,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mosh.Posesionista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -494,8 +511,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6Y824SG78Q;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = Posesionista/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -503,6 +520,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = mosh.Posesionista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
