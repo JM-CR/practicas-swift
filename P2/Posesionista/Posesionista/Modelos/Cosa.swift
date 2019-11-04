@@ -16,7 +16,7 @@ class Cosa: NSObject, NSCoding {
     var nombre: String
     var valorEnPesos: Int
     var numeroDeSerie: String?
-    let fechaDeCreacion: Date
+    var fechaDeCreacion: Date
     let llaveDeCosa: String
     
     /**

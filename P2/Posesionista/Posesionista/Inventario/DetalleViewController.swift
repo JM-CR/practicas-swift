@@ -43,6 +43,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Propiedades
         self.botonModificar.layer.cornerRadius = 10
         
         // Delegado
@@ -59,6 +61,17 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         // Cargar imagen
         self.foto.image = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa)
+        
+        // Agregar gesto para quitar keyboard
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView))
+        self.view.addGestureRecognizer(tap)
+    }
+    
+    /**
+     Desaparece el keyboard al dar tap fuera del objeto.
+     */
+    @objc func didTapView(){
+        self.view.endEditing(true)
     }
     
     /**
@@ -84,7 +97,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
      */
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Desaparecer keyboard
-        textField.resignFirstResponder()
+        self.view.endEditing(true)
         return true
     }
     
@@ -95,15 +108,15 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
      */
     func verificaCamposVacios() throws {
         guard !(self.campoNombre.text?.isEmpty)! else {
-            throw InputError.EmptyField(descripcion: "La cosa debe tener un nombre.")
+            throw InputError.EmptyField(descripcion: "Debes asignarle un nombre.")
         }
         
         guard !(self.campoSerie.text?.isEmpty)! else {
-            throw InputError.EmptyField(descripcion: "La cosa debe tener un número de serie.")
+            throw InputError.EmptyField(descripcion: "Debe haber un número de serie.")
         }
         
         guard self.formatoDePrecio.number(from: self.campoPrecio.text!) != nil else {
-            throw InputError.EmptyField(descripcion: "La cosa debe tener un precio.")
+            throw InputError.EmptyField(descripcion: "No puedes dejar el precio vacío.")
         }
     }
     
@@ -138,6 +151,24 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
     
     /**
+     Verifica que el usuario no haya dejado campos vacíos.
+     
+     - Parameter sender: Objeto que invocó al método.
+     */
+    @IBAction func campoModificado(_ sender: UITextField) {
+        do {
+            try self.verificaCamposVacios()
+        } catch InputError.EmptyField(let descripcion) {
+            let alerta = UIAlertController(title: "Campo vacío", message: descripcion, preferredStyle: .alert)
+            let accion = UIAlertAction(title: "Ok", style: .default) { accion in
+                sender.becomeFirstResponder()
+            }
+            alerta.addAction(accion)
+            present(alerta, animated: true, completion: nil)
+        } catch { }
+    }
+    
+    /**
      Realiza una acción cuando está por realizarse un segue.
      
      - Parameter segue: Identificador del segue.
@@ -150,6 +181,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
             
             // Pasar datos al destino
             fechaVC.delegate = self
+            fechaVC.fechaInicial = self.cosaADetallar.fechaDeCreacion
         }
     }
 }
@@ -165,6 +197,7 @@ extension DetalleViewController: DatePickerDelegate {
      - Parameter date: Fecha a desplegar.
      */
     func readyToDisplay(_ date: Date) {
+        self.cosaADetallar.fechaDeCreacion = date
         self.labelFecha.text = self.formatoDeFecha.string(from: date)
     }
 }

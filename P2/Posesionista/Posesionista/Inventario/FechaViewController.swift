@@ -12,6 +12,7 @@ class FechaViewController: UIViewController {
 
     @IBOutlet weak var datePicker: UIDatePicker!
     weak var delegate: DatePickerDelegate?
+    var fechaInicial: Date!
     
     /**
      Realiza acciones cuando el view se terminó de instanciar.
@@ -21,6 +22,7 @@ class FechaViewController: UIViewController {
         
         let fechaMaxima = Date()
         self.datePicker.maximumDate = fechaMaxima
+        self.datePicker.date = self.fechaInicial
     }
     
     /**

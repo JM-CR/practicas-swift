@@ -179,7 +179,10 @@
                                                 <rect key="frame" x="85" y="0.0" width="289" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                                <connections>
+                                                    <action selector="campoModificado:" destination="gVN-ki-SPW" eventType="editingDidEnd" id="I5Y-UR-0Ul"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                         <constraints>
@@ -200,7 +203,10 @@
                                                 <rect key="frame" x="85" y="0.0" width="289" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                                <connections>
+                                                    <action selector="campoModificado:" destination="gVN-ki-SPW" eventType="editingDidEnd" id="6ek-v5-sJa"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -217,7 +223,10 @@
                                                 <rect key="frame" x="85" y="0.0" width="289" height="30"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad" keyboardAppearance="alert"/>
+                                                <connections>
+                                                    <action selector="campoModificado:" destination="gVN-ki-SPW" eventType="editingDidEnd" id="c63-xy-Yi1"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
