@@ -134,7 +134,6 @@ class CosasTableViewController: UITableViewController {
      - Returns: Total de secciones.
      */
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return self.inventarios.count
     }
 
@@ -146,7 +145,6 @@ class CosasTableViewController: UITableViewController {
      - Returns: Total de filas por sección.
      */
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.inventarios[section].cosas.count
     }
 
@@ -158,7 +156,7 @@ class CosasTableViewController: UITableViewController {
      - Returns: Celda configurada.
      */
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Enlazar con CosaTableViewCell
+        // Obtener celda reutilizable
         let cell = tableView.dequeueReusableCell(withIdentifier: "cosaCell", for: indexPath) as! CosaTableViewCell
         
         // Recuperar datos del modelo

@@ -8,14 +8,16 @@
 
 import UIKit
 
-class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var campoNombre: UITextField!
     @IBOutlet weak var campoSerie: UITextField!
     @IBOutlet weak var campoPrecio: UITextField!
     @IBOutlet weak var labelFecha: UILabel!
     @IBOutlet weak var foto: UIImageView!
+    @IBOutlet weak var botonModificar: UIButton!
     
+    let picker = UIImagePickerController()
     var inventarioDeImagenes: InventarioDeImagenes!
     var cosaADetallar: Cosa! {
         didSet {
@@ -41,11 +43,13 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
      */
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.botonModificar.layer.cornerRadius = 10
         
         // Delegado
         self.campoNombre.delegate = self
         self.campoPrecio.delegate = self
         self.campoSerie.delegate = self
+        self.picker.delegate = self
         
         // Recuperar datos
         self.campoNombre.text = self.cosaADetallar.nombre
@@ -122,8 +126,6 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
      - Parameter sender: Objeto que accionó el método.
      */
     @IBAction func tomaFoto(_ sender: UIBarButtonItem) {
-        let picker = UIImagePickerController()
-        
         // Origen de la imagen
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
@@ -132,8 +134,37 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         }
         
         // Mostrar
-        picker.delegate = self
         present(picker, animated: true, completion: nil)
     }
+    
+    /**
+     Realiza una acción cuando está por realizarse un segue.
+     
+     - Parameter segue: Identificador del segue.
+     - Parameter sender: Objeto que inició la transición.
+     */
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "seleccionaFecha" {
+            // Identificar destino
+            let fechaVC = segue.destination as! FechaViewController
+            
+            // Pasar datos al destino
+            fechaVC.delegate = self
+        }
+    }
+}
 
+/**
+ Delegate para actualizar la fecha desde el UIDatePicker.
+ */
+extension DetalleViewController: DatePickerDelegate {
+    
+    /**
+     Actualiza el texto para el labelFecha.
+     
+     - Parameter date: Fecha a desplegar.
+     */
+    func readyToDisplay(_ date: Date) {
+        self.labelFecha.text = self.formatoDeFecha.string(from: date)
+    }
 }
