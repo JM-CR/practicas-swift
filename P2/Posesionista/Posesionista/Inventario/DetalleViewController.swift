@@ -16,6 +16,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var labelFecha: UILabel!
     @IBOutlet weak var foto: UIImageView!
     @IBOutlet weak var botonModificar: UIButton!
+    @IBOutlet weak var botonBorrar: UIButton!
     
     let picker = UIImagePickerController()
     var inventarioDeImagenes: InventarioDeImagenes!
@@ -24,6 +25,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
             self.navigationItem.title = self.cosaADetallar.nombre
         }
     }
+    
+    // - MARK: Formatters
     
     let formatoDeFecha: DateFormatter = {
         let formatter = DateFormatter()
@@ -37,6 +40,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         formatter.numberStyle = .currency
         return formatter
     }()
+    
+    // - MARK: Life Cycle
     
     /**
      Realiza acciones después de que se instancia el view.
@@ -62,6 +67,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         // Cargar imagen
         if let fotoDeCosa = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa) {
             self.foto.image = fotoDeCosa
+            self.botonBorrar.isHidden = false
         } else {
             self.foto.image = UIImage(named: "No Disponible")
         }
@@ -69,15 +75,6 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         // Agregar gesto para quitar keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView))
         self.view.addGestureRecognizer(tap)
-    }
-    
-    /**
-     Desaparece el keyboard al dar tap fuera del objeto.
-     */
-    @objc func didTapView(){
-        self.view.endEditing(true)
-        self.botonModificar.isEnabled = true
-        self.navigationItem.setHidesBackButton(false, animated: true)
     }
     
     /**
@@ -93,6 +90,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
             self.cosaADetallar.valorEnPesos = valorEntero.intValue
         }
     }
+    
+    // - MARK: Delegates
     
     /**
      Evita que el usuario salga del controlador al editar un campo.
@@ -118,28 +117,6 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
     
     /**
-     Verifica que ningún detalle quede vacío.
-     
-     - Throws: InputError.EmptyField
-     */
-    func verificaCamposVacios() throws {
-        guard !(self.campoNombre.text?.isEmpty)! else {
-            throw InputError.EmptyField(descripcion: "Debes asignarle un nombre.")
-        }
-        
-        guard !(self.campoSerie.text?.isEmpty)! else {
-            throw InputError.EmptyField(descripcion: "Debe haber un número de serie.")
-        }
-        
-        guard self.formatoDePrecio.number(from: self.campoPrecio.text!) != nil else {
-            if self.campoPrecio.text?.first != "$" {
-                self.campoPrecio.text = "$"
-            }
-            throw InputError.EmptyField(descripcion: "No puedes dejar el precio vacío.")
-        }
-    }
-    
-    /**
      Da tratamiento a la imagen después de que el usuario la selecciona.
      
      - Parameter picker: Controlador que maneja la imagen.
@@ -149,8 +126,11 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         let imagen = info[.originalImage] as! UIImage
         self.foto.image = imagen
         self.inventarioDeImagenes.setImagen(imagen, para: self.cosaADetallar.llaveDeCosa)
+        self.botonBorrar.isHidden = false
         dismiss(animated: true, completion: nil)
     }
+    
+    // - MARK: Actions
     
     /**
      Toma una foto para la cosa de la cámara o biblioteca.
@@ -187,6 +167,50 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
             alerta.addAction(accion)
             present(alerta, animated: true, completion: nil)
         } catch { }
+    }
+    
+    /**
+     Borra la imagen que eligió el usuario.
+     
+     - Parameter sender: Botón que invocó al método.
+     */
+    @IBAction func botonBorrarImagen(_ sender: UIButton) {
+        sender.isHidden = true
+        self.inventarioDeImagenes.borraImagen(para: self.cosaADetallar.llaveDeCosa)
+        self.foto.image = UIImage(named: "No Disponible")
+    }
+    
+    // - MARK: Métodos
+    
+    /**
+     Desaparece el keyboard al dar tap fuera del objeto.
+     */
+    @objc func didTapView(){
+        self.view.endEditing(true)
+        self.botonModificar.isEnabled = true
+        self.navigationItem.setHidesBackButton(false, animated: true)
+    }
+    
+    /**
+     Verifica que ningún detalle quede vacío.
+     
+     - Throws: InputError.EmptyField
+     */
+    func verificaCamposVacios() throws {
+        guard !(self.campoNombre.text?.isEmpty)! else {
+            throw InputError.EmptyField(descripcion: "Debes asignarle un nombre.")
+        }
+        
+        guard !(self.campoSerie.text?.isEmpty)! else {
+            throw InputError.EmptyField(descripcion: "Debe haber un número de serie.")
+        }
+        
+        guard self.formatoDePrecio.number(from: self.campoPrecio.text!) != nil else {
+            if self.campoPrecio.text?.first != "$" {
+                self.campoPrecio.text = "$"
+            }
+            throw InputError.EmptyField(descripcion: "No puedes dejar el precio vacío.")
+        }
     }
     
     /**

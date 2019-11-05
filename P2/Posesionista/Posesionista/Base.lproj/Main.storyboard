@@ -287,6 +287,17 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bzC-kg-93d"/>
+                                    <barButtonItem style="plain" id="Chl-nM-vf9">
+                                        <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cv2-yb-SVI">
+                                            <rect key="frame" x="279" y="5" width="115" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <state key="normal" title="Borrar imagen"/>
+                                            <connections>
+                                                <action selector="botonBorrarImagen:" destination="gVN-ki-SPW" eventType="touchUpInside" id="Okb-cg-rzV"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -303,6 +314,7 @@
                         <viewLayoutGuide key="safeArea" id="Qkg-El-qpp"/>
                     </view>
                     <connections>
+                        <outlet property="botonBorrar" destination="cv2-yb-SVI" id="Duh-dQ-YkP"/>
                         <outlet property="botonModificar" destination="8Gm-ce-YSU" id="7bl-vH-fqi"/>
                         <outlet property="campoNombre" destination="USO-HA-lGH" id="JOo-oC-qHs"/>
                         <outlet property="campoPrecio" destination="gt9-rC-S6T" id="SD1-gq-kQP"/>
