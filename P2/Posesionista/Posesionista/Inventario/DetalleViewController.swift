@@ -60,7 +60,11 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         self.labelFecha.text = self.formatoDeFecha.string(from: cosaADetallar.fechaDeCreacion)
         
         // Cargar imagen
-        self.foto.image = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa)
+        if let fotoDeCosa = self.inventarioDeImagenes.getImagen(para: cosaADetallar.llaveDeCosa) {
+            self.foto.image = fotoDeCosa
+        } else {
+            self.foto.image = UIImage(named: "No Disponible")
+        }
         
         // Agregar gesto para quitar keyboard
         let tap = UITapGestureRecognizer(target: self, action: #selector(didTapView))
@@ -83,12 +87,10 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         super.viewWillDisappear(animated)
         
         // Pasar datos de regreso
-        self.cosaADetallar.nombre = self.campoNombre.text ?? ""
-        self.cosaADetallar.numeroDeSerie = self.campoSerie.text ?? ""
+        self.cosaADetallar.nombre = self.campoNombre.text!
+        self.cosaADetallar.numeroDeSerie = self.campoSerie.text!
         if let valor = self.campoPrecio.text, let valorEntero = self.formatoDePrecio.number(from: valor) {
             self.cosaADetallar.valorEnPesos = valorEntero.intValue
-        } else {
-            self.cosaADetallar.valorEnPesos = 0
         }
     }
     
