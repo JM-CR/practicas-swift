@@ -13,6 +13,8 @@ class CosasTableViewController: UITableViewController {
     var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
     
+    // - MARK: Life Cycle
+    
     /**
      Lectura desde el sistema de archivos del disco.
      
@@ -33,6 +35,12 @@ class CosasTableViewController: UITableViewController {
         
         // Propiedades de tabla
         self.tableView.rowHeight = CGFloat(65)
+        
+        // Imagen de fondo
+        let imagenDeFondo = UIImage(named: "Fondo")
+        let imageView = UIImageView(image: imagenDeFondo)
+        imageView.contentMode = .scaleToFill
+        self.tableView.backgroundView = imageView
     }
     
     /**
@@ -42,6 +50,8 @@ class CosasTableViewController: UITableViewController {
         super.viewWillDisappear(animated)
         self.tableView.reloadData()
     }
+    
+    // - MARK: Métodos
     
     /**
      Añade una nueva cosa al inventario.
