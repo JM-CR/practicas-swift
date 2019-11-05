@@ -72,6 +72,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
      */
     @objc func didTapView(){
         self.view.endEditing(true)
+        self.botonModificar.isEnabled = true
+        self.navigationItem.setHidesBackButton(false, animated: true)
     }
     
     /**
@@ -91,6 +93,16 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     }
     
     /**
+     Evita que el usuario salga del controlador al editar un campo.
+     
+     - Parameter textField: Objeto que acciona el método.
+     */
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.botonModificar.isEnabled = false
+        self.navigationItem.setHidesBackButton(true, animated: true)
+    }
+    
+    /**
      Responde ante acciones del keyboard en un UITextField.
      
      - Parameter textField: Objeto que acciona el método.
@@ -98,6 +110,8 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Desaparecer keyboard
         self.view.endEditing(true)
+        self.botonModificar.isEnabled = true
+        self.navigationItem.setHidesBackButton(false, animated: true)
         return true
     }
     
@@ -116,6 +130,9 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         }
         
         guard self.formatoDePrecio.number(from: self.campoPrecio.text!) != nil else {
+            if self.campoPrecio.text?.first != "$" {
+                self.campoPrecio.text = "$"
+            }
             throw InputError.EmptyField(descripcion: "No puedes dejar el precio vacío.")
         }
     }
@@ -157,8 +174,10 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
      */
     @IBAction func campoModificado(_ sender: UITextField) {
         do {
+            // Validar
             try self.verificaCamposVacios()
         } catch InputError.EmptyField(let descripcion) {
+            // Crear alerta con error
             let alerta = UIAlertController(title: "Campo vacío", message: descripcion, preferredStyle: .alert)
             let accion = UIAlertAction(title: "Ok", style: .default) { accion in
                 sender.becomeFirstResponder()
