@@ -59,15 +59,15 @@ class CosasTableViewController: UITableViewController {
      - Parameter sender: Objeto barButtonItem que invocó al mètodo.
      */
     @IBAction func añadeCosas(_ sender: UIBarButtonItem) {
-        // FIXME: Asignar cosa a la sección correcta.
-        
         // Crear cosa
-        let nuevaCosa = self.inventarios[0].creaCosa()
+        let nuevaCosa = Cosa()
+        let seccion = Inventario.indicePara(cosa: nuevaCosa)
+        self.inventarios[seccion].cosas.append(nuevaCosa)
+        let indice = self.inventarios[seccion].cosas.firstIndex(of: nuevaCosa)!
         
         // Insertar en tabla
-        let indiceDeNuevaCosa = self.inventarios[0].cosas.firstIndex(of: nuevaCosa)!
-        let indexPath = IndexPath(row: indiceDeNuevaCosa, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
+        let indexPath = IndexPath(row: indice, section: seccion)
+        self.tableView.insertRows(at: [indexPath], with: .fade)
         
         // Recargar sección
         let indexSet: IndexSet = [indexPath.section]

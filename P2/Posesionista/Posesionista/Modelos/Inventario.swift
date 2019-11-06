@@ -119,4 +119,29 @@ class Inventario {
         return "$\(precioTotal)"
     }
     
+    /**
+     Devuelve la sección a la que pertence una Cosa.
+     
+     - Parameter cosa: Cosa a evaluar.
+     */
+    static func indicePara(cosa: Cosa) -> Int {
+        let posicion: Int
+        
+        switch cosa.valorEnPesos {
+        case 0...100: posicion = 0
+        case 101...200: posicion = 1
+        case 201...300: posicion = 2
+        case 301...400: posicion = 3
+        case 401...500: posicion = 4
+        case 501...600: posicion = 5
+        case 601...700: posicion = 6
+        case 701...800: posicion = 7
+        case 801...900: posicion = 8
+        case 901...1000: posicion = 9
+        default: posicion = 10
+        }
+        
+        return posicion
+    }
+    
 }

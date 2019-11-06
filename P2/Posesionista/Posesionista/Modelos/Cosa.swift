@@ -70,7 +70,7 @@ class Cosa: NSObject, NSCoding {
         let sustantivos = ["Aguacate", "Termo", "Audífonos"]
         let adjetivos = ["Verde", "Viejo", "Caro"]
         let nombreAleatorio = "\(sustantivos.randomElement()!) \(adjetivos.randomElement()!)"
-        let valorAleatorio = Int.random(in: 0...100)
+        let valorAleatorio = Int.random(in: 0...1200)
         let serieAleatorio = UUID().uuidString.components(separatedBy: "-").first!
         self.init(nombre: nombreAleatorio, valor: valorAleatorio, serie: serieAleatorio, alta: Date())
     }
