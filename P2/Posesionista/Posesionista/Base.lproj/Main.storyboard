@@ -48,7 +48,7 @@
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fin del inventario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vun-hz-jLo">
                                     <rect key="frame" x="0.0" y="29" width="414" height="35"/>
-                                    <color key="backgroundColor" red="0.29797908663749695" green="0.30188274383544922" blue="0.30980008840560913" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.29797908663749695" green="0.30188274383544922" blue="0.30980008840560913" alpha="0.798002860915493" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="35" id="ztv-qs-ahe"/>
                                     </constraints>
@@ -57,7 +57,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.68928432231086667" blue="0.39889636921642491" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="backgroundColor" red="1" green="0.68928432231086667" blue="0.39889636921642491" alpha="0.80080875880281688" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
                                 <constraint firstItem="JF2-Ay-715" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" constant="-17" id="7N6-XL-1Fb"/>
                                 <constraint firstItem="Vun-hz-jLo" firstAttribute="top" secondItem="0W0-pV-dTk" secondAttribute="bottom" constant="3" id="APK-NV-oMi"/>
@@ -89,7 +89,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.17240920662879944" green="0.18031471967697144" blue="0.18823173642158508" alpha="0.8977497799295775" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.17240920662879944" green="0.18031471967697144" blue="0.18823173642158508" alpha="0.800506161971831" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstItem="pCX-HH-iM5" firstAttribute="centerY" secondItem="N4Z-6z-4gG" secondAttribute="centerY" id="59q-kZ-yr7"/>
                                         <constraint firstItem="pCX-HH-iM5" firstAttribute="centerX" secondItem="N4Z-6z-4gG" secondAttribute="centerX" id="Q5u-qm-cU8"/>
@@ -136,7 +136,7 @@
                                         <constraint firstItem="YWO-RZ-4wq" firstAttribute="leading" secondItem="4En-Rc-zK5" secondAttribute="leading" constant="20" id="qgy-4C-SdX"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.25" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="labelNombre" destination="YWO-RZ-4wq" id="pFo-wz-Wpt"/>
                                     <outlet property="labelPrecio" destination="QcF-7J-vXl" id="9vg-zx-nt6"/>
@@ -176,7 +176,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.34144625067710876" green="0.63260161876678467" blue="0.86657083034515381" alpha="0.7925561179577465" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="backgroundColor" red="0.34144625067710876" green="0.63260161876678467" blue="0.86657083034515381" alpha="0.80309198943661975" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nRC-61-D1A" secondAttribute="trailing" constant="46" id="ABa-oU-reS"/>
                                         <constraint firstItem="nRC-61-D1A" firstAttribute="leading" secondItem="z8C-90-Fe4" secondAttribute="trailing" constant="8" id="EX0-L3-XkB"/>
