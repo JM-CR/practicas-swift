@@ -17,10 +17,14 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var foto: UIImageView!
     @IBOutlet weak var botonModificar: UIButton!
     @IBOutlet weak var botonBorrar: UIButton!
+
+    weak var delegate: ThingDelegate?
     
     // - MARK: Elementos de Cosa
     
     let picker = UIImagePickerController()
+    
+    var seccionInicial: Int!
     var inventarioDeImagenes: InventarioDeImagenes!
     let imagenPorDefault = UIImage(named: "No Disponible")
     
@@ -55,6 +59,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         
         // Propiedades
         self.botonModificar.layer.cornerRadius = 10
+        self.seccionInicial = Inventario.indicePara(cosa: cosaADetallar)
         
         // Delegado
         self.campoNombre.delegate = self
@@ -93,6 +98,10 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         if let valor = self.campoPrecio.text, let valorEntero = self.formatoDePrecio.number(from: valor) {
             self.cosaADetallar.valorEnPesos = valorEntero.intValue
         }
+        
+        // Verificar si cosa debe actualizarse en la tabla
+        let seccionFinal = Inventario.indicePara(cosa: cosaADetallar)
+        delegate?.verificaCambio(seccionPrevia: seccionInicial, seccionNueva: seccionFinal, cosa: cosaADetallar)
     }
     
     // - MARK: Delegates

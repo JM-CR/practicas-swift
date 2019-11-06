@@ -308,9 +308,38 @@ class CosasTableViewController: UITableViewController {
             let detalleVC = segue.destination as! DetalleViewController
             
             // Pasar datos al destino
+            detalleVC.delegate = self
             detalleVC.cosaADetallar = self.inventarios[indexPath.section].cosas[indexPath.row]
             detalleVC.inventarioDeImagenes = self.inventarioDeImagenes
         }
     }
 
+}
+
+/**
+ Cambia la cosa de posición según el precio dado en DetalleVC.
+ */
+extension CosasTableViewController: ThingDelegate {
+    
+    /**
+     Actualiza una cosa en el inventario y tableView.
+     
+     - Parameter seccionPrevia: Sección antes del cambio.
+     - Parameter seccionNueva: Sección después del cambio.
+     - Parameter cosa: Cosa a evaluar.
+     */
+    func verificaCambio(seccionPrevia: Int, seccionNueva: Int, cosa: Cosa) {
+        guard seccionPrevia != seccionNueva else {
+            return
+        }
+        
+        // Cambiar cosa en el modelo | inventario
+        self.inventarios[seccionNueva].cosas.append(cosa)
+        self.inventarios[seccionPrevia].eliminaCosa(cosaAEliminar: cosa)
+        
+        // Actualizar tableView
+        let indexSet: IndexSet = [seccionNueva, seccionPrevia]
+        self.tableView.reloadSections(indexSet, with: .fade)
+    }
+    
 }
