@@ -19,44 +19,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="8eX-1N-0G3">
-                            <rect key="frame" x="0.0" y="153" width="414" height="33"/>
+                            <rect key="frame" x="0.0" y="153" width="414" height="64"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total acumulado:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0W0-pV-dTk">
-                                    <rect key="frame" x="17" y="6" width="141" height="21"/>
+                                    <rect key="frame" x="17" y="4" width="141" height="22"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Precio:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF2-Ay-715">
-                                    <rect key="frame" x="264" y="6" width="58" height="21"/>
+                                    <rect key="frame" x="264" y="4.5" width="58" height="21"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atu-yR-x54">
-                                    <rect key="frame" x="330" y="6" width="42" height="21"/>
+                                    <rect key="frame" x="330" y="4.5" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ald-T5-zza">
-                                    <rect key="frame" x="166" y="6" width="42" height="21"/>
+                                    <rect key="frame" x="166" y="4.5" width="42" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fin del inventario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vun-hz-jLo">
+                                    <rect key="frame" x="0.0" y="29" width="414" height="35"/>
+                                    <color key="backgroundColor" red="0.29797908663749695" green="0.30188274383544922" blue="0.30980008840560913" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="ztv-qs-ahe"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" red="1" green="0.68928432231086667" blue="0.39889636921642491" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
-                                <constraint firstItem="JF2-Ay-715" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" id="7N6-XL-1Fb"/>
+                                <constraint firstItem="JF2-Ay-715" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" constant="-17" id="7N6-XL-1Fb"/>
+                                <constraint firstItem="Vun-hz-jLo" firstAttribute="top" secondItem="0W0-pV-dTk" secondAttribute="bottom" constant="3" id="APK-NV-oMi"/>
                                 <constraint firstItem="0W0-pV-dTk" firstAttribute="leading" secondItem="8eX-1N-0G3" secondAttribute="leading" constant="17" id="B79-mH-if2"/>
-                                <constraint firstItem="atu-yR-x54" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" id="JGq-9r-QQL"/>
+                                <constraint firstItem="atu-yR-x54" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" constant="-17" id="JGq-9r-QQL"/>
+                                <constraint firstItem="Vun-hz-jLo" firstAttribute="leading" secondItem="8eX-1N-0G3" secondAttribute="leading" id="Pyu-zJ-djj"/>
                                 <constraint firstItem="ald-T5-zza" firstAttribute="leading" secondItem="0W0-pV-dTk" secondAttribute="trailing" constant="8" id="VPV-GX-3CH"/>
                                 <constraint firstAttribute="trailing" secondItem="atu-yR-x54" secondAttribute="trailing" constant="42" id="ZJf-Di-68f"/>
-                                <constraint firstItem="0W0-pV-dTk" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" id="aF0-IM-BLZ"/>
+                                <constraint firstAttribute="bottom" secondItem="Vun-hz-jLo" secondAttribute="bottom" id="a1O-dU-tpo"/>
+                                <constraint firstItem="0W0-pV-dTk" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" constant="-17" id="aF0-IM-BLZ"/>
+                                <constraint firstAttribute="trailing" secondItem="Vun-hz-jLo" secondAttribute="trailing" id="aQT-aN-E2e"/>
                                 <constraint firstItem="atu-yR-x54" firstAttribute="leading" secondItem="JF2-Ay-715" secondAttribute="trailing" constant="8" id="hdH-9H-Q0z"/>
-                                <constraint firstItem="ald-T5-zza" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" id="sH6-Rc-6WX"/>
+                                <constraint firstItem="ald-T5-zza" firstAttribute="centerY" secondItem="8eX-1N-0G3" secondAttribute="centerY" constant="-17" id="sH6-Rc-6WX"/>
                                 <constraint firstItem="JF2-Ay-715" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ald-T5-zza" secondAttribute="trailing" constant="36" id="sVw-SA-Aba"/>
                             </constraints>
                         </view>

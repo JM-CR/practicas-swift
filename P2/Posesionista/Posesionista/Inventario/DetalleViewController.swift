@@ -18,8 +18,12 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBOutlet weak var botonModificar: UIButton!
     @IBOutlet weak var botonBorrar: UIButton!
     
+    // - MARK: Elementos de Cosa
+    
     let picker = UIImagePickerController()
     var inventarioDeImagenes: InventarioDeImagenes!
+    let imagenPorDefault = UIImage(named: "No Disponible")
+    
     var cosaADetallar: Cosa! {
         didSet {
             self.navigationItem.title = self.cosaADetallar.nombre
@@ -69,7 +73,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
             self.foto.image = fotoDeCosa
             self.botonBorrar.isHidden = false
         } else {
-            self.foto.image = UIImage(named: "No Disponible")
+            self.foto.image = self.imagenPorDefault
         }
         
         // Agregar gesto para quitar keyboard
