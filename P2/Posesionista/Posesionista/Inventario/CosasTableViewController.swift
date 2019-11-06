@@ -221,14 +221,6 @@ class CosasTableViewController: UITableViewController {
         
         return cell
     }
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
     /**
      Realiza una acción cuando una celda es editada.
@@ -276,16 +268,33 @@ class CosasTableViewController: UITableViewController {
      - Parameter to: Indicador con la nueva posición de la celda.
      */
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-        self.inventarios[fromIndexPath.section].reordena(de: fromIndexPath.row, hacia: to.row)
+        if fromIndexPath.section == to.section {
+            self.inventarios[fromIndexPath.section].reordena(de: fromIndexPath.row, hacia: to.row)
+        }
     }
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
+    
+    /**
+     Previene que una cosa se mueva de una sección a otra.
+     
+     - Parameter tableView: Objeto tableView que solicita la accíon.
+     - Parameter sourceIndexPath: Posición inicial de la celda.
+     - Parameter proposedDestinationIndexPath: Posición destino de la celda.
+     - Returns: Posición final.
+     */
+    override func tableView(_ tableView: UITableView, targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath, toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+        
+        // Obtener secciones
+        let seccionOrigen = sourceIndexPath.section
+        let seccionDestino = proposedDestinationIndexPath.section
+        
+        // No mover si cambia de sección
+        if seccionOrigen != seccionDestino {
+            return sourceIndexPath
+        }
+        
+        // Mover si es dentro de la misma sección
+        return proposedDestinationIndexPath
     }
-    */
 
     /**
      Realiza una acción cuando está por realzarse un segue.
