@@ -36,6 +36,8 @@ class Inventario {
         }
     }
     
+    // - MARK: Métodos
+    
     /**
      Obtiene el path de la sección en el sistema de archivos del disco.
      
@@ -118,6 +120,8 @@ class Inventario {
         self.cosas.forEach { precioTotal += $0.valorEnPesos  }
         return "$\(precioTotal)"
     }
+    
+    // - MARK: Static
     
     /**
      Devuelve la sección a la que pertence una Cosa.

@@ -10,6 +10,9 @@ import UIKit
 
 class CosasTableViewController: UITableViewController {
 
+    @IBOutlet weak var labelTotalAcumulado: UILabel!
+    @IBOutlet weak var labelPrecioAcumulado: UILabel!
+    
     var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
     
@@ -44,11 +47,19 @@ class CosasTableViewController: UITableViewController {
     }
     
     /**
-     Acciones a realizar cuando está por aparecer en pantalla.
+     Acciones a realizar cuando el view aparece en pantalla.
      */
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tableView.reloadData()
+    }
+    
+    /**
+     Acciones a realizar cuando el view está por aparecer.
+     */
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.muestraTotalDeCosas()
     }
     
     // - MARK: Métodos
@@ -72,6 +83,37 @@ class CosasTableViewController: UITableViewController {
         // Recargar sección
         let indexSet: IndexSet = [indexPath.section]
         self.tableView.reloadSections(indexSet, with: .automatic)
+        self.muestraTotalDeCosas()
+    }
+    
+    /**
+     Actualiza el total de cosas acumuladas y su precio.
+     */
+    func muestraTotalDeCosas() {
+        // Calcular valor
+        let (total, precioTotal) = self.totalDeCosas()
+        
+        // Mostrar
+        self.labelTotalAcumulado.text = "\(total)"
+        self.labelPrecioAcumulado.text = "$\(precioTotal)"
+    }
+    
+    /**
+     Itera sobre todo el inventario y calcula su precio y total de elementos.
+     
+     - Returns: Tupla con el total de cosas y su precio acumulado.
+     */
+    func totalDeCosas() -> (total: Int, precioTotal: Int) {
+        var total = 0
+        var precioTotal = 0
+        for inventario in self.inventarios {
+            inventario.cosas.forEach { cosa in
+                total += 1
+                precioTotal += cosa.valorEnPesos
+            }
+        }
+        
+        return (total, precioTotal)
     }
     
     // MARK: - Table Style
@@ -213,6 +255,7 @@ class CosasTableViewController: UITableViewController {
                 // Recargar sección
                 let indexSet: IndexSet = [indexPath.section]
                 self.tableView.reloadSections(indexSet, with: .automatic)
+                self.muestraTotalDeCosas()
             }
             alerta.addAction(ok)
             
