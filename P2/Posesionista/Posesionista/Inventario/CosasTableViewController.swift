@@ -40,6 +40,9 @@ class CosasTableViewController: UITableViewController {
         
         // Propiedades de tabla
         self.tableView.rowHeight = CGFloat(65)
+        self.tableView.sectionIndexColor = .black
+        self.tableView.sectionIndexBackgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.85)
+        self.tableView.sectionIndexTrackingBackgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.7)
         
         // Imagen de fondo
         let imagenDeFondo = UIImage(named: "Fondo")
@@ -180,6 +183,16 @@ class CosasTableViewController: UITableViewController {
     }
 
     // MARK: - Data source
+    
+    /**
+     Crea una barra lateral para brincar entre secciones.
+     
+     - Parameter tableView: Objeto TableView que solicita un renglón.
+     - Returns: Índices de navegación.
+     */
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return self.inventarios.map { $0.nombreDeSeccion }
+    }
 
     /**
      Indica al tableView el número de secciones en la tabla.
