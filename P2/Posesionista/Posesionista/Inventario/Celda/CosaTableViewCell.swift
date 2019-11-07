@@ -13,7 +13,8 @@ class CosaTableViewCell: UITableViewCell {
     @IBOutlet weak var labelNombre: UILabel!
     @IBOutlet weak var labelSerie: UILabel!
     @IBOutlet weak var labelPrecio: UILabel!
-
+    @IBOutlet weak var thumbnailView: UIImageView!
+    
     /**
      Realiza una acción cuando aparece en el storyboard.
      */

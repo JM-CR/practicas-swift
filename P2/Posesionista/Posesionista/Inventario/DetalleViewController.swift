@@ -26,6 +26,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     
     var seccionInicial: Int!
     var inventarioDeImagenes: InventarioDeImagenes!
+    var inventarioDeThumbnails: InventarioDeThumbnails!
     let imagenPorDefault = UIImage(named: "No Disponible")
     
     var cosaADetallar: Cosa! {
@@ -139,6 +140,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
         let imagen = info[.originalImage] as! UIImage
         self.foto.image = imagen
         self.inventarioDeImagenes.setImagen(imagen, para: self.cosaADetallar.llaveDeCosa)
+        self.inventarioDeThumbnails.setThumbnail(imagen, para: self.cosaADetallar.llaveDeCosa)
         self.botonBorrar.isHidden = false
         dismiss(animated: true, completion: nil)
     }
@@ -190,6 +192,7 @@ class DetalleViewController: UIViewController, UITextFieldDelegate, UINavigation
     @IBAction func botonBorrarImagen(_ sender: UIButton) {
         sender.isHidden = true
         self.inventarioDeImagenes.borraImagen(para: self.cosaADetallar.llaveDeCosa)
+        self.inventarioDeThumbnails.borraThumbnail(para: self.cosaADetallar.llaveDeCosa)
         self.foto.image = UIImage(named: "No Disponible")
     }
     

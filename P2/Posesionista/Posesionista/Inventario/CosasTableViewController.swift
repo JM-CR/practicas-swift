@@ -15,6 +15,8 @@ class CosasTableViewController: UITableViewController {
     
     var inventarios: [Inventario]!
     let inventarioDeImagenes = InventarioDeImagenes()
+    let inventarioDeThumbnails = InventarioDeThumbnails()
+    let thumbnailPorDefault = UIImage(named: "Default Thumbnail")
     
     // - MARK: Life Cycle
     
@@ -214,6 +216,13 @@ class CosasTableViewController: UITableViewController {
         // Recuperar datos del modelo
         let item = self.inventarios[indexPath.section].cosas[indexPath.row]
         
+        // Cargar thumbnail
+        if let thumbnailDeCosa = self.inventarioDeThumbnails.getThumbnail(para: item.llaveDeCosa) {
+            cell.thumbnailView.image = thumbnailDeCosa
+        } else {
+            cell.thumbnailView.image = self.thumbnailPorDefault
+        }
+        
         // Formatear celda
         cell.labelNombre.text = item.nombre
         cell.labelPrecio.text = "$\(item.valorEnPesos)"
@@ -242,6 +251,7 @@ class CosasTableViewController: UITableViewController {
                 // Realizar acción
                 self.inventarios[indexPath.section].eliminaCosa(cosaAEliminar: cosaABorrar)
                 self.inventarioDeImagenes.borraImagen(para: cosaABorrar.llaveDeCosa)
+                self.inventarioDeThumbnails.borraThumbnail(para: cosaABorrar.llaveDeCosa)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
                 
                 // Recargar sección
@@ -311,6 +321,7 @@ class CosasTableViewController: UITableViewController {
             detalleVC.delegate = self
             detalleVC.cosaADetallar = self.inventarios[indexPath.section].cosas[indexPath.row]
             detalleVC.inventarioDeImagenes = self.inventarioDeImagenes
+            detalleVC.inventarioDeThumbnails = self.inventarioDeThumbnails
         }
     }
 

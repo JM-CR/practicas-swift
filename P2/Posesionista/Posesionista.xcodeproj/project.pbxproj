@@ -12,6 +12,7 @@
 		CA2B8D76236FE69800061322 /* FechaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B8D75236FE69800061322 /* FechaViewController.swift */; };
 		CA2B8D78237075FD00061322 /* DatePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2B8D77237075FD00061322 /* DatePickerDelegate.swift */; };
 		CA5AD8002373805100E14457 /* ThingDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5AD7FF2373805100E14457 /* ThingDelegate.swift */; };
+		CA5AD8022374D74900E14457 /* InventarioDeThumbnails.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5AD8012374D74900E14457 /* InventarioDeThumbnails.swift */; };
 		CA711FAA236BA4FE007BAD4E /* InputError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA711FA9236BA4FE007BAD4E /* InputError.swift */; };
 		EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */; };
 		EAE4C2D02357DF39004F0B12 /* CosaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */; };
@@ -50,6 +51,7 @@
 		CA2B8D75236FE69800061322 /* FechaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaViewController.swift; sourceTree = "<group>"; };
 		CA2B8D77237075FD00061322 /* DatePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerDelegate.swift; sourceTree = "<group>"; };
 		CA5AD7FF2373805100E14457 /* ThingDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThingDelegate.swift; sourceTree = "<group>"; };
+		CA5AD8012374D74900E14457 /* InventarioDeThumbnails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioDeThumbnails.swift; sourceTree = "<group>"; };
 		CA711FA9236BA4FE007BAD4E /* InputError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputError.swift; sourceTree = "<group>"; };
 		EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventarioDeImagenes.swift; sourceTree = "<group>"; };
 		EAE4C2CF2357DF39004F0B12 /* CosaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosaTableViewCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				EAFC128C234EB1310089571A /* Cosa.swift */,
 				EAFC128E234EB5F80089571A /* Inventario.swift */,
 				EA6FA4EA23611C2300BAEA50 /* InventarioDeImagenes.swift */,
+				CA5AD8012374D74900E14457 /* InventarioDeThumbnails.swift */,
 			);
 			path = Modelos;
 			sourceTree = "<group>";
@@ -331,6 +334,7 @@
 			files = (
 				EA6FA4EB23611C2300BAEA50 /* InventarioDeImagenes.swift in Sources */,
 				CA2B8D76236FE69800061322 /* FechaViewController.swift in Sources */,
+				CA5AD8022374D74900E14457 /* InventarioDeThumbnails.swift in Sources */,
 				EAE4C2D22357EB68004F0B12 /* DetalleViewController.swift in Sources */,
 				CA2B8D72236F75EB00061322 /* FooterTableViewCell.swift in Sources */,
 				EAFC125F234EB0A50089571A /* AppDelegate.swift in Sources */,
