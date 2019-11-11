@@ -21,8 +21,6 @@
 		EAFC1264234EB0A50089571A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1262234EB0A50089571A /* Main.storyboard */; };
 		EAFC1266234EB0A50089571A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1265234EB0A50089571A /* Assets.xcassets */; };
 		EAFC1269234EB0A50089571A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAFC1267234EB0A50089571A /* LaunchScreen.storyboard */; };
-		EAFC1274234EB0A50089571A /* PosesionistaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC1273234EB0A50089571A /* PosesionistaTests.swift */; };
-		EAFC127F234EB0A50089571A /* PosesionistaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */; };
 		EAFC128D234EB1310089571A /* Cosa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC128C234EB1310089571A /* Cosa.swift */; };
 		EAFC128F234EB5F80089571A /* Inventario.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC128E234EB5F80089571A /* Inventario.swift */; };
 		EAFC1291234EB72C0089571A /* CosasTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFC1290234EB72C0089571A /* CosasTableViewController.swift */; };
@@ -63,11 +61,7 @@
 		EAFC1268234EB0A50089571A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAFC126A234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAFC126F234EB0A50089571A /* PosesionistaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosesionistaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAFC1273234EB0A50089571A /* PosesionistaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosesionistaTests.swift; sourceTree = "<group>"; };
-		EAFC1275234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAFC127A234EB0A50089571A /* PosesionistaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PosesionistaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosesionistaUITests.swift; sourceTree = "<group>"; };
-		EAFC1280234EB0A50089571A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAFC128C234EB1310089571A /* Cosa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cosa.swift; sourceTree = "<group>"; };
 		EAFC128E234EB5F80089571A /* Inventario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventario.swift; sourceTree = "<group>"; };
 		EAFC1290234EB72C0089571A /* CosasTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CosasTableViewController.swift; sourceTree = "<group>"; };
@@ -151,8 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				EAFC125D234EB0A50089571A /* Posesionista */,
-				EAFC1272234EB0A50089571A /* PosesionistaTests */,
-				EAFC127D234EB0A50089571A /* PosesionistaUITests */,
 				EAFC125C234EB0A50089571A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -181,24 +173,6 @@
 				CA2B8D792370761200061322 /* Protocol */,
 			);
 			path = Posesionista;
-			sourceTree = "<group>";
-		};
-		EAFC1272234EB0A50089571A /* PosesionistaTests */ = {
-			isa = PBXGroup;
-			children = (
-				EAFC1273234EB0A50089571A /* PosesionistaTests.swift */,
-				EAFC1275234EB0A50089571A /* Info.plist */,
-			);
-			path = PosesionistaTests;
-			sourceTree = "<group>";
-		};
-		EAFC127D234EB0A50089571A /* PosesionistaUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EAFC127E234EB0A50089571A /* PosesionistaUITests.swift */,
-				EAFC1280234EB0A50089571A /* Info.plist */,
-			);
-			path = PosesionistaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,7 +327,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAFC1274234EB0A50089571A /* PosesionistaTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +334,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAFC127F234EB0A50089571A /* PosesionistaUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
